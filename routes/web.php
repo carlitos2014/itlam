@@ -21,3 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('sedes', 'sedesController');
+
+
+Route::get('auditorias/programacion','AuditoriaController@programacion')->name('programacion');
+Route::post('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('programacion.buildPdf');
