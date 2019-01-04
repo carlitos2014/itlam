@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\sedes;
 
-class sedesController extends AppBaseController
+class SedeController extends AppBaseController
 {
     /** @var  sedesRepository */
     private $sedesRepository;
@@ -31,7 +32,7 @@ class sedesController extends AppBaseController
     {
         $this->sedesRepository->pushCriteria(new RequestCriteria($request));
         $sedes = $this->sedesRepository->all();
-        $sedes = sedesRepository::paginate(5);
+        $sedes = sedes::orderBy('id', 'DESC')->paginate(10);
 
         return view('sedes.index')
             ->with('sedes', $sedes);

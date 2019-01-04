@@ -35,7 +35,9 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <img style="margin-top:-12px" src="{{ asset("/img/Logo.png") }}" alt="Logo" height="120"> <br>
+           <a  style="color: #006EB9"href="{{ url('/home') }}"><b >ACECOM</b> CEAM</a>
+        
     </div>
 
     <!-- /.login-logo -->

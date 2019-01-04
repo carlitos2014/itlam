@@ -52,12 +52,20 @@ class sedes extends Model
      *
      * @var array
      */
-    public static $rules = [
+   /*public static function rules($id = 0){
+        return [
+            'nombre'    => ['required','max:100','unique:nombre'],
+            'direccion' => ['required','max:100'],
+            'telefono'  => ['required','max:20'],
+            'web'       => ['max:100'],
+            'email'     => ['required','email','max:320'],
+        ];
+    }*/
+      public static $rules = [
         'nombre' => 'required',
         'direccion' => 'required',
         'telefono' => 'numeric',
         'email' => 'email'
     ];
-
     
 }

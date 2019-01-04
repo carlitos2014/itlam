@@ -20,4 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('sedes', 'sedesController');
+Route::resource('sedes', 'SedeController');
+
+
+
+Route::resource('noConformidades', 'NoConformidadController');
