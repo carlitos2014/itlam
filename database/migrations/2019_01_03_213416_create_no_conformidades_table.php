@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatesedesTable extends Migration
+class CreateNoConformidadesTable extends Migration
 {
 
     /**
@@ -13,13 +13,11 @@ class CreatesedesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sedes', function (Blueprint $table) {
+        Schema::create('no_conformidades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 100);
-            $table->string('direccion', 100);
-            $table->string('telefono', 20);
-            $table->string('web')->nulleable();
-            $table->string('email', 320);
+            $table->string('nombre');
+            $table->text('motivo');
+            $table->string('grado');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +30,6 @@ class CreatesedesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sedes');
+        Schema::drop('no_conformidades');
     }
 }

@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('sedes', 'sedesController');
 
+Route::resource('noConformidades', 'NoConformidadController');
 
 Route::get('auditorias/programacion','AuditoriaController@programacion')->name('programacion');
 Route::post('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('programacion.buildPdf');
