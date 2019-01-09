@@ -18,10 +18,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index');
+
 Route::resource('sedes', 'SedeController');
 Route::resource('noConformidades', 'NoConformidadController');
 
 Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-
+Route::get('auditorias/programacion','AuditoriaController@programacion')->name('programacion');
+Route::post('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('programacion.buildPdf');
 
