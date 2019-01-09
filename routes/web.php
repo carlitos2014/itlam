@@ -12,16 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
-
 Route::resource('sedes', 'SedeController');
-
-
-
 Route::resource('noConformidades', 'NoConformidadController');
+
+Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
+
+
+

@@ -1,5 +1,5 @@
 
-<table class="table table-responsive table-bordered table-striped" id="sedes-table">
+<table class="table table-responsive table-bordered table-striped" id="archivos-table">
     <thead>
         <tr>
             <th>Nombre</th>
