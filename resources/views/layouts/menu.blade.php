@@ -17,6 +17,7 @@
 		</li>
 	</ul>
 </li>
+
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
 	<a href="#">
 		<i class="fa fa-check-circle-o"></i> <span>Gestión de calidad</span>
@@ -40,7 +41,7 @@
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-calendar-check-o"></i> Programación</a></li>
+						<li><a href="{{route('auditorias.programacion')}}"><i class="fa fa-calendar-check-o"></i> Programación</a></li>
 						<li><a href="#"><i class="fa fa-eye"></i> Seguimiento</a></li>
 					</ul>
 				</li>

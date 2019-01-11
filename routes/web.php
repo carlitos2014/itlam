@@ -24,6 +24,6 @@ Route::resource('noConformidades', 'NoConformidadController');
 
 Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-Route::get('auditorias/programacion','AuditoriaController@programacion')->name('programacion');
-Route::post('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('programacion.buildPdf');
+Route::get('auditorias/programacion','AuditoriaController@programacion')->name('auditorias.programacion');
+Route::get('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('auditorias.programacion.buildPdf');
 

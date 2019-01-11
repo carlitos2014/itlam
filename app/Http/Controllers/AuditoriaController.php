@@ -45,21 +45,23 @@ class AuditoriaController extends Controller
     public function programacionBuildPdf()
     {
         $view = 'auditorias.programacion.pdf';
-        $today = Carbon::today();
+        $today = Carbon::today()->format('Y-m-d');
+        $auditor_lider = 'Yulieth Andrea Ramírez';
+        $auditores_internos = '';
 
-        return view($view, compact('today' ));
+        //return view($view, compact('today' ));
 
-        $pdf = PDF::loadView($view, compact('today'))
+        $pdf = PDF::loadView($view, compact('today','auditor_lider','auditores_internos'))
                     ->setPaper('letter', 'portrait');
 
         $pdf->output();
         $dom_pdf = $pdf->getDomPDF();
 
         $canvas = $dom_pdf ->get_canvas();
-        //$canvas->page_text(50, 770, "Pág {PAGE_NUM} de {PAGE_COUNT}", null, 10, [0, 0, 0]);
-        $canvas->page_text(50, 770, null, null, 10, [0, 0, 0]);
+        $canvas->page_text(512, 87, "Página {PAGE_NUM} de {PAGE_COUNT}", null, 10, [0, 0, 0]);
+        //$canvas->page_text(50, 770, null, null, 10, [0, 0, 0]);
         
         //return $pdf->download('GQ-FR-08 Plan de Auditorias '.$today.'.pdf');
-        return $pdf->download('invoice');
+        return $pdf->stream('invoice.pdf');
     }
 }
