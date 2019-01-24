@@ -17,6 +17,26 @@
 		</li>
 	</ul>
 </li>
+<li class="{{ Request::is('sedes*')? 'active' : '' }}">
+	<a href="#"><i class="fa fa-graduation-cap"></i> <span>Académico</span>
+		<span class="pull-right-container">
+			<i class="fa fa-angle-left pull-right"></i>
+		</span>
+	</a>
+	<ul class="treeview-menu">
+		<li class="treeview">
+			<a href="#"><i class="fa fa-calendar-check-o"></i> Planeación
+				<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+				<ul class="treeview-menu">
+					<li><a href="#"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+				</ul>
+		</li>
+	</ul>
+
+</li>
 
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
 	<a href="#">
