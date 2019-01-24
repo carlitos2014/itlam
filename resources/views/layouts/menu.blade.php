@@ -4,23 +4,23 @@
 
 
 <li class="{{ Request::is('noConformidades*') ? 'active' : '' }}">
-	<a href="{!! route('noConformidades.index') !!}"><i class="fa fa-edit"></i><span>No Conformidades</span></a>
+	<a href="{!! route('noConformidades.index') !!}"><i class="fa fa-edit"></i> <span>No Conformidades</span></a>
 </li>
 
 <li class="{{ Request::is('sedes*')? 'active' : '' }}">
-	<a href="#"><i class="fa fa-cogs"></i><span>Configuración</span><i class="fa fa-angle-left pull-right"></i></a>
+	<a href="#"><i class="fa fa-cogs"></i> <span>Configuración</span><i class="fa fa-angle-left pull-right"></i></a>
 
 	<ul class="treeview-menu">
 		
 		<li class="{{ Request::is('sedes*') ? 'active' : '' }}">
-			<a href="{!! route('sedes.index') !!}"><i class="fa fa-building"></i>Sedes</a>
+			<a href="{!! route('sedes.index') !!}"><i class="fa fa-building"></i> Sedes</a>
 		</li>
 	</ul>
 </li>
 
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
 	<a href="#">
-		<i class="fa fa-check-circle-o"></i> <span>Gestión de calidad</span>
+		<i class="fa fa-check-circle"></i> <span>Gestión de calidad</span>
 		<span class="pull-right-container">
 			<i class="fa fa-angle-left pull-right"></i>
 		</span>
@@ -48,7 +48,7 @@
 			</ul>
 		</li>
 		<li>
-			<a href="#"><i class="fa fa-book"></i>Gest. Documental<i class="fa fa-angle-left pull-right"></i></a>
+			<a href="#"><i class="fa fa-book"></i> Gest. Documental<i class="fa fa-angle-left pull-right"></i></a>
 			<ul class="treeview-menu">
 				<li><a href="{!! route('cargarArchivos.index') !!}"><i class="fa fa-circle-o"></i> Documentos</a></li>
 				<li><a href="#"><i class="fa fa-circle-o"></i> Procedimientos</a></li>

@@ -11,6 +11,7 @@
 	}
 	span.select2.select2-container{width:100% !important;}
 </style>
+@parent
 @endsection
 
 @section('scripts')
@@ -44,4 +45,5 @@
 		$('.selectpicker').val([]).trigger('change');
 	});
 </script>
+@parent
 @endsection

@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 		var inputIcon = $('.icp');
 		if(inputIcon.val()==''){
-			inputIcon.val('fas fa-comment-alt');
+			inputIcon.val('fa fa-comment-alt');
 		}
 		inputIcon.iconpicker();
 		
