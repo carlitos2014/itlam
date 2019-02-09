@@ -19,10 +19,10 @@ Route::group(['middleware'=>'auth'], function() {
 
 	Route::resource('sedes', 'SedeController');
 	Route::resource('noConformidades', 'NoConformidadController');
-
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-	Route::get('auditorias/programacion','AuditoriaController@programacion')->name('auditorias.programacion');
-	Route::get('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('auditorias.programacion.buildPdf');
-
+	Route::resource('auditorias', 'AuditoriaController'); //CRUD
+	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
+		Route::get('/pdf','AuditoriaController@programacionBuildPdf')->name('buildPdf');
+	});
 });

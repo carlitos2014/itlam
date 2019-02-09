@@ -61,7 +61,7 @@
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="{{route('auditorias.programacion')}}"><i class="fa fa-calendar-check-o"></i> Programación</a></li>
+						<li><a href="{{route('auditorias.index')}}"><i class="fa fa-calendar-check-o"></i> Programación</a></li>
 						<li><a href="#"><i class="fa fa-eye"></i> Seguimiento</a></li>
 					</ul>
 				</li>

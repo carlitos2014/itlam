@@ -8,38 +8,30 @@
 			@page {
 				margin-top: 120px;
 				margin-bottom: 82px;
-				margin-left:  10px;
-				margin-right: 10px;
+				margin-left:  60px;
+				margin-right: 60px;
 			}
 			.page-break { page-break-after: always; }
 
-			table.header{
+			.header{
 				position: fixed;
 				top: -70px;
 				width: 100%;
-				margin-left: 20px;
-				margin-right: 20px;
 				font-size: 12px;
-				text-align: center;
 			}
+
 			.title{font-size: 13px; font-weight: bold;}
 			.title>h2{margin-bottom: 0;}
 			.title>h3{margin-top: 0;}
 
 			body{
-				position: fixed;
-				left: -20px;
-				padding-top:60px;
-				padding-left:20px;
-				padding-right:20px;
+				padding-top:70px;
 				font-family:"Arial",sans-serif;
 				font-size: 14px;
 			}
 
 			table.body{
 				width: 100%;
-				margin-left: 20px;
-				margin-right: 20px;
 				font-size: 16px;
 			}
 
@@ -52,47 +44,40 @@
 				margin-right: 20px;
 			}
 
-			thead{ background-color: LightGray; }
-			table { border-collapse: collapse; }
-			table#head{/*table-layout: fixed;*/}
-			table#result-encuesta{width:940px;}
+			table { border-collapse: collapse;page-break-inside: auto; }
 			table, td, th { border: 1px solid black; }
+			thead { background-color: LightGray; }
 			td, th { padding: 5px; }
-			.td-text{ text-align: justify; }
-			.td-number{
-				text-align: center;
-				width:50px;
-			}
 		</style>
-		@stack('head')
 	</head>
 	
 	<body>
+        <div class="header">
+		      <table id="tbHead" class="" style="text-align: center;">
+		          <tr class="" style="">
+		            <td style="width: 120px"><img src="{{ asset('img/logo.jpg') }}" width="120" /></td>
+		            <td>
+		            	<span class="title">ASOCIACION CESAR CONTO</span><br>
+						Colegio Cesar Conto Sede Principal, Colegio Cesar Conto Sede Petecuy y Colegio Técnico Comercial Dana María<br>
+						<span class="title">ASOCIACION ANTONIO MACEO</span><br>
+						Corporación Educativa Antonio Maceo, Centro Etnoeducativo Antonio Maceo y Liceo Santa Clara.<br>
+					</td>
+		            <td style="width: 120px">
+		            	GQ – FR – 08<br>
+						Versión 04<br>
+						2013 - 04 – 01<br>
+						<!-- Espacio reservado para numeración de página--><br>
+					</td>
+		          </tr>
+		          <tr>
+		          	<td colspan="3"><b>PLAN DE AUDITORIAS</b></td>
+		          </tr>
+		      </table>
+		</div>
+
+
 
     <div class="content">
-
-      <table id="head" class="header" style="">
-          <tr class="" style="text-align: center">
-            <td style="width: 120px"><img src="{{ asset('img/logo.jpg') }}" width="120" /></td>
-            <td>
-            	<span class="title">ASOCIACION CESAR CONTO</span><br>
-				Colegio Cesar Conto Sede Principal, Colegio Cesar Conto Sede Petecuy y Colegio Técnico Comercial Dana María<br>
-				<span class="title">ASOCIACION ANTONIO MACEO</span><br>
-				Corporación Educativa Antonio Maceo, Centro Etnoeducativo Antonio Maceo y Liceo Santa Clara.<br>
-			</td>
-            <td style="width: 120px">
-            	GQ – FR – 08<br>
-				Versión 04<br>
-				2013 - 04 – 01<br>
-				<!-- Espacio reservado para numeración de página--><br>
-			</td>
-          </tr>
-          <tr>
-          	<td colspan="3"><b>PLAN DE AUDITORIAS</b></td>
-          </tr>
-      </table>
-
-		<br>
 
       <table id="tb1" class="body" style="">
           <tr>
@@ -157,62 +142,37 @@
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>
-          </tr>
-
-          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>
-
-          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>
-
-          <tr>
+          </tr>          <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
@@ -221,7 +181,7 @@
           </tr>
 
       </table>
-sadsasad
+      
     {{-- <div class="page-break"></div> --}}
 
 
