@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAuditoresTable extends Migration
+class CreateProcesosTable extends Migration
 {
 
     /**
@@ -13,9 +13,10 @@ class CreateAuditoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('auditores', function (Blueprint $table) {
+        Schema::create('procesos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('responsable');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +29,6 @@ class CreateAuditoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auditores');
+        Schema::drop('procesos');
     }
 }

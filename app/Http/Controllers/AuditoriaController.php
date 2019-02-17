@@ -11,6 +11,8 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
+use App\Models\Auditor;
+
 use PDF;
 use Carbon\Carbon;
 
@@ -46,7 +48,8 @@ class AuditoriaController extends AppBaseController
      */
     public function create()
     {
-        return view('auditorias.create');
+        $arrAuditores = model_to_array(Auditor::class, 'nombre');
+        return view('auditorias.create',compact('arrAuditores'));
     }
 
     /**
@@ -140,7 +143,8 @@ class AuditoriaController extends AppBaseController
             return redirect(route('auditorias.index'));
         }
 
-        return view('auditorias.edit')->with('auditoria', $auditoria);
+        $arrAuditores = model_to_array(Auditor::class, 'nombre');
+        return view('auditorias.edit',compact('auditoria', 'arrAuditores'));
     }
 
     /**

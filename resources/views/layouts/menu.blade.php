@@ -82,3 +82,13 @@
     <a href="{!! route('auditors.index') !!}"><i class="fa fa-edit"></i><span>Auditors</span></a>
 </li>
 
+
+
+<li class="{{ Request::is('procesos*') ? 'active' : '' }}">
+    <a href="{!! route('procesos.index') !!}"><i class="fa fa-edit"></i><span>Procesos</span></a>
+</li>
+
+<li class="{{ Request::is('auditoriaProcesos*') ? 'active' : '' }}">
+    <a href="{!! route('auditoriaProcesos.index') !!}"><i class="fa fa-edit"></i><span>Auditoria Procesos</span></a>
+</li>
+

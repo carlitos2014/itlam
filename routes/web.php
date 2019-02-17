@@ -21,11 +21,19 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('noConformidades', 'NoConformidadController');
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
+	Route::resource('auditors', 'AuditorController');
 	Route::resource('auditorias', 'AuditoriaController'); //CRUD
 	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
-		Route::get('/pdf','AuditoriaController@programacionBuildPdf')->name('buildPdf');
+		Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 	});
 });
 
 
-Route::resource('auditors', 'AuditorController');
+
+
+
+
+
+Route::resource('procesos', 'ProcesosController');
+
+Route::resource('auditoriaProcesos', 'AuditoriaProcesosController');

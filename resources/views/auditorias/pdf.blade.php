@@ -85,37 +85,33 @@
           	<td>Periodo académico: </td>
           </tr>
           <tr >
-          	<td colspan="2">AUDITOR LÍDER: {{$auditor_lider}}</td>
+          	<td colspan="2">AUDITOR LÍDER: {{$auditoria->auditorLider->nombre}}</td>
           </tr>
           <tr >
-          	<td colspan="2">AUDITORES INTERNOS: {{$auditores_internos}}</td>
+          	<td colspan="2">AUDITORES INTERNOS: {{-- implode(', ', $auditoria->auditoresInternos->pluck('nombre')) --}}</td>
           </tr>
           <tr >
           	<td colspan="2">
           		Objetivo de la auditoria:
 				<ol>
-					<li>Evaluar los resultados obtenidos en el direccionamiento estratégico del sistema de gestión de calidad (eficacia)</li>
-					<li>Determinar el grado de conformidad del Sistema de Gestión de la Calidad con los criterios establecidos  incluyendo ISO-9001:2008, los requisitos del cliente, legales y los requisitos de la prestación del servicio.</li>
-					<li>Definir planes de mejoramientos a partir de los hallazgos detectados.</li>
+                         @foreach(preg_split('/[\n\r]+/', $auditoria->objetivos ) as $obj)
+					<li>{{$obj}}</li>
+                         @endforeach
 				</ol>
 			</td>
           </tr>
           <tr >
           	<td colspan="2">Alcance de la auditoria
-          		<p>
-					Inicia con la verificación del cumplimiento de los procedimientos del Proceso de Gestión Académica, incluye formatos, indicadores de Gestión, Cierre de No Conformidades y Finaliza con las acciones de mejoramiento.
-				</p>
-
+                    @foreach(preg_split('/[\n\r]+/', $auditoria->alcances ) as $obj)
+                    <p>{{$obj}}</p>
+                    @endforeach
           	</td>
           </tr>
           <tr >
           	<td colspan="2">Criterios de Auditoria (Requisitos de la norma aplicada / Documentos de referencia)
-          		<p>
-					Requisitos 4, 5, 6, 7 y 8 de la norma NTC ISO 9001:2008. Procedimiento GA-PR-01 Organización Curricular, Procedimiento GA-PR-O2 Práctica Pedagógica, Procedimiento GA-PR-03 Evaluación y Seguimiento. GA-PR-O4 Admisiones y Matriculas, GA-PR-O5 Elaboración y Entrega de Certificados y constancias, GA-PR-O6 Elaboración y entrega de informes valorativos, GA-PR-O7 Elaboración y Entrega de Diplomas y Actas de Grado. GA-PR-O8  Estímulos para colaboradores. Formatos Aplicables.
-				</p>
-				<p>
-					Indicadores de Gestión Académica, Atención de PQRS, Acciones correctivas y Preventivas, Niveles de Satisfacción de clientes. Cierre de no conformidades 2015.
-				</p>
+                    @foreach(preg_split('/[\n\r]+/', $auditoria->criterios ) as $obj)
+                    <p>{{$obj}}</p>
+                    @endforeach
 			</td>
           </tr>
           <tr >
@@ -127,7 +123,7 @@
 
 		<br>
 
-      <table id="tb2" class="body" style="text-align: center;">
+      <table id="tbProcesos" class="body" style="text-align: center;">
           <tr>
           	<td style="">FECHA<br>(aaaa-mm-dd)</td>
           	<td style="">HORARIO</td>
@@ -135,7 +131,6 @@
           	<td style="">NOMBRE DEL<br>AUDITADO</td>
           	<td style="">NOMBRE DEL<br>AUDITOR</td>
           </tr>
-
           <tr>
           	<td style="">2016-06-02</td>
           	<td style="">8am - 9am</td>
@@ -150,7 +145,7 @@
           	<td style="">Yulieth Ramírez</td>
           </tr>          <tr>
           	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
+           	<td style="">8am - 9am</td>
           	<td style="">Registro Académico</td>
           	<td style="">Carolina Vargas</td>
           	<td style="">Yulieth Ramírez</td>

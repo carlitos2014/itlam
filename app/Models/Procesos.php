@@ -6,24 +6,26 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Auditor
+ * Class Procesos
  * @package App\Models
- * @version February 14, 2019, 5:14 am UTC
+ * @version February 17, 2019, 4:51 pm UTC
  *
  * @property string nombre
+ * @property string responsable
  */
-class Auditor extends Model
+class Procesos extends Model
 {
     use SoftDeletes;
 
-    public $table = 'auditores';
+    public $table = 'procesos';
     
 
     protected $dates = ['deleted_at'];
 
 
     public $fillable = [
-        'nombre'
+        'nombre',
+        'responsable'
     ];
 
     /**
@@ -32,7 +34,8 @@ class Auditor extends Model
      * @var array
      */
     protected $casts = [
-        'nombre' => 'string'
+        'nombre' => 'string',
+        'responsable' => 'string'
     ];
 
     /**
@@ -41,16 +44,9 @@ class Auditor extends Model
      * @var array
      */
     public static $rules = [
-        'nombre' => 'required'
+        'nombre' => 'required,max:100',
+        'responsable' => 'required,max:100'
     ];
 
-    public function auditorias()
-    {
-        return $this->hasMany(Auditoria::class);
-    }
-
-    public function auditoriasInternas()
-    {
-        return $this->belongsToMany(Auditoria::class);
-    }
+    
 }

@@ -13,12 +13,10 @@
 </div>
 
 <!-- Lugar Auditor lider -->
-<div class="form-group col-sm-6">
-    {!! Form::label('auditor_lider', 'Auditor lider:') !!}
-    {!! Form::select('auditor_lider', null, ['class' => 'form-control']) !!}
-</div>
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_lider_id', 'label'=>'Auditor lider', 'data'=>$arrAuditores, 'options'=>['required']]) 
 
-@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_lider', 'label'=>'Auditor lider', 'data'=>$auditores, 'options'=>['required']]) 
+<!-- Lugar Auditores internos -->
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditores_id', 'label'=>'Auditores internos', 'data'=>$arrAuditores, 'multiple'=>true, 'options'=>['']]) 
 
 <!-- Objetivos Field -->
 <div class="form-group col-sm-12 col-lg-12">

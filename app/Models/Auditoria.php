@@ -59,6 +59,7 @@ class Auditoria extends Model
         'fecha' => ['required'],
         'lugar' => ['required','max:100'],
         'auditor_lider_id' => ['required'],
+        'auditores_id' => ['array'],
         'objetivos' => ['required','max:3000'],
         'alcances' => ['required','max:3000'],
         'criterios' => ['required','max:3000'],
@@ -71,5 +72,9 @@ class Auditoria extends Model
         return $this->belongsTo(Auditor::class);
     }
 
+    public function auditoresInternos()
+    {
+        return $this->belongsToMany(Auditor::class);
+    }
     
 }

@@ -29,6 +29,20 @@ class CreateAuditoriasTable extends Migration
             $table->foreign('auditor_lider_id')->references('id')->on('auditores')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
+
+
+        // Many-to-Many entre auditores internos y auditorías
+        Schema::create('auditorias_auditores', function (Blueprint $table) {
+            $table->unsignedInteger('auditoria_id');
+            $table->unsignedInteger('auditor_id');
+
+            $table->foreign('auditoria_id')->references('id')->on('auditorias')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('auditor_id')->references('id')->on('auditores')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['auditoria_id', 'auditor_id']);
+        });
     }
 
     /**
@@ -38,6 +52,7 @@ class CreateAuditoriasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('auditorias');
+        Schema::dropIfExists('auditorias_auditores');
+        Schema::dropIfExists('auditorias');
     }
 }
