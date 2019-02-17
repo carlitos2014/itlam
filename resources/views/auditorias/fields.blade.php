@@ -1,7 +1,9 @@
+@include('widgets.datepicker')
+
 <!-- Fecha Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha', 'Fecha:') !!}
-    {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
+    {!! Form::datetime('fecha', null, ['class' => 'form-control datepicker']) !!}
 </div>
 
 <!-- Lugar Field -->
@@ -9,6 +11,14 @@
     {!! Form::label('lugar', 'Lugar:') !!}
     {!! Form::text('lugar', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Lugar Auditor lider -->
+<div class="form-group col-sm-6">
+    {!! Form::label('auditor_lider', 'Auditor lider:') !!}
+    {!! Form::select('auditor_lider', null, ['class' => 'form-control']) !!}
+</div>
+
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_lider', 'label'=>'Auditor lider', 'data'=>$auditores, 'options'=>['required']]) 
 
 <!-- Objetivos Field -->
 <div class="form-group col-sm-12 col-lg-12">

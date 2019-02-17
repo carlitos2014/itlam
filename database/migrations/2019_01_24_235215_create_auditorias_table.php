@@ -15,14 +15,19 @@ class CreateAuditoriasTable extends Migration
     {
         Schema::create('auditorias', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha');
+            $table->timestamp('fecha');
             $table->string('lugar');
-            $table->string('objetivos');
-            $table->string('alcances');
-            $table->string('criterios');
-            $table->string('observaciones');
+            $table->unsignedInteger('auditor_lider_id');//Foranea auditores
+            $table->string('objetivos', 3000);
+            $table->string('alcances', 3000);
+            $table->string('criterios', 3000);
+            $table->string('observaciones', 3000);
             $table->timestamps();
             $table->softDeletes();
+
+            //Relación auditores
+            $table->foreign('auditor_lider_id')->references('id')->on('auditores')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

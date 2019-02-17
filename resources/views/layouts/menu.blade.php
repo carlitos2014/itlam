@@ -78,3 +78,7 @@
 		</li>
 	</ul>
 </li>
+<li class="{{ Request::is('auditors*') ? 'active' : '' }}">
+    <a href="{!! route('auditors.index') !!}"><i class="fa fa-edit"></i><span>Auditors</span></a>
+</li>
+

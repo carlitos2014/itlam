@@ -80,7 +80,6 @@ class AuditoriaController extends AppBaseController
 
         if (empty($auditoria)) {
             Flash::error('Auditoria not found');
-
             return redirect(route('auditorias.index'));
         }
 
@@ -89,20 +88,26 @@ class AuditoriaController extends AppBaseController
 
 
     /**
-     * Show the application dashboard.
+     * Genera PDF
+     *
+     * @param  int $id
      *
      * @return Response
      */
-    public function programacionBuildPdf()
+    public function programacionBuildPdf($id)
     {
+        $auditoria = $this->auditoriaRepository->findWithoutFail($id);
+        if (empty($auditoria)) {
+            Flash::error('Auditoria not found');
+            return redirect(route('auditorias.index'));
+        }
+
         $view = 'auditorias.pdf';
         $today = Carbon::today()->format('Y-m-d');
-        $auditor_lider = 'Yulieth Andrea Ramírez';
-        $auditores_internos = '';
 
         //return view($view, compact('today' ));
 
-        $pdf = PDF::loadView($view, compact('today','auditor_lider','auditores_internos'))
+        $pdf = PDF::loadView($view, compact('today','auditoria'))
                     ->setPaper('letter', 'portrait');
 
         $pdf->output();
@@ -148,6 +153,7 @@ class AuditoriaController extends AppBaseController
      */
     public function update($id, UpdateAuditoriaRequest $request)
     {
+        //dd($request->all());
         $auditoria = $this->auditoriaRepository->findWithoutFail($id);
 
         if (empty($auditoria)) {

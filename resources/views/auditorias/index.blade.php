@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Auditorias</h1>
+        <h1 class="pull-left">Plan Auditorías GQ-FR-08</h1>
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('auditorias.create') !!}">Crear Nuevo</a>
         </h1>
@@ -15,7 +15,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    @include('auditorias.table')
+                    @rinclude('index_table')
             </div>
         </div>
         <div class="text-center">

@@ -26,3 +26,6 @@ Route::group(['middleware'=>'auth'], function() {
 		Route::get('/pdf','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 	});
 });
+
+
+Route::resource('auditors', 'AuditorController');

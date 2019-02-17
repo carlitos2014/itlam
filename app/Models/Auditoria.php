@@ -58,11 +58,18 @@ class Auditoria extends Model
     public static $rules = [
         'fecha' => ['required'],
         'lugar' => ['required','max:100'],
+        'auditor_lider_id' => ['required'],
         'objetivos' => ['required','max:3000'],
         'alcances' => ['required','max:3000'],
         'criterios' => ['required','max:3000'],
         'observaciones' => ['max:3000']
     ];
+
+
+    public function auditorLider()
+    {
+        return $this->belongsTo(Auditor::class);
+    }
 
     
 }
