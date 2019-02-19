@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateAuditoriaProcesosRequest;
-use App\Http\Requests\UpdateAuditoriaProcesosRequest;
-use App\Repositories\AuditoriaProcesosRepository;
+use App\Http\Requests\CreateAuditoriaProcesoRequest;
+use App\Http\Requests\UpdateAuditoriaProcesoRequest;
+use App\Repositories\AuditoriaProcesoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class AuditoriaProcesosController extends AppBaseController
+class AuditoriaProcesoController extends AppBaseController
 {
-    /** @var  AuditoriaProcesosRepository */
+    /** @var  AuditoriaProcesoRepository */
     private $auditoriaProcesosRepository;
 
-    public function __construct(AuditoriaProcesosRepository $auditoriaProcesosRepo)
+    public function __construct(AuditoriaProcesoRepository $auditoriaProcesosRepo)
     {
         $this->auditoriaProcesosRepository = $auditoriaProcesosRepo;
     }
 
     /**
-     * Display a listing of the AuditoriaProcesos.
+     * Display a listing of the AuditoriaProceso.
      *
      * @param Request $request
      * @return Response
@@ -37,7 +37,7 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new AuditoriaProcesos.
+     * Show the form for creating a new AuditoriaProceso.
      *
      * @return Response
      */
@@ -47,13 +47,13 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Store a newly created AuditoriaProcesos in storage.
+     * Store a newly created AuditoriaProceso in storage.
      *
-     * @param CreateAuditoriaProcesosRequest $request
+     * @param CreateAuditoriaProcesoRequest $request
      *
      * @return Response
      */
-    public function store(CreateAuditoriaProcesosRequest $request)
+    public function store(CreateAuditoriaProcesoRequest $request)
     {
         $input = $request->all();
 
@@ -65,7 +65,7 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Display the specified AuditoriaProcesos.
+     * Display the specified AuditoriaProceso.
      *
      * @param  int $id
      *
@@ -85,7 +85,7 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified AuditoriaProcesos.
+     * Show the form for editing the specified AuditoriaProceso.
      *
      * @param  int $id
      *
@@ -105,14 +105,14 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Update the specified AuditoriaProcesos in storage.
+     * Update the specified AuditoriaProceso in storage.
      *
      * @param  int              $id
-     * @param UpdateAuditoriaProcesosRequest $request
+     * @param UpdateAuditoriaProcesoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateAuditoriaProcesosRequest $request)
+    public function update($id, UpdateAuditoriaProcesoRequest $request)
     {
         $auditoriaProcesos = $this->auditoriaProcesosRepository->findWithoutFail($id);
 
@@ -130,7 +130,7 @@ class AuditoriaProcesosController extends AppBaseController
     }
 
     /**
-     * Remove the specified AuditoriaProcesos from storage.
+     * Remove the specified AuditoriaProceso from storage.
      *
      * @param  int $id
      *

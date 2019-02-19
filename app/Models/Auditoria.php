@@ -74,7 +74,13 @@ class Auditoria extends Model
 
     public function auditoresInternos()
     {
-        return $this->belongsToMany(Auditor::class);
+        return $this->belongsToMany(Auditor::class, 'auditorias_auditores');
+    }
+
+
+    public function procesos()
+    {
+        return $this->hasMany(AuditoriaProceso::class);
     }
     
 }

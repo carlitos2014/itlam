@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\AuditoriaProcesos;
+use App\Models\AuditoriaProceso;
 
-class UpdateAuditoriaProcesosRequest extends FormRequest
+class UpdateAuditoriaProcesoRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class UpdateAuditoriaProcesosRequest extends FormRequest
      */
     public function rules()
     {
-        return AuditoriaProcesos::$rules;
+        return AuditoriaProceso::$rules;
     }
 }

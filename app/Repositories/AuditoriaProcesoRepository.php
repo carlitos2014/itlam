@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\AuditoriaProcesos;
+use App\Models\AuditoriaProceso;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class AuditoriaProcesosRepository
+ * Class AuditoriaProcesoRepository
  * @package App\Repositories
  * @version February 17, 2019, 10:23 pm UTC
  *
- * @method AuditoriaProcesos findWithoutFail($id, $columns = ['*'])
- * @method AuditoriaProcesos find($id, $columns = ['*'])
- * @method AuditoriaProcesos first($columns = ['*'])
+ * @method AuditoriaProceso findWithoutFail($id, $columns = ['*'])
+ * @method AuditoriaProceso find($id, $columns = ['*'])
+ * @method AuditoriaProceso first($columns = ['*'])
 */
-class AuditoriaProcesosRepository extends BaseRepository
+class AuditoriaProcesoRepository extends BaseRepository
 {
     /**
      * @var array
@@ -32,6 +32,6 @@ class AuditoriaProcesosRepository extends BaseRepository
      **/
     public function model()
     {
-        return AuditoriaProcesos::class;
+        return AuditoriaProceso::class;
     }
 }

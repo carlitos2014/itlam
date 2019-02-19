@@ -33,6 +33,7 @@ class CreateAuditoriasTable extends Migration
 
         // Many-to-Many entre auditores internos y auditorías
         Schema::create('auditorias_auditores', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('auditoria_id');
             $table->unsignedInteger('auditor_id');
 
@@ -41,7 +42,6 @@ class CreateAuditoriasTable extends Migration
             $table->foreign('auditor_id')->references('id')->on('auditores')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['auditoria_id', 'auditor_id']);
         });
     }
 

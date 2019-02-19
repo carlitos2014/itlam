@@ -6,7 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class AuditoriaProcesos
+ * Class AuditoriaProceso
  * @package App\Models
  * @version February 17, 2019, 10:23 pm UTC
  *
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property unsignedInteger proceso_id
  * @property unsignedInteger auditor_id
  */
-class AuditoriaProcesos extends Model
+class AuditoriaProceso extends Model
 {
     use SoftDeletes;
 
@@ -30,8 +30,6 @@ class AuditoriaProcesos extends Model
         'fecha',
         'hora_inicio',
         'hora_fin',
-        'proceso_id',
-        'auditor_id'
     ];
 
     /**
@@ -40,7 +38,9 @@ class AuditoriaProcesos extends Model
      * @var array
      */
     protected $casts = [
-        'fecha' => 'date'
+        'fecha' => 'date',
+        'hora_inicio' => 'time',
+        'hora_fin' => 'time',
     ];
 
     /**
@@ -55,6 +55,23 @@ class AuditoriaProcesos extends Model
         'proceso_id' => 'required',
         'auditor_id' => 'required'
     ];
+
+
+    public function auditoria()
+    {
+        return $this->belongsTo(Auditoria::class);
+    }
+
+    public function auditor()
+    {
+        return $this->belongsTo(Auditor::class);
+    }
+
+    public function proceso()
+    {
+        return $this->belongsTo(Procesos::class);
+    }
+
 
     
 }

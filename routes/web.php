@@ -36,4 +36,4 @@ Route::group(['middleware'=>'auth'], function() {
 
 Route::resource('procesos', 'ProcesosController');
 
-Route::resource('auditoriaProcesos', 'AuditoriaProcesosController');
+Route::resource('auditoriaProcesos', 'AuditoriaProcesoController');

@@ -1,3 +1,4 @@
+
 {{ Form::select(
 	isset($multiple) && $multiple ? $name.'[]':$name,
 	(isset($multiple) && $multiple ? []:[''=>'']) + (isset($data)?$data:[]) , 
@@ -15,7 +16,7 @@
 								: ['data-ajax--url'=> $ajax['url']] )
 		: []
 	) +
-	(isset($multiple) && $multiple ? ['multiple']:[]) +
+	(isset($multiple) && $multiple ? ['multiple'=>'multiple']:[]) +
 	(isset($allowNew) && $allowNew ? ['data-tags'=>'true', 'data-select-on-close'=>'true']:[])
 ) }}
 

@@ -51,6 +51,6 @@ class Auditor extends Model
 
     public function auditoriasInternas()
     {
-        return $this->belongsToMany(Auditoria::class);
+        return $this->belongsToMany(Auditoria::class, 'auditorias_auditores');
     }
 }

@@ -9,8 +9,6 @@ class UsersTableSeeder extends Seeder {
 	public function run() {
 
 		$pass = '123';
-		$date = \Carbon\Carbon::now()->toDateTimeString();
-		//$faker = Faker\Factory::create('es_ES');
 
 		//*********************************************************************
 		$this->command->info('--- Seeder Creación de Usuarios prueba');

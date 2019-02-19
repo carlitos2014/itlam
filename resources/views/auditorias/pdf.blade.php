@@ -35,19 +35,21 @@
 				font-size: 16px;
 			}
 
-			.footer{
-				position: fixed;
-				bottom: 30px;
-				width: 100%;
-				color: #606060;
-				margin-left: 20px;
-				margin-right: 20px;
-			}
+               .footer{
+                    position: fixed;
+                    bottom: 30px;
+                    width: 100%;
+                    color: #606060;
+                    margin-left: 20px;
+                    margin-right: 20px;
+               }
+			.text-muted{color: #777;font-size: 12px;}
 
 			table { border-collapse: collapse;page-break-inside: auto; }
 			table, td, th { border: 1px solid black; }
 			thead { background-color: LightGray; }
 			td, th { padding: 5px; }
+			th { font-size: 12px; }
 		</style>
 	</head>
 	
@@ -88,7 +90,7 @@
           	<td colspan="2">AUDITOR LÍDER: {{$auditoria->auditorLider->nombre}}</td>
           </tr>
           <tr >
-          	<td colspan="2">AUDITORES INTERNOS: {{-- implode(', ', $auditoria->auditoresInternos->pluck('nombre')) --}}</td>
+          	<td colspan="2">AUDITORES INTERNOS: {{ implode(', ', $auditoria->auditoresInternos->pluck('nombre')->toArray()) }}</td>
           </tr>
           <tr >
           	<td colspan="2">
@@ -108,7 +110,7 @@
           	</td>
           </tr>
           <tr >
-          	<td colspan="2">Criterios de Auditoria (Requisitos de la norma aplicada / Documentos de referencia)
+          	<td colspan="2">Criterios de Auditoria <span class="text-muted">(Requisitos de la norma aplicada / Documentos de referencia)</span>
                     @foreach(preg_split('/[\n\r]+/', $auditoria->criterios ) as $obj)
                     <p>{{$obj}}</p>
                     @endforeach
@@ -125,56 +127,22 @@
 
       <table id="tbProcesos" class="body" style="text-align: center;">
           <tr>
-          	<td style="">FECHA<br>(aaaa-mm-dd)</td>
-          	<td style="">HORARIO</td>
-          	<td style="">PROCESO AUDITADO</td>
-          	<td style="">NOMBRE DEL<br>AUDITADO</td>
-          	<td style="">NOMBRE DEL<br>AUDITOR</td>
-          </tr>
-          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-           	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
-          </tr>          <tr>
-          	<td style="">2016-06-02</td>
-          	<td style="">8am - 9am</td>
-          	<td style="">Registro Académico</td>
-          	<td style="">Carolina Vargas</td>
-          	<td style="">Yulieth Ramírez</td>
+          	<th style="">FECHA<br>(aaaa-mm-dd)</th>
+          	<th style="">HORARIO</th>
+          	<th style="">PROCESO AUDITADO</th>
+          	<th style="">NOMBRE DEL<br>AUDITADO</th>
+          	<th style="">NOMBRE DEL<br>AUDITOR</th>
           </tr>
 
+            @foreach($auditoria->procesos as $aud_proceso)
+            <tr>{{-- dd(   $aud_proceso->hora_inicio ) --}}
+                <td>{{$aud_proceso->fecha->format('Y-m-d')}}</td>
+                <td style="font-size: 12px;">{{ \Carbon\Carbon::createFromFormat('H:i:s', $aud_proceso->hora_inicio)->format('g:i a').' - '.\Carbon\Carbon::createFromFormat('H:i:s', $aud_proceso->hora_fin)->format('g:i a')}}</td>
+                <td>{{$aud_proceso->proceso->nombre }}</td>
+                <td>{{$aud_proceso->proceso->responsable }}</td>
+                <td>{{$aud_proceso->auditor->nombre }}</td>
+            </tr>
+            @endforeach
       </table>
       
     {{-- <div class="page-break"></div> --}}

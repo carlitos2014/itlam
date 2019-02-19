@@ -49,4 +49,10 @@ class Procesos extends Model
     ];
 
     
+
+    public function auditorias()
+    {
+        return $this->hasMany(AuditoriaProceso::class);
+    }
+    
 }
