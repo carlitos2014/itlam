@@ -31,7 +31,7 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+					<li><a href="{!! route('academic.loadfile') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
 				</ul>
 		</li>
 	</ul>
