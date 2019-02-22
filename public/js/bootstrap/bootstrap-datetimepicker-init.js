@@ -2,9 +2,10 @@ $(function () {
 
 	$.fn.datetimepicker.defaults.locale = 'es';
 	$.fn.datetimepicker.defaults.icons  = {
-		date: "fa fa-calendar",
-		up: "fa fa-arrow-up",
-		down: "fa fa-arrow-down",
+		time: 'fa fa-clock-o',
+		date: 'fa fa-calendar',
+		up: 'fa fa-arrow-up',
+		down: 'fa fa-arrow-down',
 		previous: 'fa fa-chevron-left',
 		next: 'fa fa-chevron-right',
 		today: 'glyphicon glyphicon-screenshot',
@@ -28,7 +29,8 @@ $(function () {
 
 	window.initDateTimePicker = function () {
 		$('.datepicker').datetimepicker();
-		$('.timepicker').datetimepicker({format: 'HH:mm:ss'});
+		$('.timepicker').datetimepicker({format: 'LT'});
+		$('.datetimepicker').datetimepicker({format: 'YYYY-MM-DD HH:mm'});
 	};
 	window.initDateTimePicker();
 

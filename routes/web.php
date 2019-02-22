@@ -19,12 +19,13 @@ Route::group(['middleware'=>'auth'], function() {
 
 	Route::resource('sedes', 'SedeController');
 	Route::resource('noConformidades', 'NoConformidadController');
-
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-	Route::get('auditorias/programacion','AuditoriaController@programacion')->name('auditorias.programacion');
-	Route::get('auditorias/programacion/pdf','AuditoriaController@programacionBuildPdf')->name('auditorias.programacion.buildPdf');
-
+	Route::resource('auditors', 'AuditorController');
+	Route::resource('auditorias', 'AuditoriaController'); //CRUD
+	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
+	Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
+	
 	Route::get('academic', 'Academic\StorageController@loadFile')->name('academic.loadfile');
 	Route::post('storage/create', 'StorageController@save');
 	
