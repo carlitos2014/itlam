@@ -9,7 +9,7 @@
 			<a href="{!! route('sedes.index') !!}"><i class="fa fa-building"></i> Sedes</a>
 		</li>
 		<li class="{{ Request::is('procesos*') ? 'active' : '' }}">
-		    <a href="{!! route('procesos.index') !!}"><i class="fa fa-edit"></i><span>Procesos</span></a>
+		    <a href="#"><i class="fa fa-edit"></i><span>Procesos</span></a>
 		</li>
 	</ul>
 </li>
@@ -27,8 +27,23 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+					<li><a href="{!! route('academic.loadfile') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
 				</ul>
+		</li>
+	</ul>
+
+	<ul class="treeview-menu">
+		<li class="treeview">
+			<a href="#"><i class="fa fa-puzzle-piece"></i> Diseño
+				<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+
+			<!--<ul class="treeview-menu">
+					<li><a href="{!! route('academic.loadfile') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+				</ul>-->
+
 		</li>
 	</ul>
 

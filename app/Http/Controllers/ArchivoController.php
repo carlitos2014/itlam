@@ -108,6 +108,7 @@ public function descargar($id){
 	$rutaarchivo= "../public/imagenes/".$archivo->ruta;
           //return $rutaarchivo;
 	return response()->download($rutaarchivo);
+	return \Response::download(storage_path('app/Tickets/').$ticket->TICK_ARCHIVO);//->deleteFileAfterSend(true);
 
 }
 }
