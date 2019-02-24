@@ -46,20 +46,42 @@
 <div class="form-group col-sm-12">
     <table class="table table-striped table-hover table-condensed">
         <thead>
+            <th>id</th>
             <th>FECHA</th>
             <th>HORARIO</th>
             <th>PROCESO AUDITADO</th>
             <th>NOMBRE DEL AUDITADO</th>
             <th>NOMBRE DEL AUDITOR</th>
+            <th>
+                <a href="{!! route('auditoriaProcesos.create',['auditoria'=>$auditoria->id]) !!}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-plus"></i> proceso</a>
+            </th>
         </thead>
         <tbody>
-            @foreach($auditoria->procesos as $aud_proceso)
-            <tr>{{-- dd(   $aud_proceso->hora_inicio ) --}}
+            @foreach($auditoria->procesos->sortBy('fecha') as $aud_proceso)
+            <tr>
+                <td>{{$aud_proceso->id}}</td>
                 <td>{{$aud_proceso->fecha->format('Y-m-d')}}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('H:i:s', $aud_proceso->hora_inicio)->format('g:i a').' - '.\Carbon\Carbon::createFromFormat('H:i:s', $aud_proceso->hora_fin)->format('g:i a')}}</td>
                 <td>{{$aud_proceso->proceso->nombre }}</td>
                 <td>{{$aud_proceso->proceso->responsable }}</td>
                 <td>{{$aud_proceso->auditor->nombre }}</td>
+                <td class="text-center">
+                    <div class='btn-group'>
+                        <a href="{!! route('auditoriaProcesos.edit', [$aud_proceso->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+
+                        {{ Form::button('<i class="glyphicon glyphicon-trash"></i>',[
+                            'class'=>'btn btn-xs btn-danger btn-delete',
+                            'data-toggle'=>'modal',
+                            'data-id'=> $aud_proceso->id,
+                            'data-modelo'=> str_upperspace(class_basename($aud_proceso)),
+                            'data-descripcion'=> $aud_proceso->nombre,
+                            'data-action'=>route('auditoriaProcesos.destroy', [$aud_proceso->id]),
+                            'data-target'=>'#pregModalDelete',
+                            'data-tooltip'=>'tooltip',
+                            'title'=>'Borrar',
+                        ])}}
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -67,9 +89,11 @@
 </div>
 
 
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('auditorias.index') !!}" class="btn btn-default">Cancel</a>
 </div>
+
+
+@include('widgets.modals.modal-delete')

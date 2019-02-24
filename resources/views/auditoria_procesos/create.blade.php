@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Auditoria Procesos
+            Proceso nuevo para la Auditoría {{$auditoria}}
         </h1>
     </section>
     <div class="content">

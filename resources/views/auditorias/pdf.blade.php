@@ -2,7 +2,7 @@
 <html lang="es">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title></title>
+		<title>Auditoría {{$auditoria->lugar}} - {{$auditoria->fecha->format('Y-m-d')}}</title>
 
 		<style type="text/css">
 			@page {

@@ -1,23 +1,26 @@
+@include('widgets.datepicker')
+
 <!-- Fecha Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('fecha', 'Fecha:') !!}
     {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
 </div>
 
+
+@include('widgets.forms.input', ['type'=>'time', 'column'=>4, 'name'=>'hora_inicio', 'label'=>'Hora Inicio' ])
+@include('widgets.forms.input', ['type'=>'time', 'column'=>4, 'name'=>'hora_fin', 'label'=>'Hora Fin' ])
+
 <!-- Proceso Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('proceso_id', 'Proceso Id:') !!}
-    {!! Form::select('proceso_id', ], null, ['class' => 'form-control']) !!}
-</div>
+@include('widgets.forms.input', ['type'=>'text', 'column'=>6, 'name'=>'auditoria_id', 'label'=>'Auditoria', 'value'=>$auditoria, 'options'=>['required','readonly']]) 
+
+<!-- Proceso Id Field -->
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'proceso_id', 'label'=>'Proceso', 'data'=>$arrProceso, 'options'=>['']]) 
 
 <!-- Auditor Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('auditor_id', 'Auditor Id:') !!}
-    {!! Form::select('auditor_id', ], null, ['class' => 'form-control']) !!}
-</div>
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_id', 'label'=>'Auditor', 'data'=>$arrAuditores, 'options'=>['']]) 
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('auditoriaProcesos.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('auditorias.edit',[$auditoria]) !!}" class="btn btn-default">Cancel</a>
 </div>

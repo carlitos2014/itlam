@@ -121,7 +121,7 @@ class AuditoriaController extends AppBaseController
         //$canvas->page_text(50, 770, null, null, 10, [0, 0, 0]);
         
         //return $pdf->download('GQ-FR-08 Plan de Auditorias '.$today.'.pdf');
-        return $pdf->stream('invoice.pdf');
+        return $pdf->stream('GQ-FR-08 Plan de Auditorias '.$auditoria->lugar.' - '.$auditoria->fecha->format('Y-m-d').'.pdf');
     }
 
 
@@ -161,13 +161,10 @@ class AuditoriaController extends AppBaseController
 
         if (empty($auditoria)) {
             Flash::error('Auditoria not found');
-
-            return redirect(route('auditorias.index'));
+        } else {
+            $auditoria = $this->auditoriaRepository->update($request->all(), $id);
+            Flash::success('Auditoria updated successfully.');
         }
-
-        $auditoria = $this->auditoriaRepository->update($request->all(), $id);
-
-        Flash::success('Auditoria updated successfully.');
 
         return redirect(route('auditorias.index'));
     }
@@ -185,13 +182,10 @@ class AuditoriaController extends AppBaseController
 
         if (empty($auditoria)) {
             Flash::error('Auditoria not found');
-
-            return redirect(route('auditorias.index'));
+        } else {
+            $this->auditoriaRepository->delete($id);
+            Flash::success('Auditoria deleted successfully.');
         }
-
-        $this->auditoriaRepository->delete($id);
-
-        Flash::success('Auditoria deleted successfully.');
 
         return redirect(route('auditorias.index'));
     }

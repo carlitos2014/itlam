@@ -157,6 +157,7 @@
 {!! Html::script('js/AdminLTE/icheck.min.js') !!}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script> --}}
 
+@stack('modals')
 @yield('scripts')
 </body>
 </html>

@@ -21,20 +21,6 @@ class AuditoriaProcesoController extends AppBaseController
         $this->auditoriaProcesosRepository = $auditoriaProcesosRepo;
     }
 
-    /**
-     * Display a listing of the AuditoriaProceso.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function index(Request $request)
-    {
-        $this->auditoriaProcesosRepository->pushCriteria(new RequestCriteria($request));
-        $auditoriaProcesos = $this->auditoriaProcesosRepository->all();
-
-        return view('auditoria_procesos.index')
-            ->with('auditoriaProcesos', $auditoriaProcesos);
-    }
 
     /**
      * Show the form for creating a new AuditoriaProceso.
@@ -43,7 +29,10 @@ class AuditoriaProcesoController extends AppBaseController
      */
     public function create()
     {
-        return view('auditoria_procesos.create');
+        $auditoria = request()->get('auditoria');
+        $arrAuditores = model_to_array(Auditor::class, 'nombre');
+        $arrProceso = model_to_array(Procesos::class, 'nombre');
+        return view('auditoria_procesos.create', compact('auditoria','arrAuditores','arrProceso'));
     }
 
     /**
@@ -61,28 +50,9 @@ class AuditoriaProcesoController extends AppBaseController
 
         Flash::success('Auditoria Procesos saved successfully.');
 
-        return redirect(route('auditoriaProcesos.index'));
+        return redirect(route('auditorias.edit',[$request->get('auditoria_id')]));
     }
 
-    /**
-     * Display the specified AuditoriaProceso.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $auditoriaProcesos = $this->auditoriaProcesosRepository->findWithoutFail($id);
-
-        if (empty($auditoriaProcesos)) {
-            Flash::error('Auditoria Procesos not found');
-
-            return redirect(route('auditoriaProcesos.index'));
-        }
-
-        return view('auditoria_procesos.show')->with('auditoriaProcesos', $auditoriaProcesos);
-    }
 
     /**
      * Show the form for editing the specified AuditoriaProceso.
@@ -97,8 +67,7 @@ class AuditoriaProcesoController extends AppBaseController
 
         if (empty($auditoriaProcesos)) {
             Flash::error('Auditoria Procesos not found');
-
-            return redirect(route('auditoriaProcesos.index'));
+            return redirect()->back()->send();
         }
 
         return view('auditoria_procesos.edit')->with('auditoriaProcesos', $auditoriaProcesos);
@@ -118,15 +87,12 @@ class AuditoriaProcesoController extends AppBaseController
 
         if (empty($auditoriaProcesos)) {
             Flash::error('Auditoria Procesos not found');
-
-            return redirect(route('auditoriaProcesos.index'));
+        } else {
+            $auditoriaProcesos = $this->auditoriaProcesosRepository->update($request->all(), $id);
+            Flash::success('Auditoria Procesos updated successfully.');
         }
 
-        $auditoriaProcesos = $this->auditoriaProcesosRepository->update($request->all(), $id);
-
-        Flash::success('Auditoria Procesos updated successfully.');
-
-        return redirect(route('auditoriaProcesos.index'));
+        return redirect()->back()->send();
     }
 
     /**
@@ -142,14 +108,11 @@ class AuditoriaProcesoController extends AppBaseController
 
         if (empty($auditoriaProcesos)) {
             Flash::error('Auditoria Procesos not found');
-
-            return redirect(route('auditoriaProcesos.index'));
+        } else {
+            $this->auditoriaProcesosRepository->delete($id);
+            Flash::success('Auditoria Procesos deleted successfully.');
         }
 
-        $this->auditoriaProcesosRepository->delete($id);
-
-        Flash::success('Auditoria Procesos deleted successfully.');
-
-        return redirect(route('auditoriaProcesos.index'));
+        return redirect()->back()->send();
     }
 }

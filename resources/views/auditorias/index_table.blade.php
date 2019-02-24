@@ -13,12 +13,12 @@
     <tbody>
     @foreach($auditorias as $auditoria)
         <tr>
-            <td>{!! $auditoria->fecha !!}</td>
+            <td>{!! $auditoria->fecha->format('Y-m-d') !!}</td>
             <td>{!! $auditoria->lugar !!}</td>
-            <td>{!! $auditoria->objetivos !!}</td>
-            <td>{!! $auditoria->alcances !!}</td>
-            <td>{!! $auditoria->criterios !!}</td>
-            <td>{!! $auditoria->observaciones !!}</td>
+            <td>{!! str_limit($auditoria->objetivos,20) !!}</td>
+            <td>{!! str_limit($auditoria->alcances,20) !!}</td>
+            <td>{!! str_limit($auditoria->criterios,20) !!}</td>
+            <td>{!! str_limit($auditoria->observaciones,20) !!}</td>
             <td>
                 {!! Form::open(['route' => ['auditorias.destroy', $auditoria->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

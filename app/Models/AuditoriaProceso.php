@@ -30,6 +30,9 @@ class AuditoriaProceso extends Model
         'fecha',
         'hora_inicio',
         'hora_fin',
+        'auditoria_id',
+        'proceso_id',
+        'auditor_id',
     ];
 
     /**
@@ -52,10 +55,10 @@ class AuditoriaProceso extends Model
         'fecha' => 'required',
         'hora_inicio' => 'required',
         'hora_fin' => 'required',
+        'auditoria_id' => 'required',
         'proceso_id' => 'required',
         'auditor_id' => 'required'
     ];
-
 
     public function auditoria()
     {
