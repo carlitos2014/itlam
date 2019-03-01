@@ -21,14 +21,12 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('noConformidades', 'NoConformidadController');
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-	Route::get('academic', 'Academic\PlaneacionPlan40@loadFile')->name('academic.loadfile');
-	Route::post('storage/create', 'Academic\PlaneacionPlan40@save');
-
-	Route::resource('procesos', 'ProcesosController');
+	Route::resource('academic', 'AcademicController'); //CRUD
+	
 	Route::resource('auditors', 'AuditorController');
-	Route::resource('auditorias', 'AuditoriaController');
+	Route::resource('auditorias', 'AuditoriaController'); //CRUD
 	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
 		Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 	});
-	Route::resource('auditoriaProcesos', 'AuditoriaProcesoController')->except(['index','show']);
+
 });

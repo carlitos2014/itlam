@@ -10,8 +10,16 @@ class AcademicPlaneacionPlan40 extends Model
 
 
 	protected $fillable = [
-		'nameFile',
+		'nombre',
 		'ruta',
 		
 	];
+
+	public static function rules($id = 0){
+		return [
+			'nombre'    => ['required','max:100','unique:nombre'],
+			'ruta' => ['required','max:100'],
+			
+		];
+	}
 }

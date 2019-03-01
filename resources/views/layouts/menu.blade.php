@@ -27,7 +27,7 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li><a href="{!! route('academic.loadfile') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+					<li><a href="{!! route('academic.index') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
 				</ul>
 		</li>
 	</ul>
@@ -39,10 +39,6 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</span>
 			</a>
-
-			<!--<ul class="treeview-menu">
-					<li><a href="{!! route('academic.loadfile') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
-				</ul>-->
 
 		</li>
 	</ul>
