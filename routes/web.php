@@ -22,6 +22,7 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
 	Route::resource('academic', 'AcademicController'); //CRUD
+	Route::resource('academicWorkplan', 'WorkplanController');
 	
 	Route::resource('auditors', 'AuditorController');
 	Route::resource('auditorias', 'AuditoriaController'); //CRUD

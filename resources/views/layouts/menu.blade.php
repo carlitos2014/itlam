@@ -29,7 +29,7 @@
 			</a>
 				<ul class="treeview-menu">
 					<li class="treeview">
-						<a href="#"><i class="fa fa-calendar-check-o"></i> Formatos
+						<a href="#"><i class="fa fa-folder-open-o"></i> Formatos
 							<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 							</span>
@@ -38,7 +38,7 @@
 							<li><a href="{!! route('academic.index') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
 						</ul>
 						<ul class="treeview-menu">
-							<li><a href="{!! route('academic.index') !!}"><i class="fa fa-calendar"></i> Plan de Trabajo</a></li>
+							<li><a href="{!! route('academicWorkplan.index') !!}"><i class="fa fa-calendar"></i> Plan de Trabajo</a></li>
 						</ul>
 		</li>
 				</ul>
