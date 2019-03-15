@@ -64,7 +64,18 @@
 			<i class="fa fa-angle-left pull-right"></i>
 		</span>
 	</a>
-	<ul class="treeview-menu">
+
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-calendar"></i> Programación</a></li>
+			</ul>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-binoculars"></i> Seguimiento</a></li>
+			</ul>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-asl-interpreting"></i> Ejecución</a></li>
+			</ul>
+
+	
 		<li class="treeview">
 			<a href="#"><i class="fa fa-bullhorn"></i> Auditorias
 				<span class="pull-right-container">
