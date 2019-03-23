@@ -17,7 +17,7 @@ class CreateAuditoriasTable extends Migration
             $table->increments('id');
             $table->timestamp('fecha');
             $table->string('lugar');
-            $table->unsignedInteger('auditor_lider_id');//Foranea auditores
+            $table->unsignedInteger('auditor_lider_id')->nullable();//Foranea auditores
             $table->string('objetivos', 3000);
             $table->string('alcances', 3000);
             $table->string('criterios', 3000);

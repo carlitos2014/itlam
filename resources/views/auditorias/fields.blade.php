@@ -43,6 +43,7 @@
 </div>
 
 
+@if(isset($auditoria))
 <div class="form-group col-sm-12">
     <table class="table table-striped table-hover table-condensed">
         <thead>
@@ -87,6 +88,7 @@
         </tbody>
     </table>
 </div>
+@endif
 
 
 <!-- Submit Field -->

@@ -18,7 +18,7 @@ class CreatesedesTable extends Migration
             $table->string('nombre', 100);
             $table->string('direccion', 100);
             $table->string('telefono', 20);
-            $table->string('web')->nulleable();
+            $table->string('web')->nullable();
             $table->string('email', 320);
             $table->timestamps();
             $table->softDeletes();

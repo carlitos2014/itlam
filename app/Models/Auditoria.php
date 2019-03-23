@@ -33,7 +33,8 @@ class Auditoria extends Model
         'objetivos',
         'alcances',
         'criterios',
-        'observaciones'
+        'observaciones',
+        'auditor_lider_id'
     ];
 
     /**
@@ -59,7 +60,7 @@ class Auditoria extends Model
         'fecha' => ['required'],
         'lugar' => ['required','max:100'],
         'auditor_lider_id' => ['required'],
-        'auditores_id' => ['array'],
+        'auditoresInternos' => ['array'],
         'objetivos' => ['required','max:3000'],
         'alcances' => ['required','max:3000'],
         'criterios' => ['required','max:3000'],

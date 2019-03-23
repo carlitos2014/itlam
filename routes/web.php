@@ -24,10 +24,12 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('academic', 'AcademicController'); //CRUD
 	Route::resource('academicWorkplan', 'WorkplanController');
 	
+	Route::resource('procesos', 'ProcesosController');
 	Route::resource('auditors', 'AuditorController');
-	Route::resource('auditorias', 'AuditoriaController'); //CRUD
+	Route::resource('auditorias', 'AuditoriaController');
 	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
 		Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 	});
+	Route::resource('auditoriaProcesos', 'AuditoriaProcesoController')->except(['index','show']);
 
 });
