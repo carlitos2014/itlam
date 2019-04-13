@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -30,6 +32,11 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
+
+    protected $route = 'auth.usuarios';
+    protected $class = User::class;
+
+
     /**
      * Create a new controller instance.
      *
@@ -37,9 +44,14 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
+        $this->middleware('permission:user-index',  ['only' => ['index']]);
+        $this->middleware('permission:user-create', ['only' => ['showRegistrationForm','register']]);
+        $this->middleware('permission:user-edit',   ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
+ 
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,19 +63,95 @@ class RegisterController extends Controller
         return Validator::make($data, User::rules());
     }
 
+
     /**
-     * Create a new user instance after a valid registration.
+     * Show the application registration form.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function showRegistrationForm()
     {
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        //Se crea un array con los Role disponibles
+        $arrRoles = model_to_array(Role::class, 'display_name');
+
+        // Muestra el formulario de creación y los array para los 'select'
+        return view('auth.register', compact('arrRoles','arrEmpleadores','arrGerencias','arrTemporales'));
     }
+
+
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        //event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+
+        /*return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());*/
+
+        parent::storeModel(['roles'=>'roles_ids']);
+    }
+
+
+    /**
+     * Muestra una lista de los registros.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //Se obtienen todos los registros.
+        $usuarios = User::all();
+        //Se carga la vista y se pasan los registros
+        return view('auth/index', compact('usuarios'));
+    }
+
+
+    /**
+     * Muestra el formulario para editar un registro en particular.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        // Se obtiene el registro
+        $usuario = User::findOrFail($id);
+
+        //Se crea un array con los Role disponibles
+        $arrRoles = model_to_array(Role::class, 'display_name');
+        $roles_ids = $usuario->roles->pluck('id')->toJson();
+
+        // Muestra el formulario de edición y pasa el registro a editar
+        return view('auth/edit', compact('usuario','arrRoles','roles_ids'));
+    }
+
+    /**
+     * Actualiza un registro en la base de datos.
+     *
+     * @param  User|int  $usuario
+     * @return Response
+     */
+    public function update($usuario)
+    {
+        parent::updateModel($usuario, ['roles'=>'roles_ids']);
+    }
+
+    /**
+     * Elimina un registro de la base de datos.
+     *
+     * @param  User|int  $usuario
+     * @return Response
+     */
+    public function destroy($usuario)
+    {
+        parent::destroyModel($usuario);
+    }
+
 }

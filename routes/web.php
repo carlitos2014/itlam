@@ -12,6 +12,14 @@
 */
 
 Auth::routes();
+Route::get('password/email/{id}', 'Auth\ForgotPasswordController@sendEmail');
+Route::get('password/reset/{id}', 'Auth\ForgotPasswordController@showResetForm');
+Route::group(['prefix'=>'auth', 'as'=>'auth.', 'namespace'=>'Auth'], function() {
+	Route::resource('usuarios', 'RegisterController');
+	Route::resource('roles', 'RoleController');
+	Route::resource('permisos', 'PermissionController');
+});
+
 
 Route::group(['middleware'=>'auth'], function() {
 

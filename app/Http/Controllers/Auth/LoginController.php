@@ -70,4 +70,35 @@ class LoginController extends Controller
         return $credentials;
     }
 
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        //Se crea arreglo en session con los items del menú disponibles
+        //MenuController::refreshMenu();
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        //Se elimina arreglo en session con los items del menú disponibles
+        //MenuController::destroyMenu();
+
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
+    }
 }

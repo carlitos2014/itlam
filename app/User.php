@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Traits\ModelRulesTrait;
 use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, EntrustUserTrait, ModelRulesTrait; #,AuditableTrait, RelationshipsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'password', 'remember_token',
+    ];
+    
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
     public static function rules($id = 0){
         return [
             'name'      => 'required|max:255|unique:users',
@@ -35,6 +52,15 @@ class User extends Authenticatable
             //'roles_ids' => 'required|array',
             'password'  => $id!=0 ? '' : 'required|min:6|confirmed',//regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
         ];
+    }
+
+    /**
+     * Relations with roles
+     * 
+     * @return Collection
+     */
+    public function roles(){
+        return $this->belongsToMany(Role::class);
     }
 
 }

@@ -94,6 +94,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'email' => 'layouts.emails.actionCambioContrasena',
             'table' => 'password_resets',
             'expire' => 60,
         ],
