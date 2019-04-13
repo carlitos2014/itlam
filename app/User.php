@@ -29,7 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     /**
      * Attributes to exclude from the Audit.
      *

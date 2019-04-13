@@ -1,75 +1,27 @@
-@extends('layouts.menu')
+@extends('layouts.app')
+
 @section('title', '/ Roles')
-@include('widgets.datatable.datatable-export')
 
-@section('page_heading')
-	<div class="row">
-		<div id="titulo" class="col-xs-8 col-md-6 col-lg-6">
-			Roles
-		</div>
-		<div id="btns-top" class="col-xs-4 col-md-6 col-lg-6 text-right">
-			<a class='btn btn-primary' role='button' href="{{ URL::to('auth/roles/create') }}" data-tooltip="tooltip" title="Crear Nuevo" name="create">
-				<i class="fas fa-plus" aria-hidden="true"></i>
-			</a>
-		</div>
-	</div>
-@endsection
+@section('content')
+    <section class="content-header">
+        <h1 class="pull-left">Roles</h1>
+        <h1 class="pull-right">
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('auth.roles.create') !!}"><i class="fa fa-plus" aria-hidden="true"></i> Crear Nuevo</a>
+        </h1>
+    </section>
+    <div class="content">
+        <div class="clearfix"></div>
 
-@section('section')
+        @include('flash::message')
 
-	<table class="table table-striped" id="tabla">
-		<thead>
-			<tr>
-				<th class="col-xs-1">Nombre</th>
-				<th class="col-xs-3">Display</th>
-				{{--<th class="col-xs-3">Permisos</th>--}}
-				<th class="hidden-xs col-sm-1">Creado</th>
-				<th class="hidden-xs col-sm-1">Modificado</th>
-				<th class="col-xs-1 all"></th>
-			</tr>
-		</thead>
-
-		<tbody>
-
-			@foreach($roles as $rol)
-			<tr>
-				<td>{{ $rol -> name }}</td>
-				<td>
-					{{ $rol -> display_name }}
-					@if($rol->description)
-					<i class="fas fa-question-circle" aria-hidden="true" data-tooltip="tooltip" data-container="body" title="{{ $rol -> description }}"></i>
-					@endif
-				</td>
-				{{--<td>
-					<i class="fas fa-address-card" aria-hidden="true" data-tooltip="tooltip" data-placement="bottom" data-container="body" title="{{ $rol -> permissions ->implode('display_name', ', ') }}"></i>
-				</td>--}}
-				<td>{{ datetime($rol->created_at, true) }}</td>
-				<td>{{ datetime($rol->updated_at, true) }}</td>
-				<td>
-
-					<!-- Botón Editar (edit) -->
-					<a class="btn btn-small btn-info btn-xs" href="{{ URL::to('auth/roles/'.$rol->id.'/edit') }}" data-tooltip="tooltip" title="Editar">
-						<i class="fas fa-edit" aria-hidden="true"></i>
-					</a>
-
-					<!-- carga botón de borrar -->
-					{{ Form::button('<i class="fas fa-trash" aria-hidden="true"></i>',[
-						'class'=>'btn btn-xs btn-danger btn-delete',
-						'data-toggle'=>'modal',
-						'data-id'=> $rol->id,
-						'data-modelo'=> 'Rol',
-						'data-descripcion'=> $rol->display_name,
-						'data-action'=> 'roles/'.$rol->id,
-						'data-target'=>'#pregModalDelete',
-						'data-tooltip'=>'tooltip',
-						'title'=>'Borrar',
-					])}}
-
-				</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-
-	@include('widgets.modals.modal-delete')
+        <div class="clearfix"></div>
+        <div class="box box-primary">
+            <div class="box-body">
+                    @rinclude('index_table')
+            </div>
+        </div>
+        <div class="text-center">
+        
+        </div>
+    </div>
 @endsection
