@@ -1,16 +1,29 @@
-@extends('layouts.menu')
-@section('page_heading', 'Actualizar usuario')
+@extends('layouts.app')
 
-@section('section')	
-{{ Form::model($usuario, ['action' => ['Auth\RegisterController@update', $usuario->id ], 'method' => 'PUT', 'class' => 'form-horizontal' ]) }}
-	<div class='col-md-8 col-md-offset-2'>
+@section('title', '/ Usuarios Editar')
 
-		<!-- Elementos del formulario -->
-		@rinclude('form-inputs')
+@section('content')
+    <section class="content-header">
+        <h1>Actualizar usuario</h1>
+   </section>
+   <div class="content">
+        @include('flash::message')
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($usuario, ['route' => ['auth.usuarios.update', $usuario->id], 'method' => 'patch']) !!}
 
-		<!-- Botones -->
-		@include('widgets.forms.buttons', ['url' => 'auth/usuarios'])
+                        @rinclude('fields')
+                        <!-- Submit Field -->
+                        <div class="form-group col-sm-12">
+                            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                            <a href="{!! route('auth.usuarios.index') !!}" class="btn btn-default">Cancel</a>
+                        </div>
 
-	</div>
-{{ Form::close() }}
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
 @endsection

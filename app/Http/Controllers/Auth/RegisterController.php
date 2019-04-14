@@ -95,7 +95,7 @@ class RegisterController extends Controller
         /*return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());*/
 
-        parent::storeModel(['roles'=>'roles_ids']);
+        parent::storeModel(['roles'=>'roles']);
     }
 
 
@@ -126,10 +126,10 @@ class RegisterController extends Controller
 
         //Se crea un array con los Role disponibles
         $arrRoles = model_to_array(Role::class, 'display_name');
-        $roles_ids = $usuario->roles->pluck('id')->toJson();
+        $roles = $usuario->roles->pluck('id')->toJson();
 
         // Muestra el formulario de edición y pasa el registro a editar
-        return view('auth/edit', compact('usuario','arrRoles','roles_ids'));
+        return view('auth/edit', compact('usuario','arrRoles','roles'));
     }
 
     /**
@@ -140,7 +140,7 @@ class RegisterController extends Controller
      */
     public function update($usuario)
     {
-        parent::updateModel($usuario, ['roles'=>'roles_ids']);
+        parent::updateModel($usuario, ['roles'=>'roles']);
     }
 
     /**

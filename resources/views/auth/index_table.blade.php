@@ -14,9 +14,9 @@
         <tr>
             <td>{{ $usuario -> name }}</td>
             <td>{{ $usuario -> username }}</td>
-            <td>{{ $usuario -> cedula }}</td>
             <td>{{ $usuario -> email }}</td>
             <td>{{ $usuario -> roles ->implode('display_name', ',') }}</td>
+            <td>{{ datetime($usuario->created_at, true) }}</td>
             <td>
                 {!! Form::open(['route' => ['auth.usuarios.destroy', $usuario->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

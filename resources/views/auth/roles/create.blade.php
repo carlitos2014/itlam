@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '/ Roles Crear')
+
 @section('content')
     <section class="content-header">
         <h1>Nuevo Rol</h1>

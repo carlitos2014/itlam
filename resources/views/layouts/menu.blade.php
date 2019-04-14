@@ -2,15 +2,21 @@
 <li class="{{ Request::is('auth*')? 'active' : '' }}">
 	<a href="#"><i class="fa fa-user-circle"></i> <span>Usuarios y roles</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
+		@permission('user-index')
 		<li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
 			<a href="{!!route('auth.usuarios.index')!!}"><i class="fa fa-user"></i><span>Usuarios</span></a>
 		</li>
+		@endpermission
+		@permission('role-index')
 		<li class="{{ Request::is('roles*') ? 'active' : '' }}">
 		    <a href="{{route('auth.roles.index')}}"><i class="fa fa-male"></i><span>Roles</span></a>
 		</li>
+		@endpermission
+		@permission('permission-index')
 		<li class="{{ Request::is('permisos*') ? 'active' : '' }}">
 		    <a href="{{route('auth.permisos.index')}}"><i class="fa fa-address-card"></i><span>Permisos</span></a>
 		</li>
+		@endpermission
 	</ul>
 </li>
 @endability
