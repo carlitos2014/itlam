@@ -6,10 +6,14 @@ use Flash;
 
 class AcademicController extends Controller
 {
+
+    protected $class = Academic::class;
+
     public function __construct()
 	{
-        //$this->middleware('auth');
+		parent::__construct();
 	}
+
 	public function index()
 	{
 		$academics = academic::all();
@@ -30,7 +34,6 @@ class AcademicController extends Controller
 
 	public function store( Request $request)
 	{
-
 		if($request->hasFile('ruta')){
 
 			$file=$request->file('ruta');
