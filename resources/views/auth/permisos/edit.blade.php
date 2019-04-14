@@ -1,14 +1,24 @@
-@extends('layouts.menu')
-@section('page_heading', 'Actualizar Permiso')
+@extends('layouts.app')
 
-@section('section')
-{{ Form::model($permiso, ['action' => ['Auth\PermissionController@update', $permiso->id ], 'method' => 'PUT', 'class' => 'form-horizontal' ]) }}
+@section('title', '/ Permisos Editar')
 
-	<!-- Elementos del formulario -->
-	@rinclude('form-inputs')
+@section('content')
+    <section class="content-header">
+        <h1>Actualizar Permiso</h1>
+   </section>
+   <div class="content">
+        @include('flash::message')
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($permiso, ['route' => ['auth.permisos.update', $permiso->id], 'method' => 'patch']) !!}
 
-	<!-- Botones -->
-	@include('widgets.forms.buttons', ['url' => 'auth/permisos'])
+                        @rinclude('fields')
 
-{{ Form::close() }}
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
 @endsection

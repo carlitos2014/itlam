@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
-use App\User;
+use App\Models\User;
 
 class ForgotPasswordController extends Controller
 {

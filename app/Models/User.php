@@ -1,15 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Traits\ModelRulesTrait;
+use App\Traits\RelationshipsTrait;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, EntrustUserTrait, ModelRulesTrait; #,AuditableTrait, RelationshipsTrait;
+    use Notifiable, EntrustUserTrait, ModelRulesTrait, RelationshipsTrait; #,AuditableTrait;
 
     /**
      * The attributes that are mass assignable.

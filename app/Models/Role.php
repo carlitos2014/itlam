@@ -1,17 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Zizaco\Entrust\EntrustRole;
 use App\Traits\ModelRulesTrait;
-#use App\Traits\RelationshipsTrait;
+use App\Traits\RelationshipsTrait;
 
 #use OwenIt\Auditing\Auditable as AuditableTrait;
 #use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 class Role extends EntrustRole #implements AuditableContract
 {
-    use ModelRulesTrait;  #RelationshipsTrait, AuditableTrait
+    use ModelRulesTrait, RelationshipsTrait; #, AuditableTrait
     
 	/**
 	 * The attributes that are mass assignable.

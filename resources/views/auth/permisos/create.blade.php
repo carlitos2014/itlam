@@ -1,14 +1,25 @@
-@extends('layouts.menu')
-@section('page_heading', 'Nuevo Permiso')
+@extends('layouts.app')
 
-@section('section')
-{{ Form::open(['route' => 'auth.permisos.store', 'class' => 'form-horizontal']) }}
+@section('title', '/ Permisos Crear')
 
-	<!-- Elementos del formulario -->
-	@rinclude('form-inputs')
+@section('content')
+    <section class="content-header">
+        <h1>Nuevo Permiso</h1>
+    </section>
+    <div class="content">
+        @include('flash::message')
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
 
-	<!-- Botones -->
-	@include('widgets.forms.buttons', ['url' => 'auth/roles'])
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'auth.permisos.store']) !!}
 
-{{ Form::close() }}
+                        @rinclude('fields')
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

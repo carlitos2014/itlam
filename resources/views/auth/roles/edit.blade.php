@@ -1,14 +1,24 @@
-@extends('layouts.menu')
-@section('page_heading', 'Actualizar Rol')
+@extends('layouts.app')
 
-@section('section')
-{{ Form::model($rol, ['action' => ['Auth\RoleController@update', $rol->id ], 'method' => 'PUT', 'class' => 'form-horizontal' ]) }}
+@section('title', '/ Roles Editar')
 
-	<!-- Elementos del formulario -->
-	@rinclude('form-inputs')
+@section('content')
+    <section class="content-header">
+        <h1>Actualizar Rol</h1>
+   </section>
+   <div class="content">
+        @include('flash::message')
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($rol, ['route' => ['auth.roles.update', $rol->id], 'method' => 'patch']) !!}
 
-	<!-- Botones -->
-	@include('widgets.forms.buttons', ['url' => 'auth/roles'])
+                        @rinclude('fields')
 
-{{ Form::close() }}
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
 @endsection

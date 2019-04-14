@@ -85,8 +85,32 @@
         {!! Html::script('js/AdminLTE/icheck.min.js') !!}
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script> --}}
 
-        @stack('modals')
-        @yield('scripts')
     </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            //Si el formulario presenta error, realizará focus al primer elemento con error.
+
+            @if( isset($errors) and !empty($error) )
+                $('#{{current($errors->keys())}}').focus();
+            @endif
+
+            /*/Configuración Toast
+            toastr.options.closeMethod = 'fadeOut';
+            toastr.options.closeDuration = 2000;
+            toastr.options.closeEasing = 'swing';
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-top-left';*/
+
+            //Activa los tooltip de Boostrap
+            tooltips = $('[data-tooltip="tooltip"]');
+            if(tooltips.length > 0)
+                tooltips.tooltip();
+        });
+    </script>
+
+    @yield('scripts')
+    @stack('modals')
 </body>
 @endsection

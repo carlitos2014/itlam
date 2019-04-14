@@ -1,9 +1,9 @@
 <?php
 	
 use Illuminate\Database\Seeder;
-use App\User;
-use App\Role;
-use App\Permission;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Permission;
 
 class UsersTableSeeder extends Seeder {
 
@@ -92,7 +92,7 @@ class UsersTableSeeder extends Seeder {
 
 
 			//5 usuarios faker
-			//$users = factory(App\User::class)->times(5)->create();
+			//$users = factory(App\Models\User::class)->times(5)->create();
 
 	}
 

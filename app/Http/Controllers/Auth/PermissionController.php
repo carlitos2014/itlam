@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
-use App\Permission;
+use App\Models\Permission;
 
 class PermissionController extends Controller
 {
@@ -49,7 +49,7 @@ class PermissionController extends Controller
 	 */
 	public function store()
 	{
-		parent::storeModel(['roles'=>'roles_ids']);
+		parent::storeModel(['roles'=>'roles']);
 	}
 
 
@@ -66,10 +66,10 @@ class PermissionController extends Controller
 
 		//Se crea un array con los Role disponibles
 		$arrRoles = model_to_array(Role::class, 'display_name');
-		$roles_ids = $permiso->roles->pluck('id')->toJson();
+		$roles = $permiso->roles->pluck('id')->toJson();
 
 		// Muestra el formulario de edición y pasa el registro a editar
-		return view($this->route.'.edit', compact('permiso', 'arrRoles', 'roles_ids'));
+		return view($this->route.'.edit', compact('permiso', 'arrRoles', 'roles'));
 	}
 
 
@@ -81,7 +81,7 @@ class PermissionController extends Controller
 	 */
 	public function update($id)
 	{
-		parent::updateModel($id, ['roles'=>'roles_ids']);
+		parent::updateModel($id, ['roles'=>'roles']);
 	}
 
 	/**
