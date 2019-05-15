@@ -31,6 +31,16 @@ class UsersTableSeeder extends Seeder {
 				'display_name' => 'Administrador',
 				'description'  => 'User is allowed to manage and edit other users',
 			]);
+			$this->rolAcademicoAdmin = Role::create([
+				'name'         => 'academico-admin',
+				'display_name' => 'Académico Admin',
+				//'description'  => 'Comentario',
+			]);
+			$this->rolAcademicoUser = Role::create([
+				'name'         => 'academico-user',
+				'display_name' => 'Académico User',
+				//'description'  => 'Comentario',
+			]);
 			$this->rolEmpleado = Role::create([
 				'name'         => 'empleado',
 				'display_name' => 'Empleado',
@@ -52,8 +62,12 @@ class UsersTableSeeder extends Seeder {
 			$this->createPermissions(Auditoria::class, 'Auditorías', null, true, false);
 			$this->createPermissions(AuditoriaProceso::class, 'Proceso de auditoria', null, true, false);
 
-
-
+			$workplanLoad = Permission::create([
+				'name'         => 'acad-plan-form-workplan-load',
+				'display_name' => 'Cargar plan de trabajo',
+				'description'  => 'Permiso para poder cargar archivos pdf del plan de trabajo.',
+			]);
+			$this->rolAcademicoAdmin->attachPermission($workplanLoad);
 			
 
 		//*********************************************************************

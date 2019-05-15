@@ -8,6 +8,17 @@ use Flash;
 
 class WorkplanController extends Controller
 {
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:acad-plan-form-workplan-load',  ['only' => ['index', 'store', 'save', 'create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
