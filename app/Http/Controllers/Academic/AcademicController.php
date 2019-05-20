@@ -1,20 +1,20 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Academic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Academic;
 use Flash;
 
 class AcademicController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('permission:acad-plan-form-plan40-load',  ['only' => ['index', 'store', 'save', 'create']]);
+    }
 
     protected $class = Academic::class;
 
-    public function __construct()
-	{
-		parent::__construct();
-	}
-
-	public function index()
+   	public function index()
 	{
 		$academics = academic::all();
 		$academics = academic::paginate(5);

@@ -68,6 +68,15 @@ class UsersTableSeeder extends Seeder {
 				'description'  => 'Permiso para poder cargar archivos pdf del plan de trabajo.',
 			]);
 			$this->rolAcademicoAdmin->attachPermission($workplanLoad);
+			$this->rolAdmin->attachPermission($workplanLoad);
+			
+			$plan40Load = Permission::create([
+				'name'         => 'acad-plan-form-plan40-load',
+				'display_name' => 'Cargar plan de 40 Semanas',
+				'description'  => 'Permiso para poder cargar archivos pdf del plan 40 semanas.',
+			]);
+			$this->rolAcademicoAdmin->attachPermission($plan40Load);
+			$this->rolAdmin->attachPermission($plan40Load);
 			
 
 		//*********************************************************************

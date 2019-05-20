@@ -44,6 +44,8 @@
 	<a href="{!! route('noConformidades.index') !!}"><i class="fa fa-edit"></i> <span>No Conformidades</span></a>
 </li>
 
+<!-- Academic -->
+
 @permission('acad-*')
 <li class="{{ Request::is('academico*')? 'active' : '' }}">
 	<a href="#"><i class="fa fa-graduation-cap"></i> <span>Académico</span>
@@ -80,6 +82,7 @@
 					</ul>
 					@endpermission
 				</li>
+				@endpermission
 			</ul>
 		@endpermission
 		</li>
@@ -99,6 +102,8 @@
 
 </li>
 
+
+<!-- Calidad -->
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
 	<a href="#">
 		<i class="fa fa-check-circle"></i> <span>Gestión de calidad</span>
@@ -131,7 +136,7 @@
 	</ul>
 
 </li>
-@endpermission
+
 
 <li class="{{ Request::is('cargarArchivos*')? 'active' : '' }}">
 	<a href="#"><i class="fa fa-book"></i> Gest. Documental<i class="fa fa-angle-left pull-right"></i></a>

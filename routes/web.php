@@ -20,17 +20,19 @@ Route::group(['prefix'=>'auth', 'as'=>'auth.', 'namespace'=>'Auth'], function() 
 	Route::resource('permisos', 'PermissionController');
 });
 
-
 Route::group(['middleware'=>'auth'], function() {
-
+	
 	Route::get('/', 'HomeController@index');
-
+	
 	Route::resource('sedes', 'SedeController');
 	Route::resource('noConformidades', 'NoConformidadController');
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
-	Route::resource('academic', 'AcademicController'); //CRUD
-	Route::resource('academicWorkplan', 'WorkplanController');
+	/* Modulo Academico */
+	Route::resource('academic', 'Academic\AcademicController'); //CRUD
+	Route::resource('academicWorkplan', 'Academic\WorkplanController');
+	Route::resource('academic.index', 'Academic\AcademicController');
+
 	
 	Route::resource('procesos', 'ProcesosController');
 	Route::resource('auditors', 'AuditorController');
