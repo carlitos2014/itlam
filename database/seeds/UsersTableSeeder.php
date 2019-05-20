@@ -112,7 +112,7 @@ class UsersTableSeeder extends Seeder {
 
 	private function createPermissions($name, $display_name, $description = null, $attachAdmin=true, $attachEmpleado=true)
 	{
-		$name = strtolower(basename(get_model($name)));
+        $name = strtolower(last(explode('\\',basename(get_model($name)))));
 
 		if($description == null)
 			$description = $display_name;
