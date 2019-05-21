@@ -40,9 +40,9 @@
 
 
 
-<li class="{{ Request::is('noConformidades*') ? 'active' : '' }}">
+<!-- <li class="{{ Request::is('noConformidades*') ? 'active' : '' }}">
 	<a href="{!! route('noConformidades.index') !!}"><i class="fa fa-edit"></i> <span>No Conformidades</span></a>
-</li>
+</li> -->
 
 <!-- Academic -->
 
@@ -106,7 +106,7 @@
 <!-- Calidad -->
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
 	<a href="#">
-		<i class="fa fa-check-circle"></i> <span>Gestión de calidad</span>
+		<i class="fa fa-check-circle"></i> <span>Calidad</span>
 		<span class="pull-right-container">
 			<i class="fa fa-angle-left pull-right"></i>
 		</span>
