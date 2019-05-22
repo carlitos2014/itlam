@@ -54,12 +54,14 @@
 		</span>
 	</a>
 
+
+<!-- Profesores -->
 <!-- Pendiente Permiso -->
 	<ul class="treeview-menu">
 		<li class="treeview">
 			<a href="{!! route('teacher.index') !!}"><i class="fa fa-address-book-o"></i> Profesores
 				<span class="pull-right-container">
-					<i></i>
+					<!-- <i class="fa fa-angle-left pull-right"></i> -->
 				</span>
 			</a>
 
@@ -158,4 +160,38 @@
 		<li><a href="#"><i class="fa fa-circle-o"></i> Procedimientos</a></li>
 		<li><a href="#"><i class="fa fa-circle-o"></i> Formatos</a></li>
 	</ul>
+</li>
+
+<!-- Seguridad y salud en el trabajo -->
+<li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
+	<a href="#">
+		<i class="fa fa-handshake-o"></i> <span>Seguridad en el trabajo</span>
+		<span class="pull-right-container">
+			<i class="fa fa-angle-left pull-right"></i>
+		</span>
+	</a>
+
+	<!--<ul class="treeview-menu">
+		<li class="treeview">
+			<a href="#"><i class="fa fa-calendar"></i> Programación
+				<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+
+			<ul class="treeview-menu">
+				<li><a href="{{route('auditorias.index')}}"><i class="fa fa-calendar-check-o"></i> Plan de Auditorias</a></li>
+			</ul>
+
+		</li>
+	</ul>-->
+
+	<!--<ul class="treeview-menu">
+		<li><a href="#"><i class="fa fa-binoculars"></i> Seguimiento</a></li>
+	</ul>
+
+	<ul class="treeview-menu">
+		<li><a href="#"><i class="fa fa-asl-interpreting"></i> Ejecución</a></li>
+	</ul>-->
+
 </li>

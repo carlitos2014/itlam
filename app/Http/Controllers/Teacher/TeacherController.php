@@ -152,7 +152,7 @@ class TeacherController extends AppBaseController
 
         $this->teacherRepository->delete($id);
 
-        Flash::success('Teacher Borrado con Exito.');
+        Flash::success('Profesor Borrado con Exito.');
 
         return redirect(route('teacher.index'));
     }
