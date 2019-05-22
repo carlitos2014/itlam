@@ -63,7 +63,7 @@ class AuditoriaController extends AppBaseController
     {
         $input = $request->all();
         $auditoria = $this->auditoriaRepository->create($input);
-        Flash::success('Auditoria saved successfully.');
+        Flash::success('Auditoria Guardada Con Exito.');
         return redirect( route('auditorias.edit', compact('auditoria') ) );
     }
 

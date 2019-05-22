@@ -16,7 +16,6 @@ class AcademicController extends Controller
 
    	public function index()
 	{
-		$academics = academic::all();
 		$academics = academic::paginate(5);
 		//$users = User::paginate(5);
 

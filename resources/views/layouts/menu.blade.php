@@ -54,6 +54,18 @@
 		</span>
 	</a>
 
+<!-- Pendiente Permiso -->
+	<ul class="treeview-menu">
+		<li class="treeview">
+			<a href="{!! route('teacher.index') !!}"><i class="fa fa-address-book-o"></i> Profesores
+				<span class="pull-right-container">
+					<i></i>
+				</span>
+			</a>
+
+		</li>
+	</ul>
+
 	@permission('acad-plan-*')
 	<ul class="treeview-menu">
 		<li class="treeview">

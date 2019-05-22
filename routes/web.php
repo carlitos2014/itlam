@@ -24,7 +24,9 @@ Route::group(['middleware'=>'auth'], function() {
 	
 	Route::get('/', 'HomeController@index');
 	
-	Route::resource('sedes', 'SedeController');
+	/* Modulo Sedes */
+	Route::resource('sedes', 'Sede\SedeController');
+
 	Route::resource('noConformidades', 'NoConformidadController');
 	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
 
@@ -32,6 +34,9 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('academic', 'Academic\AcademicController'); //CRUD
 	Route::resource('academicWorkplan', 'Academic\WorkplanController');
 	Route::resource('academic.index', 'Academic\AcademicController');
+
+	/* TModulo de Profesores */
+	Route::resource('teacher', 'Teacher\TeacherController'); //Crud
 
 	
 	Route::resource('procesos', 'ProcesosController');

@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreatesedesTable extends Migration
+class CreateSedesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -15,13 +15,14 @@ class CreatesedesTable extends Migration
     {
         Schema::create('sedes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 100);
+            $table->string('nombre', 50);
             $table->string('direccion', 100);
             $table->string('telefono', 20);
-            $table->string('web')->nullable();
+            $table->string('web', 200);
             $table->string('email', 320);
             $table->timestamps();
             $table->softDeletes();
+            
         });
     }
 
@@ -32,6 +33,6 @@ class CreatesedesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sedes');
+        Schema::dropIfExists('sedes');
     }
 }

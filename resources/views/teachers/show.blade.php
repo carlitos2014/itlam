@@ -3,15 +3,15 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Sedes
+            Profesores
         </h1>
     </section>
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    @include('sedes.show_fields')
-                    <a href="{!! route('sedes.index') !!}" class="btn btn-default">Volver</a>
+                    @include('teachers.show_fields')
+                    <a href="{!! route('teacher.index') !!}" class="btn btn-default">Voler</a>
                 </div>
             </div>
         </div>

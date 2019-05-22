@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Models;
-
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 /**
  * Class sedes
  * @package App\Models
@@ -19,13 +17,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class sedes extends Model
 {
     use SoftDeletes;
-
     public $table = 'sedes';
     
-
     protected $dates = ['deleted_at'];
-
-
     public $fillable = [
         'nombre',
         'direccion',
@@ -33,7 +27,6 @@ class sedes extends Model
         'web',
         'email'
     ];
-
     /**
      * The attributes that should be casted to native types.
      *
@@ -46,7 +39,6 @@ class sedes extends Model
         'web' => 'string',
         'email' => 'string'
     ];
-
     /**
      * Validation rules
      *
@@ -67,5 +59,12 @@ class sedes extends Model
         'telefono' => 'numeric',
         'email' => 'email'
     ];
+
+
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
     
 }
