@@ -57,7 +57,7 @@
         <div class="header">
 		      <table id="tbHead" class="" style="text-align: center;">
 		          <tr class="" style="">
-		            <td style="width: 120px"><img src="{{ asset('img/logo.jpg') }}" width="120" /></td>
+		            <td style="width: 120px"><img src="{{ public_path().'/img/logo.jpg' }}" width="120" /></td>
 		            <td>
 		            	<span class="title">ASOCIACION CESAR CONTO</span><br>
 						Colegio Cesar Conto Sede Principal, Colegio Cesar Conto Sede Petecuy y Colegio Técnico Comercial Dana María<br>
