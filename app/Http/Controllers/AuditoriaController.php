@@ -63,7 +63,7 @@ class AuditoriaController extends AppBaseController
     {
         $input = $request->all();
         $auditoria = $this->auditoriaRepository->create($input);
-        Flash::success('Auditoria Guardada Con Exito.');
+        Flash::success('Auditoria saved successfully.');
         return redirect( route('auditorias.edit', compact('auditoria') ) );
     }
 
@@ -98,6 +98,7 @@ class AuditoriaController extends AppBaseController
     {
         $auditoria = $this->auditoriaRepository->findWithoutFail($id);
         if (empty($auditoria)) {
+            
             Flash::error('Auditoria not found');
             return redirect(route('auditorias.index'));
         }
