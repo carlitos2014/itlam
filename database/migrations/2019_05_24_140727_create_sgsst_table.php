@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAcademicPlaneacionPlan40sTable extends Migration
+class CreateSgsstTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAcademicPlaneacionPlan40sTable extends Migration
      */
     public function up()
     {
-        Schema::create('academic_planeacion_plan40s', function (Blueprint $table) {
+        Schema::create('sgsst_inecesarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ruta', 100);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateAcademicPlaneacionPlan40sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academic_planeacion_plan40s');
+        Schema::dropIfExists('sgsst_inecesarios');
     }
 }

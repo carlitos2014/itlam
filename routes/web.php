@@ -35,10 +35,14 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('academicWorkplan', 'Academic\WorkplanController');
 	Route::resource('academic.index', 'Academic\AcademicController');
 
-	/* TModulo de Profesores */
+	/* Modulo de Profesores */
 	Route::resource('teacher', 'Teacher\TeacherController'); //Crud
 
-	
+	/* Modulo de Sgsst */
+	Route::resource('sgsst_s', 'Sgsst\SgsstController'); //Crud
+
+
+
 	Route::resource('procesos', 'ProcesosController');
 	Route::resource('auditors', 'AuditorController');
 	Route::resource('auditorias', 'AuditoriaController');

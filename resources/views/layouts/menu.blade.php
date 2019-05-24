@@ -163,35 +163,33 @@
 </li>
 
 <!-- Seguridad y salud en el trabajo -->
-<li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
+<li class="{{ Request::is('') ? 'active' : '' }}">
 	<a href="#">
-		<i class="fa fa-handshake-o"></i> <span>Seguridad en el trabajo</span>
+		<i class="fa fa-handshake-o"></i> <span>SGSST</span>
 		<span class="pull-right-container">
 			<i class="fa fa-angle-left pull-right"></i>
 		</span>
 	</a>
-
-	<!--<ul class="treeview-menu">
-		<li class="treeview">
-			<a href="#"><i class="fa fa-calendar"></i> Programación
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-
+		
 			<ul class="treeview-menu">
-				<li><a href="{{route('auditorias.index')}}"><i class="fa fa-calendar-check-o"></i> Plan de Auditorias</a></li>
+				<li class="treeview">
+					<a href="#"><i class="fa fa-folder-open-o"></i> Formatos
+						<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					
+					<ul class="treeview-menu">
+						<li><a href="{!! route('sgsst_s.index') !!}"><i class="fa fa-file-pdf-o"></i>Elementos Innecesarios </a></li>
+					</ul>
+					
+					<ul class="treeview-menu">
+						<li><a href="{!! route('academicWorkplan.index') !!}"><i class="fa fa-calendar"></i> </a></li>
+					</ul>
+					
+				</li>
+				
 			</ul>
-
+		
 		</li>
-	</ul>-->
-
-	<!--<ul class="treeview-menu">
-		<li><a href="#"><i class="fa fa-binoculars"></i> Seguimiento</a></li>
 	</ul>
-
-	<ul class="treeview-menu">
-		<li><a href="#"><i class="fa fa-asl-interpreting"></i> Ejecución</a></li>
-	</ul>-->
-
-</li>
