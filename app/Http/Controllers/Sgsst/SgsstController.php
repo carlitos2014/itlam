@@ -4,33 +4,37 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Sgsst;
 use Flash;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Response;
+use App\Http\Requests\UpdateSgsstRequest;
+use App\Repositories\SgsstRepository;
 
 class SgsstController extends Controller
 {
-	public function __construct()
+	 /** @var  SgsstRepository */
+	private $SgsstRepository;
+
+		public function __construct(SgsstRepository $sgsstRepo)
     {
-		//Pendiente Permiso
-		//$this->middleware('permission:acad-plan-form-plan40-load',  ['only' => ['index', 'store', 'save', 'create']]);
+        $this->SgsstRepository = $sgsstRepo;
     }
 
     protected $class = Sgsst::class;
 
-   	public function index()
-	{
-		$sgsst_s = Sgsst::paginate(5);
-		//$users = User::paginate(5);
+   	public function index(Request $request)	{
 
+			$this->SgsstRepository->pushCriteria(new RequestCriteria($request));
+			$sgsst_s = $this->SgsstRepository->all();
+			$sgsst_s = Sgsst::paginate(5);
+		
 		return view('Sgsst.index')
 		->with('sgsst_s', $sgsst_s);
-		//return view('sgsst_s/index', compact( 'sgsst_s'));   
-		// return view('users-mgmt/index', ['users' => $users]);
-	}
-
+		}
+				/* Crear */
 	public function create()
 	{
 		return view('sgsst.create');
 	}
-
 
 	public function store( Request $request)
 	{
@@ -41,42 +45,54 @@ class SgsstController extends Controller
 			$file->move(storage_path().'/app/Sgsst/Sgsst_inecesarios/',$name);
 		}
 
-		$Sgsst=new Sgsst();
-		$Sgsst->ruta=$name;
-		$Sgsst->save();
-
-		$sgsst_s = Sgsst::all();
-		$sgsst_s = Sgsst::paginate(5);
-		Flash::success('Registrado con Exito.');
-		return view('sgsst.index', compact( 'sgsst_s'));  
+		$input = $request->all()+['ruta'=>$name];
+		
+        $Sgsst = $this->SgsstRepository->create($input);
+        Flash::success('Registrado con Exito.');
+        return redirect(route('sgsst_s.index'));
 	}
 
+	public function show($id)
+    {
+        $sgsst_s = $this->SgsstRepository->findWithoutFail($id);
+
+        if (empty($sgsst_s)) {
+            Flash::error('not found');
+
+            return redirect(route('sgsst_s.index'));
+        }
+
+        return view('sgsst_s.show')->with('sgsst_s', $sgsst_s);
+    }
 
 	public function edit( $id)
 	{
+		$sgsst_s = $this->SgsstRepository->findWithoutFail($id);
+		if (empty($sgsst_s)) {
+			Flash::error('not found');
+			return redirect(route('sgsst_s.index'));
+	}
 		$sgsst_s= Sgsst::find($id);
      	//return  $Sgsst;
-		return view('sgsst.edit', ['Sgsst' => $sgsst_s]);
+		return view('sgsst_s.edit', ['Sgsst' => $sgsst_s]);
 	}
 
 
-	public function update( Request $request, $id)
+	public function update($id, UpdateSgsstRequest $request)
 	{
 		$Sgsst= Sgsst::find($id);
-		//$data = request();
-		//return $data;
 		$Sgsst->fill($request->except('ruta'));
 		if($request->hasFile('ruta')){
 
 			$file=$request->file('ruta');
 			$name=$file->getClientOriginalName();
 			$Sgsst->ruta=$name;
-			$file->move(storage_path().'/app/Sgsst/Sgsst_inecesarios/',$name);
+			$file->move(storage_path().'/app/Sgsst/',$name);
 		}
 
 		$Sgsst->save();
 		//return view('sgsst_s.index', ['sgsst_s' => $Sgsst]);
-		return (redirect()->route('sgsst.index'));
+		return (redirect()->route('sgsst_s.index'));
 	}
 
 	function destroy( $id){
@@ -86,13 +102,13 @@ class SgsstController extends Controller
 
 		Flash::error('sgsst not found');
 
-		return redirect(route('Sgsst.index'));
+		return redirect(route('sgsst_s.index'));
 	}
 
 	$sgsst_s->delete($id);
 	Flash::success('Archivo borrado con Éxito.');
 
-	return redirect(route('sgsst.index'));
+	return redirect(route('sgsst_s.index'));
 	}
 
 }

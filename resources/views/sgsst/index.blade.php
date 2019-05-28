@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Formato de Elementos Innecesarios</h1>
+        <h1 class="pull-left">Formatos SGSST</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('academic.create') !!}">Nuevo Archivo</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('sgsst_s.create') !!}">Nuevo Archivo</a>
         </h1>
     </section>
     <div class="content">

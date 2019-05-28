@@ -5,7 +5,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Cargar nuevo archivo
+        Cargar Nuevo Formato
     </h1>
 </section>
 <div class="content">
@@ -14,8 +14,7 @@
 
         <div class="box-body">
             <div class="row">
-                {!! Form::open(['route' => 'sgsst.store','enctype' => 'multipart/form-data']) !!}
-
+                {!! Form::open(['route' => 'sgsst_s.store','enctype' => 'multipart/form-data']) !!}
                 @include('sgsst.fields')
 
                 {!! Form::close() !!}

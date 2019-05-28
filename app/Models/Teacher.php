@@ -20,13 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Teacher extends Model
 {
     use SoftDeletes;
-
     public $table = 'teachers';
-    
-
     protected $dates = ['deleted_at'];
-
-
     public $fillable = [
         'nombres',
         'apellidos',

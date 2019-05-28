@@ -1,18 +1,27 @@
 
-<table class="table table-responsive table-bordered table-striped" id="academics-table">
+<table class="table table-responsive table-bordered table-striped" id="sgsst_s-table">
     <thead>
+
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Formato</th>
+        <th colspan="3">Acción</th>
 
     </thead>
     <tbody >
         @foreach($sgsst_s as $row)
         <tr>
+
+            <td>{!! $row-> nombre !!}</td>
+            <td>{!! $row-> description !!}</td>
             <td>
-
-                <b>Creado: </b><?=  $row->created_at;  ?></span> </div>
-                <div class="box-header "><i class="fa fa-file-pdf-o text-danger"></i>  <?= $row->ruta ;  ?>  </div>
-                <div class="box-body"> 
-
-                    {!! Form::open(['route' => ['sgsst.destroy', $row->id], 'method' => 'delete']) !!}
+                <!-- <b>Creado: </b><?=  $row->created_at;  ?></span> </div> -->
+                <div class="box-header "><i class="fa fa-file-text-o"></i>
+                </div>
+               <!--  <div class="box-body"> --> 
+            </td>    
+            <td>
+                    {!! Form::open(['route' => ['sgsst_s.destroy', $row->id], 'method' => 'delete']) !!}
 
                     <div class=''>
                         <a href="imagenes/<?= $row->ruta; ?>"target="_blank" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i> </a>

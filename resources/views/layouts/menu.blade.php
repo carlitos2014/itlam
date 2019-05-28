@@ -164,14 +164,17 @@
 
 <!-- Seguridad y salud en el trabajo -->
 <li class="{{ Request::is('') ? 'active' : '' }}">
-	<a href="#">
-		<i class="fa fa-handshake-o"></i> <span>SGSST</span>
-		<span class="pull-right-container">
+		<a href="#">
+			<i class="fa fa-handshake-o"></i> <span>SGSST</span>
+				<span class="pull-right-container">
 			<i class="fa fa-angle-left pull-right"></i>
-		</span>
-	</a>
-		
+				</span>
+		</a>
 			<ul class="treeview-menu">
+				<li><a href="{!! route('sgsst_s.index') !!}"><i class="fa fa-folder-open-o"></i>Formatos</a></li>
+			</ul>
+		
+			<!-- <ul class="treeview-menu">
 				<li class="treeview">
 					<a href="#"><i class="fa fa-folder-open-o"></i> Formatos
 						<span class="pull-right-container">
@@ -187,9 +190,9 @@
 						<li><a href="{!! route('academicWorkplan.index') !!}"><i class="fa fa-calendar"></i> </a></li>
 					</ul>
 					
-				</li>
+				</li> -->
 				
-			</ul>
+			<!-- </ul> -->
 		
-		</li>
-	</ul>
+</li>
+	<!-- </ul> -->

@@ -13,8 +13,10 @@ class CreateSgsstTable extends Migration
      */
     public function up()
     {
-        Schema::create('sgsst_inecesarios', function (Blueprint $table) {
+        Schema::create('sgsst', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre', 100);
+            $table->string('description', 1024);
             $table->string('ruta', 100);
             $table->timestamps();
         });
