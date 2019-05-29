@@ -27,10 +27,11 @@ class SgsstController extends Controller
 			$sgsst_s = $this->SgsstRepository->all();
 			$sgsst_s = Sgsst::paginate(5);
 		
-		return view('sgsst_s.index')
-		->with('sgsst_s', $sgsst_s);
-		}
-				/* Crear */
+		return view('sgsst_s.index', compact('sgsst_s'));
+	
+	}
+
+	/* Crear */
 	public function create()
 	{
 		return view('sgsst.create');
@@ -55,7 +56,7 @@ class SgsstController extends Controller
 			return redirect()->back();
 		}
 
-		$Sgsst=SGSST::paginate(5);
+		
 	}
 /* Ver  */
 	public function show($id)
