@@ -1,3 +1,4 @@
+@include('flash::message')
 
 <!-- Nombre Field -->
 <div class="form-group col-sm-6">
@@ -13,6 +14,7 @@
 
 <!-- Ruta Field -->
 <div class="form-group col-sm-6">
+	<strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>
     {!! Form::label('ruta', 'Archivo:') !!}
     {!! Form::file('ruta', null, ['class' => 'form-control']) !!}
 </div>

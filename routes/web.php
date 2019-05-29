@@ -34,12 +34,14 @@ Route::group(['middleware'=>'auth'], function() {
 	Route::resource('academic', 'Academic\AcademicController'); //CRUD
 	Route::resource('academicWorkplan', 'Academic\WorkplanController');
 	Route::resource('academic.index', 'Academic\AcademicController');
+	Route::get('academic/download/{academic}', 'Academic\AcademicController@downloadFile')->name('academic.download'); //Ruta para descargar archivo
 
 	/* Modulo de Profesores */
 	Route::resource('teacher', 'Teacher\TeacherController'); //Crud
 
 	/* Modulo de Sgsst */
 	Route::resource('sgsst_s', 'Sgsst\SgsstController'); //Crud
+	Route::get('sgsst_s/download/{sgsst_s}', 'Sgsst\SgsstController@downloadFile')->name('sgsst_s.download'); //Ruta para descargar archivo
 
 
 

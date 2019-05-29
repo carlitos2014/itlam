@@ -23,7 +23,7 @@ class Sgsst extends Model
 			
 			'name' =>['required', 'max:100'],
 			'description' => ['required','max:1024'],
-			'ruta' => ['required','max:100'],
+			'ruta' => ['required','max:100','file','max:2048'],
 			
 		];
 	}

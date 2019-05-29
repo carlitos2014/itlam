@@ -4,7 +4,7 @@
 
         <th>Nombre</th>
         <th>Descripción</th>
-        <th>Formato</th>
+        <th>Fecha</th>
         <th colspan="3">Acción</th>
 
     </thead>
@@ -14,24 +14,16 @@
 
             <td>{!! $row-> nombre !!}</td>
             <td>{!! $row-> description !!}</td>
+            <td>{!! $row-> created_at !!}</td>
             <td>
-                <!-- <b>Creado: </b><?=  $row->created_at;  ?></span> </div> -->
-                <div class="box-header "><i class="fa fa-file-text-o"></i>
+                {!! Form::open(['route' => ['sgsst_s.destroy', $row->id], 'method' => 'delete']) !!}
+                <div class='btn-group'>
+                    <a href="{!! route('sgsst_s.download',[$row->id]) !!}" class='btn btn-default btn-xs'><i class="fa fa-download"></i></a>
+                    <a href="{!! route('sgsst_s.show', [$row->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('sgsst_s.edit', [$row->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Esta Seguro?')"]) !!}
                 </div>
-               <!--  <div class="box-body"> --> 
-            </td>    
-            <td>
-                    {!! Form::open(['route' => ['sgsst_s.destroy', $row->id], 'method' => 'delete']) !!}
-
-                    <div class=''>
-                        <a href="imagenes/<?= $row->ruta; ?>"target="_blank" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i> </a>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                    </div>
-                    {!! Form::close() !!}
-
-                </div>
-
-
+                {!! Form::close() !!}
             </td>
         </tr>
         @endforeach

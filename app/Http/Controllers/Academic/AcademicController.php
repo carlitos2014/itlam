@@ -34,7 +34,7 @@ class AcademicController extends Controller
 	public function store( Request $request)
 	{
 		if($request->hasFile('ruta')){
-
+			
 			$file=$request->file('ruta');
 			$name=$file->getClientOriginalName();
 			$file->move(storage_path().'/app/Academic/Plan40/',$name);
@@ -92,6 +92,30 @@ class AcademicController extends Controller
 	Flash::success('Plan 40 deleted successfully.');
 
 	return redirect(route('academic.index'));
+	}
+
+	/**
+	 * Descarga documento.
+	 *
+	 * @param  Ticket $ticket
+	 * @return Response
+	 */
+	public function downloadFile($id)
+	{
+		
+		$academic= Academic::find($id);
+		if (empty($academic)) {
+			Flash::error('Academic not found');
+			return redirect(route('academic.index'));
+		}
+
+		$file = storage_path('app/Academic/Plan40/'.$id).$academic->ruta;
+		if(file_exists($file)){
+			return \Response::download($file);
+		} else {
+			Flash::error('File not found');
+			return redirect(route('academic.index'));
+		}
 	}
 
 }

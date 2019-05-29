@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,7 +12,7 @@
 
         <div class="box-body">
             <div class="row">
-                {!! Form::open(['route' => 'sgsst_s.store','enctype' => 'multipart/form-data']) !!}
+                {!! Form::open(['route' => 'sgsst_s.store','files' => true]) !!}
                 @include('sgsst.fields')
 
                 {!! Form::close() !!}

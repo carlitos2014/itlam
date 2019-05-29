@@ -1,8 +1,8 @@
 <!-- Id Field -->
-<div class="form-group">
+<!-- <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
     <p>{!! $teacher->id !!}</p>
-</div>
+</div> -->
 
 <!-- Nombres Field -->
 <div class="form-group">
