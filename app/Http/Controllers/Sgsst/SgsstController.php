@@ -24,10 +24,10 @@ class SgsstController extends Controller
    	public function index(Request $request)	{
 
 			$this->SgsstRepository->pushCriteria(new RequestCriteria($request));
-			$sgsst_s = $this->SgsstRepository->all();
-			$sgsst_s = Sgsst::paginate(5);
+			$sgsst = $this->SgsstRepository->all();
+			$sgsst = Sgsst::paginate(5);
 		
-		return view('sgsst_s.index', compact('sgsst_s'));
+		return view('sgsst.index', compact('sgsst'));
 	
 	}
 
@@ -61,26 +61,26 @@ class SgsstController extends Controller
 /* Ver  */
 	public function show($id)
     {
-        $sgsst_s = $this->SgsstRepository->findWithoutFail($id);
+        $sgsst = $this->SgsstRepository->findWithoutFail($id);
 
-        if (empty($sgsst_s)) {
+        if (empty($sgsst)) {
             Flash::error('not found');
 
             return redirect(route('sgsst_s.index'));
         }
-        return view('sgsst.show')->with('sgsst_s', $sgsst_s);
+        return view('sgsst.show')->with('sgsst', $sgsst);
     }
 /* Editar */
 	public function edit( $id)
 	{
-		$sgsst_s = $this->SgsstRepository->findWithoutFail($id);
-		if (empty($sgsst_s)) {
+		$sgsst = $this->SgsstRepository->findWithoutFail($id);
+		if (empty($sgsst)) {
 			Flash::error('not found');
 			return redirect(route('sgsst_s.index'));
 	}
-		$sgsst_s= Sgsst::find($id);
+		$sgsst= Sgsst::find($id);
      	//return  $Sgsst;
-		return view('sgsst.edit', ['Sgsst' => $sgsst_s]);
+		return view('sgsst.edit', ['Sgsst' => $sgsst]);
 	}
 
 
@@ -107,35 +107,29 @@ class SgsstController extends Controller
 
 	function destroy( $id){
 
-		$sgsst_s= Sgsst::find($id);
-		if (empty($sgsst_s)) {
+		$sgsst= Sgsst::find($id);
+		if (empty($sgsst)) {
 			Flash::error('sgsst not found');
 			return redirect(route('sgsst_s.index'));
 		}
 
-		$sgsst_s->delete($id);
+		$sgsst->delete($id);
 		Flash::success('Archivo borrado con Éxito.');
 
 		return redirect(route('sgsst_s.index'));
 	}
 
 
-	/**
-	 * Descarga documento.
-	 *
-	 * @param  Ticket $ticket
-	 * @return Response
-	 */
+	/* Descarga de Archivos */
 	public function downloadFile($id)
-	{
-		
-		$sgsst_s= Sgsst::find($id);
-		if (empty($sgsst_s)) {
+	{		
+		$sgsst= Sgsst::find($id);
+		if (empty($sgsst)) {
 			Flash::error('sgsst not found');
 			return redirect(route('sgsst_s.index'));
 		}
 
-		$file = storage_path('app/Sgsst/'.$id).$sgsst_s->ruta;
+		$file = storage_path('app/Sgsst/'.$id).$sgsst->ruta;
 		if(file_exists($file)){
 			return \Response::download($file);
 		} else {

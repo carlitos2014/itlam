@@ -1,5 +1,5 @@
 
-<table class="table table-responsive table-bordered table-striped" id="sgsst_s-table">
+<table class="table table-responsive table-bordered table-striped" id="sgsst-table">
     <thead>
 
         <th>Nombre</th>
@@ -9,7 +9,7 @@
 
     </thead>
     <tbody >
-        @foreach($sgsst_s as $row)
+        @foreach($sgsst as $row)
         <tr>
 
             <td>{!! $row-> nombre !!}</td>
@@ -29,4 +29,4 @@
         @endforeach
     </tbody>
 </table>
-{{ $sgsst_s->links() }}
+{{ $sgsst->links() }}
