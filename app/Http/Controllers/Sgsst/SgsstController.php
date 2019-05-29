@@ -27,7 +27,7 @@ class SgsstController extends Controller
 			$sgsst_s = $this->SgsstRepository->all();
 			$sgsst_s = Sgsst::paginate(5);
 		
-		return view('Sgsst.index')
+		return view('sgsst_s.index')
 		->with('sgsst_s', $sgsst_s);
 		}
 				/* Crear */
