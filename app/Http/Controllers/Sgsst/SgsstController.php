@@ -25,7 +25,7 @@ class SgsstController extends Controller
 
 			$this->SgsstRepository->pushCriteria(new RequestCriteria($request));
 			$sgsst = $this->SgsstRepository->all();
-			$sgsst = Sgsst::paginate(5);
+			$sgsst = Sgsst::paginate(20);
 		
 		return view('sgsst.index', compact('sgsst'));
 	
@@ -80,7 +80,7 @@ class SgsstController extends Controller
 	}
 		$sgsst= Sgsst::find($id);
      	//return  $Sgsst;
-		return view('sgsst.edit', ['Sgsst' => $sgsst]);
+		return view('sgsst.edit', ['sgsst' => $sgsst]);
 	}
 
 
