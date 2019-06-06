@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSgsstTable extends Migration
+class CreateAsignacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateSgsstTable extends Migration
      */
     public function up()
     {
-        Schema::create('sgsst', function (Blueprint $table) {
+        Schema::create('asignaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 100);
-            $table->string('description', 1000);
+            $table->string('observacion');
             $table->string('ruta', 100);
+            /* Relacion foranea */
+            $table->integer('teachers_id')->unsigned();
+            $table->foreign('teachers_id')->references('id')->on('teachers');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +32,6 @@ class CreateSgsstTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sgsst');
+        Schema::dropIfExists('asignaciones');
     }
 }

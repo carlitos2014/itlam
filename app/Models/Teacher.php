@@ -54,7 +54,11 @@ class Teacher extends Model
     {
         return $this->belongsTo(sedes::class);
     }
-
+    
+    public function asignacion()
+    {
+        return $this->hasMany(Asignaciones::class);
+    }
 
 
     

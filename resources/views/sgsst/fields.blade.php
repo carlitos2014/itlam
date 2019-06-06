@@ -13,11 +13,8 @@
 </div>
 
 <!-- Ruta Field -->
-<div class="form-group col-sm-6">
 	<strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>
-    {!! Form::label('ruta', 'Archivo:') !!}
-    {!! Form::file('ruta', null, ['class' => 'form-control']) !!}
-</div>
+	@include('widgets.forms.input', ['type'=>'file', 'name'=>'ruta', 'label'=>'Archivo:','options'=>['required']]) 
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

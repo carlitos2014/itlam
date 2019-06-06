@@ -18,12 +18,9 @@ class Sgsst extends Model
 		'ruta',
 	];
 
-	public static function rules(){
-		return [
-			
-			'name' =>['required', 'max:100'],
-			'description' => ['required','max:1024'],
-			'ruta' => ['required','max:100','file','max:2048'],			
-		];
-	}
+    public static $rules = [
+		'name' =>['required', 'max:100'],
+		'description' => ['required','max:1000'],
+		'ruta' => ['required',],			
+	];
 }

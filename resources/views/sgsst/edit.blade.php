@@ -14,7 +14,7 @@
            <div class="box-body">
                <div class="row">
 
-                   {!! Form::model($sgsst, ['route' => ['sgsst_s.update', $sgsst->id], 'method' => 'patch']) !!}
+                   {!! Form::model($sgsst, ['route' => ['sgsst_s.update', $sgsst->id], 'method' => 'patch', 'files'=>true]) !!}
 
                         @include('sgsst.fields')
                    {!! Form::close() !!}
