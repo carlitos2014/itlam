@@ -16,12 +16,11 @@ class Asignacion extends Model
         'teachers_id',		
 	];
 
-	public static function rules($id = 0){
-		return [
-			'ruta' => ['required','max:100'],
-			
-		];
-	}
+	public static $rules = [
+		'observacion' =>['required', 'max:100'],
+		'ruta' => ['required',],			
+		'teachers_id' => ['required','max:1000'],
+	];
 
 	public function teachers()
     {

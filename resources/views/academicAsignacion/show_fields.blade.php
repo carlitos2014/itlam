@@ -3,6 +3,6 @@
 <!-- Observaciones -->
 <div class="form-group">
     {!! Form::label('observacion', 'Observaciones:') !!}
-    <p>{!! $asignaciones->observacion !!}</p>
+    <p>{!! $asignacion->observacion !!}</p>
 </div>
 

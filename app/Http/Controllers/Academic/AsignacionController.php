@@ -95,7 +95,6 @@ class AsignacionController extends AppBaseController
 
             return redirect(route('asignacion.index'));
         }
-
         return view('academicAsignacion.show')->with('asignacion', $asignacion);
     }
 
@@ -114,8 +113,8 @@ class AsignacionController extends AppBaseController
             Flash::error('Asignacion not found');
             return redirect(route('asignacion.index'));
         }
-        $arrTeacher = model_to_array(Teacher::class, 'nombre');
-        return view('asignacion.edit',compact('arrTeacher', 'asignacion'));
+        $arrTeacher = model_to_array(Teacher::class, 'nombres');
+        return view('academicAsignacion.edit',compact('arrTeacher', 'asignacion'));
         
     }  
 
