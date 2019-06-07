@@ -25,7 +25,7 @@ class SgsstController extends Controller
 
 			$this->SgsstRepository->pushCriteria(new RequestCriteria($request));
 			$sgsst = $this->SgsstRepository->all();
-			$sgsst = Sgsst::paginate(5);
+			$sgsst = Sgsst::paginate(20);
 		
 		return view('sgsst.index', compact('sgsst'));
 	
@@ -80,7 +80,7 @@ class SgsstController extends Controller
 	}
 		$sgsst= Sgsst::find($id);
      	//return  $Sgsst;
-		return view('sgsst.edit', ['Sgsst' => $sgsst]);
+		return view('sgsst.edit', ['sgsst' => $sgsst]);
 	}
 
 
@@ -89,6 +89,7 @@ class SgsstController extends Controller
 		$sgsst = $this->sgsstRepository->findWithoutFail($id);
 		$sgsst= Sgsst::find($id);
 		$sgsst->fill($request->except('ruta'));
+		
 		if($request->hasFile('ruta')){
 
 			$file=$request->file('ruta');
@@ -119,7 +120,6 @@ class SgsstController extends Controller
 		return redirect(route('sgsst_s.index'));
 	}
 
-
 	/* Descarga de Archivos */
 	public function downloadFile($id)
 	{		
@@ -129,7 +129,7 @@ class SgsstController extends Controller
 			return redirect(route('sgsst_s.index'));
 		}
 
-		$file = storage_path('app/Sgsst/'.$id).$sgsst->ruta;
+		$file = storage_path('app/Sgsst/'.$id.'/').$sgsst->ruta;
 		if(file_exists($file)){
 			return \Response::download($file);
 		} else {

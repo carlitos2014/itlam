@@ -3,20 +3,19 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Formatos SGSST
+            Asignación Académica
         </h1>
    </section>
 
    <div class="content">
-        @include('flash::message')
-        @include('adminlte-templates::common.errors')
+       @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
 
-                   {!! Form::model($sgsst, ['route' => ['sgsst_s.update', $sgsst->id], 'method' => 'patch', 'files'=>true]) !!}
+                   {!! Form::model($asignacion, ['route' => ['asignacion.update', $asignacion->id], 'method' => 'patch']) !!}
 
-                        @include('sgsst.fields')
+                        @include('academicAsignacion.fields')
                    {!! Form::close() !!}
                </div>
            </div>

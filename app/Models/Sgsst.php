@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sgsst extends Model
@@ -18,13 +18,9 @@ class Sgsst extends Model
 		'ruta',
 	];
 
-	public static function rules($id = 0){
-		return [
-			
-			'name' =>['required', 'max:100'],
-			'description' => ['required','max:1024'],
-			'ruta' => ['required','max:100','file','max:2048', 'mimes:pdf,xlx,xlsx,doc'],
-			
-		];
-	}
+    public static $rules = [
+		'name' =>['required', 'max:100'],
+		'description' => ['required','max:1000'],
+		'ruta' => ['required',],			
+	];
 }
