@@ -11,9 +11,9 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($auditoriaProcesos, ['route' => ['auditoriaProcesos.update', $auditoriaProcesos->id], 'method' => 'patch']) !!}
+                   {!! Form::model($auditoriaProcesos, ['route' => ['auditorias.auditoriaProcesos.update', $auditoriaProcesos->id], 'method' => 'patch']) !!}
 
-                        @include('auditoria_procesos.fields')
+                        @include('auditorias.auditoria_procesos.fields')
 
                    {!! Form::close() !!}
                </div>

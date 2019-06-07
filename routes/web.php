@@ -45,12 +45,12 @@ Route::group(['middleware'=>'auth'], function() {
 
 
 
-	Route::resource('procesos', 'ProcesosController');
-	Route::resource('auditors', 'AuditorController');
-	Route::resource('auditorias', 'AuditoriaController');
-	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.'], function() {
+	Route::resource('auditorias', 'Auditorias\AuditoriaController');
+	Route::group(['prefix'=>'auditorias', 'as'=>'auditorias.', 'namespace'=>'Auditorias'], function() {
+		Route::resource('procesos', 'ProcesosController');
+		Route::resource('auditors', 'AuditorController');
+		Route::resource('auditoriaProcesos', 'AuditoriaProcesoController')->except(['index','show']);
 		Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 	});
-	Route::resource('auditoriaProcesos', 'AuditoriaProcesoController')->except(['index','show']);
 
 });

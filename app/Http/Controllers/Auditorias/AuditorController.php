@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auditorias;
 
 use App\Http\Requests\CreateAuditorRequest;
 use App\Http\Requests\UpdateAuditorRequest;
@@ -32,7 +32,7 @@ class AuditorController extends AppBaseController
         $this->auditorRepository->pushCriteria(new RequestCriteria($request));
         $auditors = $this->auditorRepository->all();
 
-        return view('auditors.index')
+        return view('auditorias.auditors.index')
             ->with('auditors', $auditors);
     }
 
@@ -43,7 +43,7 @@ class AuditorController extends AppBaseController
      */
     public function create()
     {
-        return view('auditors.create');
+        return view('auditorias.auditors.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class AuditorController extends AppBaseController
 
         Flash::success('Auditor saved successfully.');
 
-        return redirect(route('auditors.index'));
+        return redirect(route('auditorias.auditors.index'));
     }
 
     /**
@@ -81,7 +81,7 @@ class AuditorController extends AppBaseController
             return redirect(route('auditors.index'));
         }
 
-        return view('auditors.show')->with('auditor', $auditor);
+        return view('auditorias.auditors.show')->with('auditor', $auditor);
     }
 
     /**
@@ -101,7 +101,7 @@ class AuditorController extends AppBaseController
             return redirect(route('auditors.index'));
         }
 
-        return view('auditors.edit')->with('auditor', $auditor);
+        return view('auditorias.auditors.edit')->with('auditor', $auditor);
     }
 
     /**
@@ -126,7 +126,7 @@ class AuditorController extends AppBaseController
 
         Flash::success('Auditor updated successfully.');
 
-        return redirect(route('auditors.index'));
+        return redirect(route('auditorias.auditors.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class AuditorController extends AppBaseController
         if (empty($auditor)) {
             Flash::error('Auditor not found');
 
-            return redirect(route('auditors.index'));
+            return redirect(route('auditorias.auditors.index'));
         }
 
         $this->auditorRepository->delete($id);
 
         Flash::success('Auditor deleted successfully.');
 
-        return redirect(route('auditors.index'));
+        return redirect(route('auditorias.auditors.index'));
     }
 }

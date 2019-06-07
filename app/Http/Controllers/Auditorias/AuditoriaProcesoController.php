@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auditorias;
 
 use App\Http\Requests\CreateAuditoriaProcesoRequest;
 use App\Http\Requests\UpdateAuditoriaProcesoRequest;
@@ -32,7 +32,7 @@ class AuditoriaProcesoController extends AppBaseController
         $auditoria = request()->get('auditoria');
         $arrAuditores = model_to_array(Auditor::class, 'nombre');
         $arrProceso = model_to_array(Procesos::class, 'nombre');
-        return view('auditoria_procesos.create', compact('auditoria','arrAuditores','arrProceso'));
+        return view('auditorias.auditoria_procesos.create', compact('auditoria','arrAuditores','arrProceso'));
     }
 
     /**
@@ -70,7 +70,7 @@ class AuditoriaProcesoController extends AppBaseController
             return redirect()->back()->send();
         }
 
-        return view('auditoria_procesos.edit')->with('auditoriaProcesos', $auditoriaProcesos);
+        return view('auditorias.auditoria_procesos.edit')->with('auditoriaProcesos', $auditoriaProcesos);
     }
 
     /**

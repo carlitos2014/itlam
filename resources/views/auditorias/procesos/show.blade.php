@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('procesos.show_fields')
-                    <a href="{!! route('procesos.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('auditorias.procesos.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

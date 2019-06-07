@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auditorias;
 
 use App\Http\Requests\CreateProcesosRequest;
 use App\Http\Requests\UpdateProcesosRequest;
@@ -32,8 +32,8 @@ class ProcesosController extends AppBaseController
         $this->procesosRepository->pushCriteria(new RequestCriteria($request));
         $procesos = $this->procesosRepository->all();
 
-        return view('procesos.index')
-            ->with('procesos', $procesos);
+        return view('auditorias.procesos.index')
+                ->with('procesos', $procesos);
     }
 
     /**
@@ -43,7 +43,7 @@ class ProcesosController extends AppBaseController
      */
     public function create()
     {
-        return view('procesos.create');
+        return view('auditorias.procesos.create');
     }
 
     /**
@@ -56,12 +56,9 @@ class ProcesosController extends AppBaseController
     public function store(CreateProcesosRequest $request)
     {
         $input = $request->all();
-
         $procesos = $this->procesosRepository->create($input);
-
         Flash::success('Procesos saved successfully.');
-
-        return redirect(route('procesos.index'));
+        return redirect(route('auditorias.procesos.index'));
     }
 
     /**
@@ -77,11 +74,10 @@ class ProcesosController extends AppBaseController
 
         if (empty($procesos)) {
             Flash::error('Procesos not found');
-
-            return redirect(route('procesos.index'));
+            return redirect(route('auditorias.rocesos.index'));
         }
 
-        return view('procesos.show')->with('procesos', $procesos);
+        return view('auditorias.procesos.show')->with('procesos', $procesos);
     }
 
     /**
@@ -97,11 +93,10 @@ class ProcesosController extends AppBaseController
 
         if (empty($procesos)) {
             Flash::error('Procesos not found');
-
-            return redirect(route('procesos.index'));
+            return redirect(route('auditorias.procesos.index'));
         }
 
-        return view('procesos.edit')->with('procesos', $procesos);
+        return view('auditorias.procesos.edit')->with('procesos', $procesos);
     }
 
     /**
@@ -118,15 +113,12 @@ class ProcesosController extends AppBaseController
 
         if (empty($procesos)) {
             Flash::error('Procesos not found');
-
-            return redirect(route('procesos.index'));
+        } else {
+            $procesos = $this->procesosRepository->update($request->all(), $id);
+            Flash::success('Procesos updated successfully.');
         }
 
-        $procesos = $this->procesosRepository->update($request->all(), $id);
-
-        Flash::success('Procesos updated successfully.');
-
-        return redirect(route('procesos.index'));
+        return redirect(route('auditorias.procesos.index'));
     }
 
     /**
@@ -142,14 +134,11 @@ class ProcesosController extends AppBaseController
 
         if (empty($procesos)) {
             Flash::error('Procesos not found');
-
             return redirect(route('procesos.index'));
+        } else {
+            $this->procesosRepository->delete($id);
+            Flash::success('Procesos deleted successfully.');
         }
-
-        $this->procesosRepository->delete($id);
-
-        Flash::success('Procesos deleted successfully.');
-
-        return redirect(route('procesos.index'));
+        return redirect(route('auditorias.procesos.index'));
     }
 }

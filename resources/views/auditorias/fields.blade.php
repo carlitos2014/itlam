@@ -54,7 +54,7 @@
             <th>NOMBRE DEL AUDITADO</th>
             <th>NOMBRE DEL AUDITOR</th>
             <th>
-                <a href="{!! route('auditoriaProcesos.create',['auditoria'=>$auditoria->id]) !!}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-plus"></i> proceso</a>
+                <a href="{!! route('auditorias.auditoriaProcesos.create',['auditoria'=>$auditoria->id]) !!}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-plus"></i> proceso</a>
             </th>
         </thead>
         <tbody>
@@ -68,7 +68,7 @@
                 <td>{{$aud_proceso->auditor->nombre }}</td>
                 <td class="text-center">
                     <div class='btn-group'>
-                        <a href="{!! route('auditoriaProcesos.edit', [$aud_proceso->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! route('auditorias.auditoriaProcesos.edit', [$aud_proceso->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
 
                         {{ Form::button('<i class="glyphicon glyphicon-trash"></i>',[
                             'class'=>'btn btn-xs btn-danger btn-delete',
@@ -76,7 +76,7 @@
                             'data-id'=> $aud_proceso->id,
                             'data-modelo'=> str_upperspace(class_basename($aud_proceso)),
                             'data-descripcion'=> $aud_proceso->nombre,
-                            'data-action'=>route('auditoriaProcesos.destroy', [$aud_proceso->id]),
+                            'data-action'=>route('auditorias.auditoriaProcesos.destroy', [$aud_proceso->id]),
                             'data-target'=>'#pregModalDelete',
                             'data-tooltip'=>'tooltip',
                             'title'=>'Borrar',

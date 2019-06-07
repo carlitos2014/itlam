@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auditorias;
 
 use App\Http\Requests\CreateAuditoriaRequest;
 use App\Http\Requests\UpdateAuditoriaRequest;
