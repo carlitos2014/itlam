@@ -37,13 +37,6 @@
 	</ul>
 </li>
 
-
-
-
-<!-- <li class="{{ Request::is('noConformidades*') ? 'active' : '' }}">
-	<a href="{!! route('noConformidades.index') !!}"><i class="fa fa-edit"></i> <span>No Conformidades</span></a>
-</li> -->
-
 <!-- Academic -->
 
 @permission('acad-*')
@@ -54,17 +47,14 @@
 		</span>
 	</a>
 
-
 <!-- Profesores -->
 <!-- Pendiente Permiso -->
 	<ul class="treeview-menu">
 		<li class="treeview">
 			<a href="{!! route('teacher.index') !!}"><i class="fa fa-address-book-o"></i> Profesores
 				<span class="pull-right-container">
-					<!-- <i class="fa fa-angle-left pull-right"></i> -->
 				</span>
 			</a>
-
 		</li>
 	</ul>
 
@@ -79,11 +69,21 @@
 		</li>
 	</ul>
 
+	<ul class="treeview-menu">
+		<li class="treeview">
+			<a href="{!! route('asignacion.index') !!}"><i class="fa fa-calendar"></i> Cronograma de Actividades
+				<span class="pull-right-container">
+					<!-- <i class="fa fa-angle-left pull-right"></i> -->
+				</span>
+			</a>
+
+		</li>
+	</ul>
 
 	@permission('acad-plan-*')
 	<ul class="treeview-menu">
 		<li class="treeview">
-			<a href="#"><i class="fa fa-calendar-check-o"></i> Planeacion
+			<a href="#"><i class="fa fa-calendar-check-o"></i> Planeación
 				<span class="pull-right-container">
 					<i class="fa fa-angle-left pull-right"></i>
 				</span>
@@ -99,12 +99,12 @@
 					</a>
 					@permission('acad-plan-form-plan40-load')
 					<ul class="treeview-menu">
-						<li><a href="{!! route('academic.index') !!}"><i class="fa fa-calendar"></i> Plan 40 Semanas</a></li>
+						<li><a href="{!! route('academic.index') !!}"><i class="fa fa-calendar-o"></i> Plan 40 Semanas</a></li>
 					</ul>
 					@endpermission
 					@permission('acad-plan-form-workplan-load')
 					<ul class="treeview-menu">
-						<li><a href="{!! route('academicWorkplan.index') !!}"><i class="fa fa-calendar"></i> Plan de Trabajo</a></li>
+						<li><a href="{!! route('academicWorkplan.index') !!}"><i class="fa fa-calendar-o"></i> Plan de Trabajo</a></li>
 					</ul>
 					@endpermission
 				</li>
@@ -127,7 +127,6 @@
 	</ul>
 
 </li>
-
 
 <!-- Calidad -->
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">
