@@ -13,7 +13,7 @@
         <div class="box-body">
             <div class="row">
                 {!! Form::open(['route' => 'asignacion.store','files' => true]) !!}
-                @include('academicasignacion.fields')
+                @include('academicAsignacion.fields')
 
                 {!! Form::close() !!}
             </div>
