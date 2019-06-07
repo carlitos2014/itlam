@@ -103,7 +103,7 @@ class TeacherController extends AppBaseController
             Flash::error('Teacher not found');
             return redirect(route('teachers.index'));
         }
-        $arrSedes = model_to_array(Sedes::class, 'nombre');
+        $arrSedes = model_to_array(sedes::class, 'nombre');
         return view('teachers.edit',compact('arrSedes', 'teacher'));
         
     }  
@@ -128,7 +128,7 @@ class TeacherController extends AppBaseController
 
         $teacher = $this->teacherRepository->update($request->all(), $id);
 
-        Flash::success('Teacher updated successfully.');
+        Flash::success('Registro Actualizado con Éxito.');
 
         return redirect(route('teacher.index'));
     }
@@ -152,7 +152,7 @@ class TeacherController extends AppBaseController
 
         $this->teacherRepository->delete($id);
 
-        Flash::success('Profesor Borrado con Exito.');
+        Flash::success('Registro Borrado con Éxito.');
 
         return redirect(route('teacher.index'));
     }
