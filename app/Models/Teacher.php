@@ -28,6 +28,7 @@ class Teacher extends Model
         'telefono',
         'email',
         'sede_id',
+        'user_id',
     ];
 
     /**
@@ -60,6 +61,10 @@ class Teacher extends Model
         return $this->hasMany(Asignaciones::class);
     }
 
+public function user(){
+
+        return $this-> hasOne(User::class);
+    }
 
     
 }

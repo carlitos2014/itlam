@@ -13,7 +13,7 @@
            <div class="box-body">
                <div class="row">
 
-                   {!! Form::model($asignacion, ['route' => ['asignacion.update', $asignacion->id], 'method' => 'patch']) !!}
+                   {!! Form::model($asignacion, ['route' => ['asignacion.update', $asignacion->id], 'method' => 'patch', 'files'=> true]) !!}
 
                         @include('academicAsignacion.fields')
                    {!! Form::close() !!}

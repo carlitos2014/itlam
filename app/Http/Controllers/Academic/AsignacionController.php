@@ -136,9 +136,12 @@ class AsignacionController extends AppBaseController
             return redirect(route('asignacion.index'));
         }
 
-        $asignacion = $this->asignacionRepository->update($request->all(), $id);
+        $file=$request->file('ruta');
+        $name=$file->getClientOriginalName();
+        $file->move(storage_path('app/Academic/Horarios/').$asignacion->id,$name);
+        $asignacion = $this->asignacionRepository->update($request->except(['ruta'])+['ruta'=>$name], $id);
 
-        Flash::success('Asignacion updated successfully.');
+        Flash::success('Asignacion actualizada Correctamente');
 
         return redirect(route('asignacion.index'));
     }

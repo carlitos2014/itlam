@@ -162,7 +162,7 @@
 
 </li>
 
-<li class="{{ Request::is('cargarArchivos*')? 'active' : '' }}">
+<!--<li class="{{ Request::is('cargarArchivos*')? 'active' : '' }}">
 	<a href="#"><i class="fa fa-book"></i> Gest. Documental<i class="fa fa-angle-left pull-right"></i></a>
 
 	<ul class="treeview-menu">
@@ -170,7 +170,7 @@
 		<li><a href="#"><i class="fa fa-circle-o"></i> Procedimientos</a></li>
 		<li><a href="#"><i class="fa fa-circle-o"></i> Formatos</a></li>
 	</ul>
-</li>
+</li>-->
 
 <!-- Seguridad y salud en el trabajo -->
 <li class="{{ Request::is('') ? 'active' : '' }}">
