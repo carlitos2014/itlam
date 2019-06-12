@@ -7,6 +7,6 @@ $factory->define(App\Models\Teacher::class, function (Faker $faker) {
         'nombres'=>$faker->firstName(),
         'apellidos'=>$faker->lastName,
         'telefono'=>$faker->text(15),
-        'email'=>$faker->safeEmail
+        'email'   =>$faker->unique()->safeEmail,
     ];
 });

@@ -22,7 +22,7 @@ class AsignacionRepository extends BaseRepository
     protected $fieldSearchable = [
         'observacion',
         'ruta',
-        'teachers_id',
+        'teacher_id',
     ];
 
     /**

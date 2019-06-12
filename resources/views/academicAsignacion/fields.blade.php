@@ -1,7 +1,7 @@
 @include('flash::message')
 
 <!-- Profesores -->
-@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'teachers_id', 
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'teacher_id', 
 'label'=>'Profesor', 'data'=>$arrTeacher, 'options'=>['required']])
 
 <!-- observaciones Field -->

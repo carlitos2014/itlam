@@ -18,8 +18,8 @@ class CreateAsignacionesTable extends Migration
             $table->string('observacion');
             $table->string('ruta', 100);
             /* Relacion foranea */
-            $table->integer('teachers_id')->unsigned();
-            $table->foreign('teachers_id')->references('id')->on('teachers');
+            $table->integer('teacher_id')->unsigned();
+            $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -58,6 +58,7 @@
 		</li>
 	</ul>
 
+	@permission('acad-asignacion-index')
 	<ul class="treeview-menu">
 		<li class="treeview">
 			<a href="{!! route('asignacion.index') !!}"><i class="fa fa-user-plus"></i> Asignación Académica
@@ -68,6 +69,7 @@
 
 		</li>
 	</ul>
+	@endpermission
 
 	<ul class="treeview-menu">
 		<li class="treeview">
@@ -108,9 +110,8 @@
 					</ul>
 					@endpermission
 				</li>
-				@endpermission
 			</ul>
-		@endpermission
+			@endpermission
 		</li>
 	</ul>
 	@endpermission
@@ -127,6 +128,7 @@
 	</ul>
 
 </li>
+@endpermission
 
 <!-- Calidad -->
 <li class="{{ Request::is('cargarArchivos*') ? 'active' : '' }}">

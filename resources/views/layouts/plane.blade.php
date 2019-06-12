@@ -33,4 +33,12 @@
 
     @yield('body')
 
+    <script type="text/javascript">
+        //Se cierra la alerta a los 10 segundos.
+        setTimeout(function () {
+            $('.alert').slideUp(500, function(){
+                //$(this).alert('close');
+            });
+        }, 5*(1000));
+    </script>
 </html>

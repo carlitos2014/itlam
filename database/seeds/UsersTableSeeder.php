@@ -77,7 +77,19 @@ class UsersTableSeeder extends Seeder {
 			]);
 			$this->rolAcademicoAdmin->attachPermission($plan40Load);
 			$this->rolAdmin->attachPermission($plan40Load);
+
+			$permAsignacion = $this->createPermissions(Asignacion::class, 'asignaciones académicas', null, true, false, 'acad-');
+			$this->rolAcademicoAdmin->attachPermissions($permAsignacion);
+			$this->rolAcademicoUser->attachPermission($permAsignacion['index']);
 			
+			$permAsignacionDownload = Permission::create([
+				'name'         => 'acad-asignacion-download',
+				'display_name' => 'Descargar asignación académica',
+				'description'  => 'Permiso para poder descargar archivos de la asignación académica.',
+			]);
+			$this->rolAdmin->attachPermission($permAsignacionDownload);
+			$this->rolAcademicoAdmin->attachPermission($permAsignacionDownload);
+			$this->rolAcademicoUser->attachPermission($permAsignacionDownload);
 
 		//*********************************************************************
 		$this->command->info('--- Seeder Creación de Usuarios prueba');
@@ -119,7 +131,7 @@ class UsersTableSeeder extends Seeder {
 
 	}
 
-	private function createPermissions($name, $display_name, $description = null, $attachAdmin=true, $attachEmpleado=true)
+	private function createPermissions($name, $display_name, $description = null, $attachAdmin=true, $attachEmpleado=true, $prefix='')
 	{
         $name = strtolower(last(explode('\\',basename(get_model($name)))));
 
@@ -127,22 +139,22 @@ class UsersTableSeeder extends Seeder {
 			$description = $display_name;
 
 		$create = Permission::create([
-			'name'         => $name.'-create',
+			'name'         => $prefix.$name.'-create',
 			'display_name' => 'Crear '.$display_name,
 			'description'  => 'Crear '.$description,
 		]);
 		$edit = Permission::create([
-			'name'         => $name.'-edit',
+			'name'         => $prefix.$name.'-edit',
 			'display_name' => 'Editar '.$display_name,
 			'description'  => 'Editar '.$description,
 		]);
 		$index = Permission::create([
-			'name'         => $name.'-index',
+			'name'         => $prefix.$name.'-index',
 			'display_name' => 'Listar '.$display_name,
 			'description'  => 'Listar '.$description,
 		]);
 		$delete = Permission::create([
-			'name'         => $name.'-delete',
+			'name'         => $prefix.$name.'-delete',
 			'display_name' => 'Borrar '.$display_name,
 			'description'  => 'Borrar '.$description,
 		]);

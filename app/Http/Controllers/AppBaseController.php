@@ -18,6 +18,19 @@ use Response;
  */
 class AppBaseController extends Controller
 {
+    
+	public function __construct($permision='', $requireAuth=true)
+	{
+		if($requireAuth)
+			$this->middleware('auth');
+
+		$this->middleware('permission:'.$permision.'-index',  ['only' => ['index']]);
+		$this->middleware('permission:'.$permision.'-create', ['only' => ['create', 'store']]);
+		$this->middleware('permission:'.$permision.'-edit',   ['only' => ['edit', 'update']]);
+		$this->middleware('permission:'.$permision.'-delete', ['only' => ['destroy']]);
+	}
+
+
     public function sendResponse($result, $message)
     {
         return Response::json(ResponseUtil::makeResponse($message, $result));

@@ -56,12 +56,12 @@ class Teacher extends Model
         return $this->belongsTo(sedes::class);
     }
     
-    public function asignacion()
+    public function asignaciones()
     {
         return $this->hasMany(Asignaciones::class);
     }
 
-public function user(){
+    public function user(){
 
         return $this-> hasOne(User::class);
     }

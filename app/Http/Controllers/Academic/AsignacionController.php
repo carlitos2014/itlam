@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Entrust;
 
 class AsignacionController extends AppBaseController
 {
@@ -20,6 +21,8 @@ class AsignacionController extends AppBaseController
     public function __construct(AsignacionRepository $asignacionRepo)
     {
         $this->asignacionRepository = $asignacionRepo;
+        parent::__construct($permision='acad-asignacion');
+        $this->middleware('permission:acad-asignacion-download', ['only' => ['downloadFile']]);
     }
 
     /**
@@ -30,9 +33,21 @@ class AsignacionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->asignacionRepository->pushCriteria(new RequestCriteria($request));
-        $asignacion = $this->asignacionRepository->all();
-        $asignacion = Asignacion::paginate(10);
+        //$this->asignacionRepository->pushCriteria(new RequestCriteria($request));
+        //$asignacion = $this->asignacionRepository;
+        $asignacion = null;
+        if(Entrust::hasRole('academico-user')){
+            $teacher = Entrust::user()->teacher;
+            $teacher_id = isset($teacher) ? $teacher->id : null;
+            $asignacion = Asignacion::with('teacher')
+                                ->where('teacher_id', $teacher_id)
+                                ->paginate(10);
+            //$asignacion = $asignacion->leftJoin('teachers')
+            //                ->where('teachers.user_id', Entrust::user()->id);
+
+        } else {
+            $asignacion = Asignacion::with('teacher')->paginate(10);
+        }
 
         return view('academicAsignacion.index')
             ->with('asignacion', $asignacion);
@@ -46,7 +61,7 @@ class AsignacionController extends AppBaseController
     public function create()
     {
 
-        $arrTeacher = model_to_array(Teacher::class, 'nombres');
+        $arrTeacher = model_to_array(Teacher::class, expression_concat(['nombres', 'apellidos'], 'nombre_completo' ));
         return view('academicAsignacion.create',compact('arrTeacher'));
     }
 
