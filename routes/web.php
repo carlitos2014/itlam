@@ -27,8 +27,8 @@ Route::group(['middleware'=>'auth'], function() {
 	/* Modulo Sedes */
 	Route::resource('sedes', 'Sede\SedeController');
 
-	Route::resource('noConformidades', 'NoConformidadController');
-	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD
+	/* Route::resource('noConformidades', 'NoConformidadController');
+	Route::resource('cargarArchivos', 'ArchivoController'); //CRUD */
 
 	/* Modulo Academico */
 	Route::resource('academic', 'Academic\AcademicController'); //CRUD

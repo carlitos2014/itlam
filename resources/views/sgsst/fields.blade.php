@@ -13,8 +13,9 @@
 </div>
 
 <!-- Ruta Field -->
-	<strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>
-	@include('widgets.forms.input', ['type'=>'file', 'name'=>'ruta', 'label'=>'Archivo:','options'=>['required']]) 
+	
+	@include('widgets.forms.input', ['type'=>'file', 'name'=>'ruta', 'label'=>'Archivo:
+     <strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>','options'=>['required']]) 
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
