@@ -16,10 +16,10 @@ class CreateAsignacionesTable extends Migration
         Schema::create('asignaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('observacion');
-            $table->string('ruta', 100);
+            $table->string('ruta', 100)->nullable();
             /* Relacion foranea */
-            $table->integer('teacher_id')->unsigned();
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->integer('teachers_id')->unsigned();
+            $table->foreign('teachers_id')->references('id')->on('teachers');
             $table->timestamps();
             $table->softDeletes();
         });

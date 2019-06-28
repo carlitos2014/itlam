@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use Entrust;
 
 class AsignacionController extends AppBaseController
 {
@@ -20,9 +19,8 @@ class AsignacionController extends AppBaseController
 
     public function __construct(AsignacionRepository $asignacionRepo)
     {
+       // dd($asignacionRepo->$rules);
         $this->asignacionRepository = $asignacionRepo;
-        parent::__construct($permision='acad-asignacion');
-        $this->middleware('permission:acad-asignacion-download', ['only' => ['downloadFile']]);
     }
 
     /**
@@ -33,24 +31,12 @@ class AsignacionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        //$this->asignacionRepository->pushCriteria(new RequestCriteria($request));
-        //$asignacion = $this->asignacionRepository;
-        $asignacion = null;
-        if(Entrust::hasRole('academico-user')){
-            $teacher = Entrust::user()->teacher;
-            $teacher_id = isset($teacher) ? $teacher->id : null;
-            $asignacion = Asignacion::with('teacher')
-                                ->where('teacher_id', $teacher_id)
-                                ->paginate(10);
-            //$asignacion = $asignacion->leftJoin('teachers')
-            //                ->where('teachers.user_id', Entrust::user()->id);
-
-        } else {
-            $asignacion = Asignacion::with('teacher')->paginate(10);
-        }
+        $this->asignacionRepository->pushCriteria(new RequestCriteria($request));
+        $asignacion = $this->asignacionRepository->all();
+        $asignacion = Asignacion::paginate(10);
 
         return view('academicAsignacion.index')
-            ->with('asignacion', $asignacion);
+        ->with('asignacion', $asignacion);
     }
 
     /**
@@ -61,7 +47,7 @@ class AsignacionController extends AppBaseController
     public function create()
     {
 
-        $arrTeacher = model_to_array(Teacher::class, expression_concat(['nombres', 'apellidos'], 'nombre_completo' ));
+        $arrTeacher = model_to_array(Teacher::class, 'nombres');
         return view('academicAsignacion.create',compact('arrTeacher'));
     }
 
@@ -72,27 +58,27 @@ class AsignacionController extends AppBaseController
      *
      * @return Response
      */
-    public function store( Request $request)
-	{
-		if($request->hasFile('ruta')){
+    public function store( CreateAsignacionRequest $request)
+    {
+      if($request->hasFile('ruta')){
 
-	        $asignacion = $this->asignacionRepository->create($request->all());
-			$file=$request->file('ruta');
-			$name=$file->getClientOriginalName();
-			
-			//Grantizo que los archivos no se sobrescriban
-			$file->move(storage_path('app/Academic/Horarios/').$asignacion->id,$name);
-			$asignacion->update(['ruta'=>$name]);
-			
-	        Flash::success('Registrado con Exito.');
-			return redirect(route('asignacion.index'));
-		}else{
-			Flash::error('Por favor completar todos los datos solicitados');
-			return redirect()->back();
-		}
+       $asignacion = $this->asignacionRepository->create($request->all());
+       $file=$request->file('ruta');
+       $name=$file->getClientOriginalName();
 
-		
-	}
+       /*Grantizo que los archivos no se sobrescriban*/
+       $file->move(storage_path('app/Academic/Horarios/').$asignacion->id,$name);
+       $asignacion->update(['ruta'=>$name]);
+
+       Flash::success('Registrado con Exito.');
+       return redirect(route('asignacion.index'));
+   }else{
+     Flash::error('Por favor completar todos los datos solicitados');
+     return redirect()->back();
+ }
+
+
+}
 
     /**
      * Display the specified Asignacion.
@@ -151,12 +137,22 @@ class AsignacionController extends AppBaseController
             return redirect(route('asignacion.index'));
         }
 
-        $file=$request->file('ruta');
-        $name=$file->getClientOriginalName();
-        $file->move(storage_path('app/Academic/Horarios/').$asignacion->id,$name);
-        $asignacion = $this->asignacionRepository->update($request->except(['ruta'])+['ruta'=>$name], $id);
+        $asignacion = $this->asignacionRepository->update($request->all(), $id);
 
-        Flash::success('Asignacion actualizada Correctamente');
+        if($request->hasFile('ruta')){
+
+            $file=$request->file('ruta');
+            $name=$file->getClientOriginalName();
+
+        //Grantizo que los archivos no se sobrescriban
+
+            $file->move(storage_path('app/Academic/Horarios/').$asignacion->id,$name);
+            $asignacion->update(['ruta'=>$name]);
+
+        }
+        
+
+        Flash::success('Asignacion updated successfully.');
 
         return redirect(route('asignacion.index'));
     }
@@ -173,32 +169,31 @@ class AsignacionController extends AppBaseController
         $asignacion = $this->asignacionRepository->findWithoutFail($id);
 
         if (empty($asignacion)) {
-            Flash::error('Asignacion not found');
 
+            Flash::error('Asignacion not found');
             return redirect(route('asignacion.index'));
         }
 
         $this->asignacionRepository->delete($id);
 
         Flash::success('Asignacion Borrada con Exito.');
-
         return redirect(route('asignacion.index'));
     }
 
     public function downloadFile($id)
-	{		
-		$asignacion= Asignacion::find($id);
-		if (empty($asignacion)) {
-			Flash::error('asignacion not found');
-			return redirect(route('asignacion.index'));
-		}
+    {		
+      $asignacion= Asignacion::find($id);
+      if (empty($asignacion)) {
+         Flash::error('asignacion not found');
+         return redirect(route('asignacion.index'));
+     }
 
-		$file = storage_path('app/Academic/Horarios/'.$id.'/').$asignacion->ruta;
-		if(file_exists($file)){
-			return \Response::download($file);
-		} else {
-			Flash::error('File not found');
-			return redirect(route('asignacion.index'));
-		}
-	}
+     $file = storage_path('app/Academic/Horarios/'.$id.'/').$asignacion->ruta;
+     if(file_exists($file)){
+         return \Response::download($file);
+     } else {
+         Flash::error('File not found');
+         return redirect(route('asignacion.index'));
+     }
+ }
 }

@@ -25,6 +25,12 @@ class UpdateAsignacionRequest extends FormRequest
      */
     public function rules()
     {
+
+        /* Actuliza   $rules */
+        if($this->get('ruta'))        
+            $rules = array_merge($rules, ['ruta' =>'mimes:pdf,doc,docx']);
+
+        
         return Asignacion::$rules;
     }
 }

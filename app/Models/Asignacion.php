@@ -13,16 +13,20 @@ class Asignacion extends Model
 	protected $fillable = [
         'observacion',
         'ruta',
-        'teacher_id',		
+        'teachers_id',		
 	];
+
 
 	public static $rules = [
 		'observacion' =>['required', 'max:100'],
-		'ruta' => ['required',],			
-		'teacher_id' => ['required','max:1000'],
+		//'ruta'        => ['required','mimes:pdf,doc,docx'],			
+		'teachers_id' => ['required','max:1000'],
+
 	];
 
-	public function teacher()
+	
+
+	public function teachers()
     {
         return $this->belongsTo(Teacher::class);
     }

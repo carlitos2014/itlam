@@ -1,7 +1,7 @@
 @include('flash::message')
 
 <!-- Profesores -->
-@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'teacher_id', 
+@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'teachers_id', 
 'label'=>'Profesor', 'data'=>$arrTeacher, 'options'=>['required']])
 
 <!-- observaciones Field -->
@@ -12,8 +12,9 @@
 
 <!-- Ruta Field -->
 <div>
+   
 	@include('widgets.forms.input', ['type'=>'file', 'name'=>'ruta', 'label'=>'Archivo:
-        <strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>','options'=>['required']]) 
+        <strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>','options'=>['accept' => '.pdf,.doc,.docx']]) 
 </div>
 
 <!-- Submit Field -->
