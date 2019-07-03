@@ -16,6 +16,7 @@ class CreateAuditoresTable extends Migration
         Schema::create('auditores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('email')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

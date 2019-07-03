@@ -63,6 +63,14 @@ class AuditoriaController extends AppBaseController
     {
         $input = $request->all();
         $auditoria = $this->auditoriaRepository->create($input);
+
+        $this->sendEmail(
+            $subject = 'Auditoría '.$auditoria->id.' creada',
+            $body    = 'Se ha creado una auditoría.',
+            $to      = [$auditoria->auditorLider->email],
+            $cc      = []
+        );
+
         Flash::success('Auditoria saved successfully.');
         return redirect( route('auditorias.edit', compact('auditoria') ) );
     }

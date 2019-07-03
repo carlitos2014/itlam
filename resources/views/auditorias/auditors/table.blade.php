@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
+            <th>Correo</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -9,11 +10,12 @@
     @foreach($auditors as $auditor)
         <tr>
             <td>{!! $auditor->nombre !!}</td>
+            <td>{!! $auditor->email !!}</td>
             <td>
-                {!! Form::open(['route' => ['auditors.destroy', $auditor->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['auditorias.auditors.destroy', $auditor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('auditors.show', [$auditor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('auditors.edit', [$auditor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('auditorias.auditors.show', [$auditor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('auditorias.auditors.edit', [$auditor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}

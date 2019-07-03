@@ -23,7 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::patterns([
+            'auditoria'=>'[0-9]+',
+        ]);
 
         parent::boot();
     }

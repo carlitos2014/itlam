@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AppBaseController;
 
 use App\Models\Permission;
 
-class PermissionController extends Controller
+class PermissionController extends AppBaseController
 {
 	protected $route = 'auth.permisos';
 	protected $class = Permission::class;

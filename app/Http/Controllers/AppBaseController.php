@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
 
+use App\Jobs\SendEmail;
 /**
  * @SWG\Swagger(
  *   basePath="/api/v1",
@@ -40,4 +41,11 @@ class AppBaseController extends Controller
     {
         return Response::json(ResponseUtil::makeError($error), $code);
     }
+
+    protected function sendEmail($subject, $body, array $to, array $cc=[])
+    {
+        $this->dispatch(new SendEmail($subject, $body, $to, $cc));
+    }
+
+
 }

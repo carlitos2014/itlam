@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AppBaseController;
 
 use App\Models\Role;
 
-class RoleController extends Controller
+class RoleController extends AppBaseController
 {
 	protected $route = 'auth.roles';
 	protected $class = Role::class;

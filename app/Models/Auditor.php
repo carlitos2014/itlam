@@ -23,7 +23,8 @@ class Auditor extends Model
 
 
     public $fillable = [
-        'nombre'
+        'nombre',
+        'email'
     ];
 
     /**
@@ -32,7 +33,8 @@ class Auditor extends Model
      * @var array
      */
     protected $casts = [
-        'nombre' => 'string'
+        'nombre' => 'string',
+        'email'  => 'string'
     ];
 
     /**
@@ -41,7 +43,8 @@ class Auditor extends Model
      * @var array
      */
     public static $rules = [
-        'nombre' => 'required'
+        'nombre' => 'required',
+        'email'  => 'required|email'
     ];
 
     public function auditorias()

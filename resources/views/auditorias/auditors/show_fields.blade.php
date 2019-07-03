@@ -10,6 +10,12 @@
     <p>{!! $auditor->nombre !!}</p>
 </div>
 
+<!-- Nombre Field -->
+<div class="form-group">
+    {!! Form::label('email', 'Correo:') !!}
+    <p>{!! $auditor->email !!}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

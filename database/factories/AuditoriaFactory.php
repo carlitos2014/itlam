@@ -13,6 +13,7 @@ $factory->define(App\Models\Procesos::class, function (Faker $faker) {
 $factory->define(App\Models\Auditor::class, function (Faker $faker) {
     return [
         'nombre' => $faker->name,
+        'email'  => $faker->unique()->safeEmail,
     ];
 });
 

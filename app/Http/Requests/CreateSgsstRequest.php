@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Sgsst;
 
-class UpdateSgsstRequest extends FormRequest
+class CreateSgsstRequest extends FormRequest
 {
 
     /**
