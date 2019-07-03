@@ -11,6 +11,8 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
+use App\Models\Auditoria;
+
 class AuditoriaProcesoController extends AppBaseController
 {
     /** @var  AuditoriaProcesoRepository */
@@ -30,7 +32,7 @@ class AuditoriaProcesoController extends AppBaseController
     public function create()
     {
         $auditoria = request()->get('auditoria');
-        $arrAuditores = model_to_array(Auditor::class, 'nombre');
+        $arrAuditores = model_to_array(Auditoria::findOrFail($auditoria)->auditoresInternos, 'nombre');
         $arrProceso = model_to_array(Procesos::class, 'nombre');
         return view('auditorias.auditoria_procesos.create', compact('auditoria','arrAuditores','arrProceso'));
     }

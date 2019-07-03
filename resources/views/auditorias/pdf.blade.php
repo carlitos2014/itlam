@@ -155,15 +155,15 @@
 	  <table id="tbProg" class="body" style="text-align: center;">
 		<tr>
 			<td>REUNIÓN<br>DE APERTURA</td>
-			<td>FECHA: 2016-06-02</td>
-			<td>HORA:  8 am</td>
-			<td>LUGAR:<br>Coordinación Académica</td>
+			<td>FECHA: {{$auditoria->fecha_apertura->toDateString()}}</td>
+			<td>HORA:  {{$auditoria->fecha_apertura->format('h:i A')}}</td>
+			<td>LUGAR:<br>{{$auditoria->lugar_apertura}}</td>
 		</tr>
 		<tr>
 			<td>REUNIÓN<br>DE CIERRE</td>
-			<td>FECHA: 2016-06-02</td>
-			<td>HORA:  8 am</td>
-			<td>LUGAR:<br>Coordinación Académica</td>
+			<td>FECHA: {{$auditoria->fecha_cierre->toDateString()}}</td>
+			<td>HORA:  {{$auditoria->fecha_cierre->format('h:i A')}}</td>
+			<td>LUGAR:<br>{{$auditoria->lugar_cierre}}</td>
 		</tr>
 	  </table>
 

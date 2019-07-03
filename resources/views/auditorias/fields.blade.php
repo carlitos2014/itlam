@@ -1,45 +1,51 @@
 @include('widgets.datepicker')
+@include('widgets.select2')
 
-<!-- Fecha Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha', 'Fecha:') !!}
-    {!! Form::datetime('fecha', null, ['class' => 'form-control datepicker']) !!}
+<div class="col-sm-12 col-lg-12">
+    <!-- Fecha Field -->
+    @include('widgets.forms.input', ['type'=>'date', 'column'=>6, 'name'=>'fecha', 'label'=>'Fecha' ])
+    <!-- Lugar Field -->
+    @include('widgets.forms.input', ['type'=>'text', 'column'=>6, 'name'=>'lugar', 'label'=>'Lugar'])
+</div>
+<div class="col-sm-12 col-lg-12">
+    <!-- Lugar Auditor lider -->
+    @include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_lider_id', 'label'=>'Auditor lider', 'data'=>$arrAuditores, 'options'=>['required']]) 
+    <!-- Lugar Auditores internos -->
+    @include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditoresInternos', 'label'=>'Auditores internos', 'data'=>$arrAuditores, 'multiple'=>true, 'options'=>['']])
 </div>
 
-<!-- Lugar Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('lugar', 'Lugar:') !!}
-    {!! Form::text('lugar', null, ['class' => 'form-control']) !!}
+<div class="col-sm-12 col-lg-12">
+    <!-- Fecha Field -->
+    @include('widgets.forms.input', ['type'=>'date', 'column'=>6, 'name'=>'fecha_apertura', 'label'=>'Fecha apertura' ])
+    <!-- Lugar Field -->
+    @include('widgets.forms.input', ['type'=>'text', 'column'=>6, 'name'=>'lugar_apertura', 'label'=>'Lugar apertura'])
+</div>
+<div class="col-sm-12 col-lg-12">
+    <!-- Fecha Field -->
+    @include('widgets.forms.input', ['type'=>'date', 'column'=>6, 'name'=>'fecha_cierre', 'label'=>'Fecha cierre' ])
+    <!-- Lugar Field -->
+    @include('widgets.forms.input', ['type'=>'text', 'column'=>6, 'name'=>'lugar_cierre', 'label'=>'Lugar cierre'])
 </div>
 
-<!-- Lugar Auditor lider -->
-@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditor_lider_id', 'label'=>'Auditor lider', 'data'=>$arrAuditores, 'options'=>['required']]) 
-
-<!-- Lugar Auditores internos -->
-@include('widgets.forms.input', ['type'=>'select', 'column'=>6, 'name'=>'auditoresInternos', 'label'=>'Auditores internos', 'data'=>$arrAuditores, 'multiple'=>true, 'options'=>['']]) 
 
 <!-- Objetivos Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('objetivos', 'Objetivos:') !!}
-    {!! Form::textarea('objetivos', null, ['class' => 'form-control', 'size' => '20x3', 'maxlength' => '300', 'style' => 'resize: vertical']) !!}
+<div class="col-sm-12 col-lg-6">
+    @include('widgets.forms.input', [ 'type'=>'textarea', 'name'=>'objetivos', 'label'=>'Objetivos:', 'options'=>['maxlength' => '3000'] ])
 </div>
 
 <!-- Alcances Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('alcances', 'Alcances:') !!}
-    {!! Form::textarea('alcances', null, ['class' => 'form-control', 'size' => '20x3', 'maxlength' => '300', 'style' => 'resize: vertical']) !!}
+<div class="col-sm-12 col-lg-6">
+    @include('widgets.forms.input', [ 'type'=>'textarea',  'name'=>'alcances', 'label'=>'Alcances:', 'options'=>['maxlength' => '3000'] ])
 </div>
 
 <!-- Criterios Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('criterios', 'Criterios:') !!}
-    {!! Form::textarea('criterios', null, ['class' => 'form-control', 'size' => '20x3', 'maxlength' => '300', 'style' => 'resize: vertical']) !!}
+<div class="col-sm-12 col-lg-6">
+    @include('widgets.forms.input', [ 'type'=>'textarea',  'name'=>'criterios', 'label'=>'Criterios:', 'options'=>['maxlength' => '3000'] ])
 </div>
 
 <!-- Observaciones Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('observaciones', 'Observaciones:') !!}
-    {!! Form::textarea('observaciones', null, ['class' => 'form-control', 'size' => '20x3', 'maxlength' => '300', 'style' => 'resize: vertical']) !!}
+<div class="col-sm-12 col-lg-6">
+    @include('widgets.forms.input', [ 'type'=>'textarea',  'name'=>'observaciones', 'label'=>'Observaciones:', 'options'=>['maxlength' => '3000'] ])
 </div>
 
 

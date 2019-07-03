@@ -1,12 +1,7 @@
 @include('widgets.datepicker')
 
 <!-- Fecha Field -->
-<div class="form-group col-sm-4">
-    {!! Form::label('fecha', 'Fecha:') !!}
-    {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
-</div>
-
-
+@include('widgets.forms.input', ['type'=>'date', 'column'=>4, 'name'=>'fecha', 'label'=>'Fecha' ])
 @include('widgets.forms.input', ['type'=>'time', 'column'=>4, 'name'=>'hora_inicio', 'label'=>'Hora Inicio' ])
 @include('widgets.forms.input', ['type'=>'time', 'column'=>4, 'name'=>'hora_fin', 'label'=>'Hora Fin' ])
 

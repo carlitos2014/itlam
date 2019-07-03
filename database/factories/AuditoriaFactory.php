@@ -18,13 +18,18 @@ $factory->define(App\Models\Auditor::class, function (Faker $faker) {
 });
 
 $factory->define(App\Models\Auditoria::class, function (Faker $faker) {
+    $fecha = Carbon::instance($faker->dateTime);
     return [
-        'fecha' => $faker->dateTime,
+        'fecha' => $fecha,
         'lugar' => $faker->name,
         'objetivos' => $faker->paragraph,
         'alcances' => $faker->paragraph,
         'criterios' => $faker->paragraph,
         'observaciones' => $faker->paragraph,
+        'fecha_apertura' => $fecha->addDays(3),
+        'lugar_apertura' => $faker->name,
+        'fecha_cierre' => $fecha->addDays(6),
+        'lugar_cierre' => $faker->name,
     ];
 });
 

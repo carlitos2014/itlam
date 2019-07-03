@@ -34,7 +34,11 @@ class Auditoria extends Model
         'alcances',
         'criterios',
         'observaciones',
-        'auditor_lider_id'
+        'auditor_lider_id',
+        'fecha_apertura',
+        'lugar_apertura',
+        'fecha_cierre',
+        'lugar_cierre',
     ];
 
     /**
@@ -48,7 +52,11 @@ class Auditoria extends Model
         'objetivos' => 'string',
         'alcances' => 'string',
         'criterios' => 'string',
-        'observaciones' => 'string'
+        'observaciones' => 'string',
+        'fecha_apertura' => 'date',
+        'lugar_apertura' => 'string',
+        'fecha_cierre' => 'date',
+        'lugar_cierre' => 'string',
     ];
 
     /**
@@ -64,7 +72,11 @@ class Auditoria extends Model
         'objetivos' => ['required','max:3000'],
         'alcances' => ['required','max:3000'],
         'criterios' => ['required','max:3000'],
-        'observaciones' => ['max:3000']
+        'observaciones' => ['max:3000'],
+        'fecha_apertura' => ['required','date'],
+        'lugar_apertura' => ['required','max:100'],
+        'fecha_cierre' => ['required','date'],
+        'lugar_cierre' => ['required','max:100'],
     ];
 
 

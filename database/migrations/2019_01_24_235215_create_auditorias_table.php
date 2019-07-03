@@ -16,12 +16,16 @@ class CreateAuditoriasTable extends Migration
         Schema::create('auditorias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('fecha');
-            $table->string('lugar');
+            $table->string('lugar', 100);
             $table->unsignedInteger('auditor_lider_id')->nullable();//Foranea auditores
             $table->string('objetivos', 3000);
             $table->string('alcances', 3000);
             $table->string('criterios', 3000);
             $table->string('observaciones', 3000);
+            $table->timestamp('fecha_apertura');
+            $table->string('lugar_apertura', 100);
+            $table->timestamp('fecha_cierre');
+            $table->string('lugar_cierre', 100);
             $table->timestamps();
             $table->softDeletes();
 
