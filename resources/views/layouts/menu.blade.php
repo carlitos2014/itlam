@@ -28,12 +28,7 @@
 		<li class="{{ Request::is('sedes*') ? 'active' : '' }}">
 			<a href="{!! route('sedes.index') !!}"><i class="fa fa-building"></i> Sedes</a>
 		</li>
-		<li class="{{ Request::is('auditorias.procesos*') ? 'active' : '' }}">
-		    <a href="{{route('auditorias.procesos.index')}}"><i class="fa fa-edit"></i><span>Procesos</span></a>
-		</li>
-		<li class="{{ Request::is('auditorias.auditors*') ? 'active' : '' }}">
-		    <a href="{{route('auditorias.auditors.index')}}"><i class="fa fa-edit"></i><span>Auditores Internos</span></a>
-		</li>
+		
 	</ul>
 </li>
 
@@ -138,6 +133,20 @@
 			<i class="fa fa-angle-left pull-right"></i>
 		</span>
 	</a>
+
+	<ul class="treeview-menu">
+		<li class="{{ Request::is('auditorias.auditors*') ? 'active' : '' }}">
+		    <a href="{{route('auditorias.auditors.index')}}"><i class="fa fa-edit"></i><span>Auditores Internos</span></a>
+		</li>
+	</ul>
+
+	<ul class="treeview-menu">
+		<li class="{{ Request::is('auditorias.procesos*') ? 'active' : '' }}">
+		    <a href="{{route('auditorias.procesos.index')}}"><i class="fa fa-edit"></i><span>Procesos</span></a>
+		</li>
+			
+	</ul>
+
 
 	<ul class="treeview-menu">
 		<li class="treeview">
