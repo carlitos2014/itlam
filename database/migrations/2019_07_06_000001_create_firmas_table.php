@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProcesosTable extends Migration
+class CreateFirmasTable extends Migration
 {
 
     /**
@@ -13,11 +13,10 @@ class CreateProcesosTable extends Migration
      */
     public function up()
     {
-        Schema::create('procesos', function (Blueprint $table) {
+        Schema::create('firmas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('responsable',100);
-            $table->string('email',320);
+            $table->string('cargo');
+            $table->string('filename');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +29,6 @@ class CreateProcesosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('procesos');
+        Schema::drop('firmas');
     }
 }

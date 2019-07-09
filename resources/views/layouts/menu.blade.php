@@ -34,6 +34,9 @@
 		<li class="{{ Request::is('auditorias.auditors*') ? 'active' : '' }}">
 		    <a href="{{route('auditorias.auditors.index')}}"><i class="fa fa-edit"></i><span>Auditores Internos</span></a>
 		</li>
+		<li class="{{ Request::is('app.firmas.*') ? 'active' : '' }}">
+		    <a href="{{route('app.firmas.index')}}"><i class="fa fa-signature"></i><span>Firmas</span></a>
+		</li>
 	</ul>
 </li>
 

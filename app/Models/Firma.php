@@ -12,19 +12,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property string nombre
  */
-class Auditor extends Model
+class Firma extends Model
 {
     use SoftDeletes;
 
-    public $table = 'auditores';
+    public $table = 'firmas';
     
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
-        'nombre',
-        'email',
+        'cargo',
+        'filename',
     ];
 
     /**
@@ -33,8 +32,8 @@ class Auditor extends Model
      * @var array
      */
     protected $casts = [
-        'nombre' => 'string',
-        'email'  => 'string',
+        'cargo' => 'string',
+        'filename'  => 'string',
     ];
 
     /**
@@ -43,17 +42,9 @@ class Auditor extends Model
      * @var array
      */
     public static $rules = [
-        'nombre' => 'required',
-        'email' => 'required,email,max:320',
+        'cargo' => 'required',
+        'filename' => 'required|file',
     ];
 
-    public function auditorias()
-    {
-        return $this->hasMany(Auditoria::class);
-    }
 
-    public function auditoriasInternas()
-    {
-        return $this->belongsToMany(Auditoria::class, 'auditorias_auditores');
-    }
 }
