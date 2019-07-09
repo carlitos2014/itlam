@@ -23,14 +23,14 @@ class CreateAsignacionRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(){
+    public function rules()
+    {
+        return [
 
-        /* Actuliza   $rules */ 
-        if($this->get('ruta'))        
-            $rules = array_merge($rules, ['ruta' =>'required','mimes:pdf,doc,docx']);
-
-        
-
-        return Asignacion::$rules;
+            'observacion' =>['required', 'max:100'],
+            'ruta'        => ['required','mimes:pdf,doc,docx'],           
+            'teachers_id' => ['required','max:1000'],
+           
+        ];
     }
 }

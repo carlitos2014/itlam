@@ -19,8 +19,9 @@ class AsignacionController extends AppBaseController
 
     public function __construct(AsignacionRepository $asignacionRepo)
     {
-       // dd($asignacionRepo->$rules);
+       // dd($asignacionRepo );
         $this->asignacionRepository = $asignacionRepo;
+
     }
 
     /**
@@ -31,6 +32,7 @@ class AsignacionController extends AppBaseController
      */
     public function index(Request $request)
     {
+
         $this->asignacionRepository->pushCriteria(new RequestCriteria($request));
         $asignacion = $this->asignacionRepository->all();
         $asignacion = Asignacion::paginate(10);
@@ -60,7 +62,11 @@ class AsignacionController extends AppBaseController
      */
     public function store( CreateAsignacionRequest $request)
     {
+
+
       if($request->hasFile('ruta')){
+
+    
 
        $asignacion = $this->asignacionRepository->create($request->all());
        $file=$request->file('ruta');

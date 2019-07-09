@@ -12,6 +12,7 @@
 
         <div class="box-body">
             <div class="row">
+                
                 {!! Form::open(['route' => 'asignacion.store','files' => true]) !!}
                 @include('academicAsignacion.fields')
 
