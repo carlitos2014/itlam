@@ -1,17 +1,19 @@
 @extends('layouts.app')
+
 @section('content')
     <section class="content-header">
         <h1>
-            Asignación Académica
+            Firma
         </h1>
    </section>
    <div class="content">
-       @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($asignacion, ['route' => ['asignacion.update',$asignacion->id], 'method' => 'patch','enctype' => 'multipart/form-data']) !!}
-                        @include('academicAsignacion.fields')
+                   {!! Form::model($firma, ['route' => ['app.firmas.update', $firma->id], 'method'=>'patch', 'files'=>true]) !!}
+
+                        @rinclude('fields')
+
                    {!! Form::close() !!}
                </div>
            </div>

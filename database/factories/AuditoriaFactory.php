@@ -7,6 +7,7 @@ $factory->define(App\Models\Procesos::class, function (Faker $faker) {
     return [
         'nombre' => $faker->numerify('Proceso ###') ,
         'responsable' => $faker->name,
+        'email'  => $faker->unique()->safeEmail,
     ];
 });
 

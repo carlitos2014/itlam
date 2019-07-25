@@ -29,6 +29,9 @@
 			<a href="{!! route('sedes.index') !!}"><i class="fa fa-building"></i> Sedes</a>
 		</li>
 		
+		<li class="{{ Request::is('app.firmas.*') ? 'active' : '' }}">
+		    <a href="{{route('app.firmas.index')}}"><i class="fa fa-signature"></i><span>Firmas</span></a>
+		</li>
 	</ul>
 </li>
 

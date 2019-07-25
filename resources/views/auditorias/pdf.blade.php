@@ -171,7 +171,10 @@
 
 	  <table id="tbObsFirm" class="body" style="">
 		<tr style="vertical-align: top">
-			<td rowspan="2" style="height: 300px;">OBSERVACIONES</td>
+			<td rowspan="2" style="height: 300px;">
+				OBSERVACIONES:<br>
+				{{$auditoria->observaciones}}
+			</td>
 			<td>
 				Firma Coordinador de Calidad<br>
 				{ img }

@@ -11,6 +11,7 @@
         <tr>
             <td>{!! $procesos->nombre !!}</td>
             <td>{!! $procesos->responsable !!}</td>
+            <td>{!! $procesos->email !!}</td>
             <td>
                 {!! Form::open(['route' => ['auditorias.procesos.destroy', $procesos->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

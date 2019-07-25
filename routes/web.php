@@ -24,6 +24,10 @@ Route::group(['middleware'=>'auth'], function() {
 	
 	Route::get('/', 'HomeController@index');
 	
+	Route::group(['prefix'=>'app', 'as'=>'app.', 'namespace'=>'App'], function() {
+		Route::resource('firmas', 'FirmaController'); //CRUD
+	});
+
 	/* Modulo Sedes */
 	Route::resource('sedes', 'Sede\SedeController');
 

@@ -78,7 +78,7 @@ class AuditorController extends AppBaseController
         if (empty($auditor)) {
             Flash::error('Auditor not found');
 
-            return redirect(route('auditors.index'));
+            return redirect(route('auditorias.auditors.index'));
         }
 
         return view('auditorias.auditors.show')->with('auditor', $auditor);
@@ -98,7 +98,7 @@ class AuditorController extends AppBaseController
         if (empty($auditor)) {
             Flash::error('Auditor not found');
 
-            return redirect(route('auditors.index'));
+            return redirect(route('auditorias.auditors.index'));
         }
 
         return view('auditorias.auditors.edit')->with('auditor', $auditor);
@@ -119,7 +119,7 @@ class AuditorController extends AppBaseController
         if (empty($auditor)) {
             Flash::error('Auditor not found');
 
-            return redirect(route('auditors.index'));
+            return redirect(route('auditorias.auditors.index'));
         }
 
         $auditor = $this->auditorRepository->update($request->all(), $id);
@@ -142,7 +142,6 @@ class AuditorController extends AppBaseController
 
         if (empty($auditor)) {
             Flash::error('Auditor not found');
-
             return redirect(route('auditorias.auditors.index'));
         }
 

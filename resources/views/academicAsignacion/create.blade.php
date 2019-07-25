@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <section class="content-header">
     <h1>
@@ -9,12 +8,10 @@
 <div class="content">
     @include('adminlte-templates::common.errors')
     <div class="box box-primary">
-
         <div class="box-body">
-            <div class="row">
+            <div class="row">                
                 {!! Form::open(['route' => 'asignacion.store','files' => true]) !!}
                 @include('academicAsignacion.fields')
-
                 {!! Form::close() !!}
             </div>
         </div>

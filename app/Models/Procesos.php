@@ -25,7 +25,8 @@ class Procesos extends Model
 
     public $fillable = [
         'nombre',
-        'responsable'
+        'responsable',
+        'email',
     ];
 
     /**
@@ -35,7 +36,8 @@ class Procesos extends Model
      */
     protected $casts = [
         'nombre' => 'string',
-        'responsable' => 'string'
+        'responsable' => 'string',
+        'email' => 'string',
     ];
 
     /**
@@ -45,7 +47,8 @@ class Procesos extends Model
      */
     public static $rules = [
         'nombre' => 'required,max:100',
-        'responsable' => 'required,max:100'
+        'responsable' => 'required,max:100',
+        'email' => 'required,email,max:320',
     ];
 
     

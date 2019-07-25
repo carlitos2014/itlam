@@ -61,6 +61,7 @@ class AuditoriaController extends AppBaseController
      */
     public function store(CreateAuditoriaRequest $request)
     {
+        dd($auditoria->procesos->pluck('email'));
         $input = $request->all();
         $auditoria = $this->auditoriaRepository->create($input);
 
@@ -68,7 +69,7 @@ class AuditoriaController extends AppBaseController
             $subject = 'Auditoría '.$auditoria->id.' creada',
             $body    = 'Se ha creado una auditoría.',
             $to      = [$auditoria->auditorLider->email],
-            $cc      = []
+            $cc      = $auditoria->procesos->pluck('email')
         );
 
         Flash::success('Auditoria saved successfully.');

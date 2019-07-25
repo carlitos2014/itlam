@@ -1,5 +1,5 @@
 @extends('layouts.emails.layout')
-@section('title', '- Ticket Autorizado')
+@section('title', ' - '.$subject)
 
 @section('tituloMensaje')
   <td class="alert alert-warning" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 16px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background-color: #00FF04; margin: 0; padding: 20px;" align="center" bgcolor="#FF9F00" valign="top">

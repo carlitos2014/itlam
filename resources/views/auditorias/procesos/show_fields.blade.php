@@ -10,6 +10,12 @@
     <p>{!! $procesos->nombre !!}</p>
 </div>
 
+<!-- Email Field -->
+<div class="form-group">
+    {!! Form::label('email', 'Email:') !!}
+    <p>{!! $procesos->email !!}</p>
+</div>
+
 <!-- Responsable Field -->
 <div class="form-group">
     {!! Form::label('responsable', 'Responsable:') !!}
