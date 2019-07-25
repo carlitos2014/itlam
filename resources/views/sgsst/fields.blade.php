@@ -1,17 +1,5 @@
 
 @include('flash::message')
-<script>
-function validarExtensionArchivo(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.pdf|\.docx)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        alert('Solo se permite archivos de audio con esta extensión .jpg/.pdf/.docx/.xlsx/.xls .');
-        fileInput.value = '';
-        return false;
-    }
-}
-</script>
 
 <!-- Nombre Field -->
 <div class="form-group col-sm-6">
@@ -28,7 +16,7 @@ function validarExtensionArchivo(){
 <!-- Ruta Field -->
 	
 	@include('widgets.forms.input', ['type'=>'file', 'id'=>'file', 'onchange'=>'return validarExtensionArchivo()', 'name'=>'ruta', 'label'=>'Archivo:
-     <strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>','options'=>['required']]) 
+     <strong><em><h6>Tamaño Máximo: 2MB</h6></em></strong>'])
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

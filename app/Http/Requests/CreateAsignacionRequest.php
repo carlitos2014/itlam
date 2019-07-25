@@ -27,7 +27,7 @@ class CreateAsignacionRequest extends FormRequest
 
         /* Actuliza   $rules */ 
         if($this->get('ruta'))        
-            $rules = array_merge($rules, ['ruta' =>'required','mimes:pdf,doc,docx']);
+            $rules = array_merge($rules, ['ruta' =>'required','mimes:.pdf,.doc,.docx']);
 
         
 

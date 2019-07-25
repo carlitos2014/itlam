@@ -7,6 +7,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Http\Requests\UpdateSgsstRequest;
+use App\Http\Requests\createSgsstRequest;
 use App\Repositories\SgsstRepository;
 
 class SgsstController extends Controller
@@ -37,7 +38,7 @@ class SgsstController extends Controller
 		return view('sgsst.create');
 	}
 
-	public function store( Request $request)
+	public function store( CreateSgsstRequest $request)
 	{
 		if($request->hasFile('ruta')){
 

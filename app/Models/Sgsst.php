@@ -21,6 +21,6 @@ class Sgsst extends Model
     public static $rules = [
 		'name' =>['required', 'max:100'],
 		'description' => ['required','max:1000'],
-		'ruta' => ['required',],			
+		
 	];
 }

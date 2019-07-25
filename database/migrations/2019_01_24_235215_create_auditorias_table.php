@@ -22,9 +22,9 @@ class CreateAuditoriasTable extends Migration
             $table->string('alcances', 3000);
             $table->string('criterios', 3000);
             $table->string('observaciones', 3000);
-            $table->timestamp('fecha_apertura')->nullable();
+            $table->timestamp('fecha_apertura')->default(0);
             $table->string('lugar_apertura', 100);
-            $table->timestamp('fecha_cierre')->nullable();
+            $table->timestamp('fecha_cierre')->default(0);
             $table->string('lugar_cierre', 100);
             $table->timestamps();
             $table->softDeletes();

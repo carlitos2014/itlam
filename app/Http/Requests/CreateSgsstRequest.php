@@ -23,8 +23,14 @@ class CreateSgsstRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+       public function rules()
     {
-        return Sgsst::$rules;
+
+        /* Crea   $rules */
+        if($this->get('ruta'))        
+            $rules = array_merge($rules, ['ruta' =>'mimes:pdf,doc,docx']);
+      
+         return Sgsst::$rules;
     }
+}
 }
