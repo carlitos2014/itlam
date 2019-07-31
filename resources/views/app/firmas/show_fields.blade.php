@@ -7,7 +7,7 @@
 <!-- image Field -->
 <div class="form-group">
     {!! Form::label('filename', 'Firma:') !!}
-    <p><img src="{{ asset('storage/firmas/'.$firma->filename) }}" alt="" title="" width="300px"></p>
+    <p><img src="{{ asset('storage/firmas/'.$firma->filename).'?'.\Carbon\Carbon::now()->timestamp }}" alt="" title="" width="300px"></p>
 </div>
 
 

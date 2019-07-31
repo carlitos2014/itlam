@@ -56,8 +56,8 @@
 	
 	<body>
 		<div class="header">
-			  <table id="tbHead" class="" style="text-align: center;">
-				  <tr class="" style="">
+			<table id="tbHead" class="" style="text-align: center;">
+				<tr class="" style="">
 					<td style="width: 120px"><img src="{{ public_path().'/img/logo.jpg' }}" width="120" /></td>
 					<td>
 						<span class="title">ASOCIACION CESAR CONTO</span><br>
@@ -71,69 +71,68 @@
 						2013 - 04 – 01<br>
 						<!-- Espacio reservado para numeración de página--><br>
 					</td>
-				  </tr>
-				  <tr>
+				</tr>
+				<tr>
 					<td colspan="3"><b>PLAN DE AUDITORIAS</b></td>
-				  </tr>
-			  </table>
+				</tr>
+			</table>
 		</div>
 
 
 
 	<div class="content">
 
-	  <table id="tb1" class="body" style="">
-		  <tr>
-			<td style="width: 200px">FECHA: {{$today}}</td>
-			<td>Periodo académico: </td>
-		  </tr>
-		  <tr >
-			<td colspan="2">AUDITOR LÍDER: {{$auditoria->auditorLider->nombre}}</td>
-		  </tr>
-		  <tr >
-			<td colspan="2">AUDITORES INTERNOS: {{ implode(', ', $auditoria->auditoresInternos->pluck('nombre')->toArray()) }}</td>
-		  </tr>
-		  <tr >
-			<td colspan="2">
-				Objetivo de la auditoria:
-				<ol>
-						 @foreach(preg_split('/[\n\r]+/', $auditoria->objetivos ) as $obj)
-					<li>{{$obj}}</li>
-						 @endforeach
-				</ol>
-			</td>
-		  </tr>
-		  <tr >
-			<td colspan="2">Alcance de la auditoria
-					@foreach(preg_split('/[\n\r]+/', $auditoria->alcances ) as $obj)
-					<p>{{$obj}}</p>
+		<table id="tb1" class="body" style="">
+			<tr>
+				<td style="width: 200px">FECHA: {{$today}}</td>
+				<td>Periodo académico: </td>
+			</tr>
+			<tr >
+				<td colspan="2">AUDITOR LÍDER: {{$auditoria->auditorLider->nombre}}</td>
+			</tr>
+			<tr >
+				<td colspan="2">AUDITORES INTERNOS: {{ implode(', ', $auditoria->auditoresInternos->pluck('nombre')->toArray()) }}</td>
+			</tr>
+			<tr >
+				<td colspan="2">Objetivo de la auditoria:
+					<ol>
+					@foreach(preg_split('/[\n\r]+/', $auditoria->objetivos ) as $obj)
+						<li>{{$obj}}</li>
 					@endforeach
-			</td>
-		  </tr>
-		  <tr >
-			<td colspan="2">Criterios de Auditoria <span class="text-muted">(Requisitos de la norma aplicada / Documentos de referencia)</span>
-					@foreach(preg_split('/[\n\r]+/', $auditoria->criterios ) as $obj)
+					</ol>
+				</td>
+			</tr>
+			<tr >
+				<td colspan="2">Alcance de la auditoria
+				@foreach(preg_split('/[\n\r]+/', $auditoria->alcances ) as $obj)
 					<p>{{$obj}}</p>
-					@endforeach
-			</td>
-		  </tr>
-		  <tr >
-			<td colspan="2">
-				<p>Técnicas Aplicadas: Lista de verificación, entrevista, muestreo, observación, seguimiento, comprobación</p>
-			</td>
-		  </tr>
-	  </table>
+				@endforeach
+				</td>
+			</tr>
+			<tr >
+				<td colspan="2">Criterios de Auditoria <span class="text-muted">(Requisitos de la norma aplicada / Documentos de referencia)</span>
+				@foreach(preg_split('/[\n\r]+/', $auditoria->criterios ) as $obj)
+					<p>{{$obj}}</p>
+				@endforeach
+				</td>
+			</tr>
+			<tr >
+				<td colspan="2">
+					<p>Técnicas Aplicadas: Lista de verificación, entrevista, muestreo, observación, seguimiento, comprobación</p>
+				</td>
+			</tr>
+		</table>
 
 		<br>
 
-	  <table id="tbProcesos" class="body" style="text-align: center;">
-		  <tr>
-			<th style="">FECHA<br>(aaaa-mm-dd)</th>
-			<th style="">HORARIO</th>
-			<th style="">PROCESO AUDITADO</th>
-			<th style="">NOMBRE DEL<br>AUDITADO</th>
-			<th style="">NOMBRE DEL<br>AUDITOR</th>
-		  </tr>
+		<table id="tbProcesos" class="body" style="text-align: center;">
+			<tr>
+				<th style="">FECHA<br>(aaaa-mm-dd)</th>
+				<th style="">HORARIO</th>
+				<th style="">PROCESO AUDITADO</th>
+				<th style="">NOMBRE DEL<br>AUDITADO</th>
+				<th style="">NOMBRE DEL<br>AUDITOR</th>
+			</tr>
 
 			@foreach($auditoria->procesos as $aud_proceso)
 			<tr>{{-- dd(   $aud_proceso->hora_inicio ) --}}
@@ -144,49 +143,55 @@
 				<td>{{$aud_proceso->auditor->nombre }}</td>
 			</tr>
 			@endforeach
-	  </table>
+		</table>
 	  
-	@if($auditoria->procesos->count() < 6)
-		<div class="page-break"></div>
-	@else
+		@if($auditoria->procesos->count() < 6)
+			<div class="page-break"></div>
+		@else
+			<br>
+		@endif
+
+		<table id="tbProg" class="body" style="text-align: center;">
+			<tr>
+				<td>REUNIÓN<br>DE APERTURA</td>
+				<td>FECHA: {{$auditoria->fecha_apertura->toDateString()}}</td>
+				<td>HORA:  {{$auditoria->fecha_apertura->format('h:i A')}}</td>
+				<td>LUGAR:<br>{{$auditoria->lugar_apertura}}</td>
+			</tr>
+			<tr>
+				<td>REUNIÓN<br>DE CIERRE</td>
+				<td>FECHA: {{$auditoria->fecha_cierre->toDateString()}}</td>
+				<td>HORA:  {{$auditoria->fecha_cierre->format('h:i A')}}</td>
+				<td>LUGAR:<br>{{$auditoria->lugar_cierre}}</td>
+			</tr>
+		</table>
+
 		<br>
-	@endif
 
-	  <table id="tbProg" class="body" style="text-align: center;">
-		<tr>
-			<td>REUNIÓN<br>DE APERTURA</td>
-			<td>FECHA: {{$auditoria->fecha_apertura->toDateString()}}</td>
-			<td>HORA:  {{$auditoria->fecha_apertura->format('h:i A')}}</td>
-			<td>LUGAR:<br>{{$auditoria->lugar_apertura}}</td>
-		</tr>
-		<tr>
-			<td>REUNIÓN<br>DE CIERRE</td>
-			<td>FECHA: {{$auditoria->fecha_cierre->toDateString()}}</td>
-			<td>HORA:  {{$auditoria->fecha_cierre->format('h:i A')}}</td>
-			<td>LUGAR:<br>{{$auditoria->lugar_cierre}}</td>
-		</tr>
-	  </table>
-
-		<br>
-
-	  <table id="tbObsFirm" class="body" style="">
-		<tr style="vertical-align: top">
-			<td rowspan="2" style="height: 300px;">
-				OBSERVACIONES:<br>
-				{{$auditoria->observaciones}}
-			</td>
-			<td>
-				Firma Coordinador de Calidad<br>
-				{ img }
-			</td>
-		</tr>
-		<tr style="vertical-align: top">
-			<td >
-				Firma aprobación de la Alta Dirección<br>
-				{ img }
-			</td>
-		</tr>
-	  </table>
+		<table id="tbObsFirm" class="body" style="">
+			<tr style="vertical-align: top">
+				<td rowspan="2" style="height: 300px;">
+					OBSERVACIONES:<br>
+					{{$auditoria->observaciones}}
+				</td>
+				<td>
+					Firma Coordinador de Calidad
+					<p style="text-align: center;">
+						<img src="{{ asset('storage/firmas/'.$firmas[0]->filename) }}"
+							alt="" title="" width="200px" class="img-center" />
+					</p>
+				</td>
+			</tr>
+			<tr style="vertical-align: top">
+				<td >
+					Firma aprobación de la Alta Dirección
+					<p style="text-align: center;">
+						<img src="{{ asset('storage/firmas/'.$firmas[1]->filename) }}"
+							alt="" title="" width="200px" class="img-center" />
+					</p>
+				</td>
+			</tr>
+		</table>
 
 
 		<br>

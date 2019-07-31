@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 use App\Models\Auditor;
+use App\Models\Firma;
 
 use PDF;
 use Carbon\Carbon;
@@ -115,9 +116,11 @@ class AuditoriaController extends AppBaseController
         $view = 'auditorias.pdf';
         $today = Carbon::today()->format('Y-m-d');
 
+        $firmas = Firma::find([1,2]);
+
         //return view($view, compact('today' ));
 
-        $pdf = PDF::loadView($view, compact('today','auditoria'))
+        $pdf = PDF::loadView($view, compact('today','auditoria', 'firmas'))
                     ->setPaper('letter', 'portrait');
 
         $pdf->output();
