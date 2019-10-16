@@ -1,4 +1,4 @@
-@section('css')
+@push('css')
 {!! Html::style('css/select2/select2.min.css') !!}
 {!! Html::style('css/select2/select2-bootstrap.min.css') !!}
 <style type="text/css">
@@ -11,10 +11,9 @@
 	}
 	span.select2.select2-container{width:100% !important;}
 </style>
-@parent
-@endsection
+@endpush
 
-@section('scripts')
+@push('js')
 {!! Html::script('js/select2/select2.min.js') !!}
 {!! Html::script('js/select2/es.js') !!}
 
@@ -45,5 +44,4 @@
 		$('.selectpicker').val([]).trigger('change');
 	});
 </script>
-@parent
-@endsection
+@endpush

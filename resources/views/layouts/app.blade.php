@@ -1,7 +1,6 @@
 @extends ('layouts.plane')
 
 @section('body')
-<body class="skin-blue sidebar-mini">
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
@@ -109,8 +108,4 @@
                 tooltips.tooltip();
         });
     </script>
-
-    @yield('scripts')
-    @stack('modals')
-</body>
 @endsection

@@ -27,18 +27,24 @@
         <!-- Ionicons -->
         {!! Html::style('css/Ionicons/ionicons.min.css') !!}
 
-        @yield('css')
+        @stack('css')
     </head>
 
+    <body class="skin-blue sidebar-mini">
 
-    @yield('body')
+        @yield('body')
 
-    <script type="text/javascript">
-        //Se cierra la alerta a los 10 segundos.
-        setTimeout(function () {
-            $('.alert').slideUp(500, function(){
-                //$(this).alert('close');
-            });
-        }, 5*(1000));
-    </script>
+        <script type="text/javascript">
+            //Se cierra la alerta a los 10 segundos.
+            setTimeout(function () {
+                $('.alert').slideUp(500, function(){
+                    //$(this).alert('close');
+                });
+            }, 5*(1000));
+        </script>
+
+        @stack('js')
+        @stack('modals')
+    </body>
+    
 </html>

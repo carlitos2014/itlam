@@ -58,16 +58,16 @@ Route::group(['middleware'=>'auth'], function() {
 		Route::resource('auditoriaProcesos', 'AuditoriaProcesoController')->except(['index','show']);
 		Route::get('/pdf/{id}','AuditoriaController@programacionBuildPdf')->name('buildPdf');
 
-		Route::resource('cronograma', 'CronogramaController', ['parameters'=>['cronogramas'=>'RESE_ID']]);
-		Route::get('cronogramas/cargaEventos','CronogramaController@cargaEventos');
-		Route::post('cronogramas/guardaEventos', array('as' => 'guardaEventos','uses' => 'CronogramaController@store'));
-		Route::get('cronogramas/guardarCronogramas', 'CronogramaController@guardarCronogramas');
+		Route::resource('seguimientos', 'CronogramaController', ['parameters'=>['seguimiento'=>'auditoria']]);
+		Route::get('seguimientos/cargaEventos','CronogramaController@cargaEventos');
+		// Route::post('seguimientos/guardaEventos', 'CronogramaController@store');
+		// Route::get('seguimientos/guardarCronogramas', 'CronogramaController@guardarCronogramas');
 
-		Route::get('cronogramas/getCronogramas/{username}', 'CronogramaController@getCronogramas');
-		//Route::get('cronogramas/delete/{RESE_ID}', 'CronogramaController@delete');
-		Route::get('cronogramas/confirmar/{RESE_ID}', 'CronogramaController@confirmar');
-		Route::get('cronogramas/activar/{RESE_ID}', 'CronogramaController@activar');
-		Route::get('cronogramas/finalizar/{RESE_ID}', 'CronogramaController@finalizar');
+		// Route::get('seguimientos/getCronogramas/{username}', 'CronogramaController@getCronogramas');
+		// //Route::get('seguimientos/delete/{RESE_ID}', 'CronogramaController@delete');
+		// Route::get('seguimientos/confirmar/{RESE_ID}', 'CronogramaController@confirmar');
+		// Route::get('seguimientos/activar/{RESE_ID}', 'CronogramaController@activar');
+		// Route::get('seguimientos/finalizar/{RESE_ID}', 'CronogramaController@finalizar');
 
 	});
 

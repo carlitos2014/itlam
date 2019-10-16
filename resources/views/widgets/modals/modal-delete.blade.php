@@ -1,4 +1,4 @@
-@section('scripts')
+@push('js')
 	<script type="text/javascript">
 
 		//Carga de datos a mensajes modales para eliminar registros	
@@ -27,8 +27,7 @@
 		@endif
 
 	</script>
-@parent
-@endsection
+@endpush
 
 @push('modals')
 <!-- Mensaje Modal para confirmar borrado de registro-->
