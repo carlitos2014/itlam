@@ -27,6 +27,7 @@ class CreateAuditoriasTable extends Migration
             $table->string('lugar_apertura', 100);
             $table->timestamp('fecha_cierre')->nullable();
             $table->string('lugar_cierre', 100);
+            $table->enum('estado', ['PENDIENTE', 'CUMPLIDA', 'REPROGRAMADA', 'APLAZADA'])->default('PENDIENTE');
             $table->timestamps();
             $table->softDeletes();
 

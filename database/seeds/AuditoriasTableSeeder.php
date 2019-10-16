@@ -22,7 +22,19 @@ class AuditoriasTableSeeder extends Seeder {
 
 			//5 Auditores faker
 			$this->auditores = factory(Auditor::class)->times(5)->create();
-			$this->procesos = factory(Procesos::class)->times(25)->create();
+			//$this->procesos = factory(Procesos::class)->times(25)->create();
+
+			$procesos = [
+				['nombre'=>'Dirección Pedagógica', 'responsable'=>'Pepe1', 'email'=>'correo1@test.com'],
+				['nombre'=>'Coordinación',         'responsable'=>'Pepe2', 'email'=>'correo2@test.com'],
+				['nombre'=>'Psicología',           'responsable'=>'Pepe3', 'email'=>'correo3@test.com'],
+				['nombre'=>'Salud Ocupacional',    'responsable'=>'Pepe4', 'email'=>'correo4@test.com'],
+    		];
+
+			$this->procesos = collect();
+    		foreach ($procesos as $proc) {
+				$this->procesos->push(Procesos::create($proc));
+    		}
 
 			//5 Auditorias faker
 			$auditorias = factory(Auditoria::class)->times(5)->make()
@@ -35,11 +47,11 @@ class AuditoriasTableSeeder extends Seeder {
 								$aud_procesos = factory(AuditoriaProceso::class)->times(5)->make()
 													->each(function ($aud_proceso) use ($auditoria) {
 														$aud_proceso->auditoria()->associate($auditoria);
-														$aud_proceso->proceso()->associate($this->procesos->first()->id);
+														$aud_proceso->proceso()->associate($this->procesos->random());
 														$aud_proceso->auditor()->associate(Arr::random($auditoria->auditoresInternos->pluck('id')->toArray(), 1 )[0]);
 														// Log::info($this->procesos->first()->id);
 														$aud_proceso->save();
-														$this->procesos->shift();
+														//$this->procesos->shift();
 													});
 							});
 

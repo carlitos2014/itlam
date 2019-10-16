@@ -14,6 +14,7 @@
     @foreach($auditorias as $auditoria)
         <tr>
             <td>{!! $auditoria->fecha->format('Y-m-d') !!}</td>
+            <td>{{ $auditoria->estado }}</td>
             <td>{!! $auditoria->lugar !!}</td>
             <td>{!! str_limit($auditoria->objetivos,20) !!}</td>
             <td>{!! str_limit($auditoria->alcances,20) !!}</td>
