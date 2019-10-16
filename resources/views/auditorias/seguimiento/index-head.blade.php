@@ -39,25 +39,34 @@
 		}
 		.fc-title{color: black;}
 
+		.tooltipevent{
+			width:200px;
+			max-height:250px;
+			/*background-color: #f9ec54;*/
+			position:absolute;
+			z-index:10001;
+			padding: 5px;
+		}
+
 		.estados {
 			z-index: 8;
 			width:100px;
 			border-radius: 8px;
 			text-align: center;
 		}
-		.estados+.cumplida {
+		.cumplida {
 			background-color: rgb(0, 255, 0);
 		}
-		.estados+.pendiente {
+		.pendiente {
 			background-color: rgb(255, 255, 0);
 		}
-		.estados+.anulada {
+		.anulada {
 			background-color: rgb(204, 204, 204);
 		}
-		.estados+.reprogramada {
+		.reprogramada {
 			background-color: cyan;
 		}
-		.estados+.aplazada {
+		.aplazada {
 			background-color: gray;
 		}
 	</style>

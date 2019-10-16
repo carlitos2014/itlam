@@ -51,8 +51,9 @@ class CronogramaController extends AppBaseController
 				'title'			=> $aud->auditoria_id.' - '.$aud->proceso->nombre, 
 				'start'			=> $aud->fecha->setTimeFromTimeString($aud->hora_inicio)->toDateTimeString(),
 				'end'			=> $aud->fecha->setTimeFromTimeString($aud->hora_fin)->toDateTimeString(),
-				'backgroundColor'=>'rgb(255, 255, 0)',
-				'respProceso'	=> $aud->proceso->responsable, 
+				//'backgroundColor'=>'rgb(255, 255, 0)',
+				'procesoResp'	=> $aud->proceso->responsable, 
+				'estado'		=> $aud->estado, 
 			];
 		}
 

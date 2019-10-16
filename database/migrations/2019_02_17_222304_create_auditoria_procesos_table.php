@@ -21,6 +21,7 @@ class CreateAuditoriaProcesosTable extends Migration
             $table->unsignedInteger('proceso_id');
             $table->unsignedInteger('auditoria_id');
             $table->unsignedInteger('auditor_id');
+            $table->enum('estado', ['PENDIENTE', 'CUMPLIDA', 'REPROGRAMADA', 'APLAZADA'])->default('PENDIENTE');
             $table->timestamps();
             $table->softDeletes();
 

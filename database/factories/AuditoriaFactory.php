@@ -41,5 +41,6 @@ $factory->define(App\Models\AuditoriaProceso::class, function (Faker $faker) {
         'fecha' => $fecha,
         'hora_inicio' => $time,
         'hora_fin' => '23:59:59',
+        'estado' => $faker->randomElement(['PENDIENTE', 'CUMPLIDA', 'REPROGRAMADA', 'APLAZADA']),
     ];
 });

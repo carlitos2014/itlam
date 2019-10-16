@@ -211,30 +211,33 @@
 				eventRender: function(event, element) { 
 					var startt = moment(event.start).format('HH:mm');
 					var endd = moment(event.end).format('HH:mm');
-					element.find('.fc-title').append( startt + "-" + endd);
+					element.find('.fc-title').append( '<br>' + startt + ' - ' + endd);
+					element.addClass(event.estado.toLowerCase());
 				},
 				eventAfterAllRender: function( view ) {
 					$('#msgModalProcessing').modal('hide');
 				},
 				eventMouseover: function(calEvent, jsEvent) {
 					console.log(calEvent);
-					var tooltip = '<div class="tooltipevent" style="width:200px;height:100px;background:#f9ec54;position:absolute;z-index:10001;">'+
-						"<b>Responsable Proceso:</b>"+calEvent.respProceso +" <br>"+
-						"<b>Estado  :</b>"+ calEvent.estado +" <br>" +
-						"<b>Hora  :</b>"+ moment(calEvent.start).format('HH:mm') +" <br>" +
-						'</div>'; var $tool = $(tooltip).appendTo('body');
-				$(this).mouseover(function(e) {
-				    $(this).css('z-index', 10000);
-				            $tool.fadeIn('500');
-				            $tool.fadeTo('10', 1.9);
-				}).mousemove(function(e) {
-				    $tool.css('top', e.pageY + 10);
-				    $tool.css('left', e.pageX + 20);
-				});
+					var tooltip = '<div class="tooltipevent '+calEvent.estado.toLowerCase()+'">'+
+						"<b>Responsable Proceso:</b> "+calEvent.procesoResp +"<br>"+
+						"<b>Estado:</b> "+ calEvent.estado +" <br>" +
+						"<b>Hora inicio:</b> "+ moment(calEvent.start).format('HH:mm') +"<br>" +
+						"<b>Hora fin:   </b> "+ moment(calEvent.end).format('HH:mm') +"<br>" +
+						'</div>';
+					var $tool = $(tooltip).appendTo('body');
+					$(this).mouseover(function(e) {
+						$(this).css('z-index', 10000);
+						$tool.fadeIn('500');
+						$tool.fadeTo('10', 1.9);
+					}).mousemove(function(e) {
+						$tool.css('top', e.pageY + 10);
+						$tool.css('left', e.pageX + 20);
+					});
 				},
 				eventMouseout: function(calEvent, jsEvent) {
-				$(this).css('z-index', 8);
-				$('.tooltipevent').remove();
+					$(this).css('z-index', 8);
+					$('.tooltipevent').remove();
 				},
 				eventClick: function(calEvent, jsEvent, view) {
 					//Visualizar Popup con los detalles de la reserva
