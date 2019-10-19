@@ -19,7 +19,7 @@ $factory->define(App\Models\Auditor::class, function (Faker $faker) {
 });
 
 $factory->define(App\Models\Auditoria::class, function (Faker $faker) {
-    $fecha = Carbon::instance($faker->dateTimeBetween('-1 month','+ 1 month'));
+    $fecha = Carbon::instance($faker->dateTimeBetween('-3 month','+ 3 month'));
     return [
         'fecha' => $fecha,
         'lugar' => $faker->name,
@@ -36,11 +36,11 @@ $factory->define(App\Models\Auditoria::class, function (Faker $faker) {
 
 $factory->define(App\Models\AuditoriaProceso::class, function (Faker $faker) {
     $fecha = Carbon::instance($faker->dateTimeBetween('-1 month','+ 1 month'));
-	$time = $faker->time;
+	$time = Carbon::now()->setTimeFromTimeString($faker->time);
     return [
         'fecha' => $fecha,
-        'hora_inicio' => $time,
-        'hora_fin' => '23:59:59',
+        'hora_inicio' => $time->toTimeString(),
+        'hora_fin' => $time->addHours(2)->toTimeString(),
         'estado' => $faker->randomElement(['PENDIENTE', 'CUMPLIDA', 'REPROGRAMADA', 'APLAZADA']),
     ];
 });

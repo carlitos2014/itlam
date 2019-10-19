@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers\Auditorias;
 
-use App\Http\Requests\CreateAuditoriaRequest;
-use App\Http\Requests\UpdateAuditoriaRequest;
-// use App\Repositories\AuditoriaRepository;
-use App\Repositories\AuditoriaProcesoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
 use Carbon\Carbon;
-
+use App\Models\AuditoriaProceso;
 
 class CronogramaController extends AppBaseController
 {
 
-    public function __construct(AuditoriaProcesoRepository $auditoriaProcesosRepo)
+    public function __construct()
     {
-        $this->auditoriaProcesosRepository = $auditoriaProcesosRepo;
 	}
 	
 	/**
@@ -39,21 +32,24 @@ class CronogramaController extends AppBaseController
 	 *
 	 * @return Response
 	 */
-	public function show()
+	public function show(Request $request)
 	{
-		$data = []; //declaramos un array principal que va contener los datos
-        $audProcesos = $this->auditoriaProcesosRepository->all();
+		$data = $request->only(['start','end']);
+		$audProcesos = AuditoriaProceso::with(['proceso','auditoria'])
+						->whereBetween('fecha',[$data])
+						->get();
 
+		$data = []; //declaramos un array principal que va contener los datos
+        $hidden = ['created_at', 'updated_at', 'deleted_at'];
 		//Con los datos obtenidos, se construye el JSON que será recibido por la vista en el Calendar.
-		foreach ($audProcesos as $aud) {
+		foreach ($audProcesos as $audpro) {
 			$data[] = [
-				'id'			=> $aud->id,
-				'title'			=> $aud->auditoria_id.' - '.$aud->proceso->nombre, 
-				'start'			=> $aud->fecha->setTimeFromTimeString($aud->hora_inicio)->toDateTimeString(),
-				'end'			=> $aud->fecha->setTimeFromTimeString($aud->hora_fin)->toDateTimeString(),
-				//'backgroundColor'=>'rgb(255, 255, 0)',
-				'procesoResp'	=> $aud->proceso->responsable, 
-				'estado'		=> $aud->estado, 
+				'title'		=> '('.$audpro->proceso_id.'-'.$audpro->auditoria_id .') '.$audpro->proceso->nombre, 
+				'start'		=> $audpro->fecha->setTimeFromTimeString($audpro->hora_inicio)->toDateTimeString(),
+				'end'		=> $audpro->fecha->setTimeFromTimeString($audpro->hora_fin)->toDateTimeString(),
+				'proceso'	=> $audpro->proceso->makeHidden($hidden)->toJson(), 
+				'auditoria'	=> $audpro->auditoria->makeHidden($hidden)->toJson(), 
+				'estado'	=> $audpro->estado, 
 			];
 		}
 

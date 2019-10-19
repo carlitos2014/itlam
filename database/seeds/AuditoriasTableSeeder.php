@@ -37,7 +37,7 @@ class AuditoriasTableSeeder extends Seeder {
     		}
 
 			//5 Auditorias faker
-			$auditorias = factory(Auditoria::class)->times(5)->make()
+			$auditorias = factory(Auditoria::class)->times(10)->make()
 							->each(function ($auditoria) {
 								$auditoria->auditorLider()->associate(factory(Auditor::class)->create());
 
