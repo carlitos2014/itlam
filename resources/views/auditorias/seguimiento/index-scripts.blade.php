@@ -31,9 +31,6 @@
 					url:'seguimientos/cargaEventos'
 				},
 				eventRender: function(event, element) {
-					//var startt = moment(event.start).format('HH:mm');
-					//var endd = moment(event.end).format('HH:mm');
-					//element.find('.fc-title').append( '<br>' + startt + ' - ' + endd);
 					element.addClass(event.estado.toLowerCase());
 				},
 				eventAfterAllRender: function( view ) {
@@ -42,7 +39,9 @@
 				eventMouseover: function(calEvent, jsEvent) {
 					//console.log(calEvent);
 					var tooltip = '<div class="tooltipevent '+calEvent.estado.toLowerCase()+'">'+
-						'<b>Responsable Proceso:</b> '+calEvent.procesoResp +'<br>'+
+						'<b>Auditor:</b> '+calEvent.auditor.nombre +'<br>'+
+						'<b>Lider:</b> '+calEvent.auditorLider.nombre +'<br>'+
+						'<b>Responsable Proceso:</b> '+calEvent.proceso.responsable +'<br>'+
 						'<b>Estado:</b> '+ calEvent.estado +' <br>' +
 						'<b>Hora inicio:</b> '+ moment(calEvent.start).format('HH:mm') +' ' +
 						'<b>Hora fin:   </b> '+ moment(calEvent.end).format('HH:mm') +'<br>' +
@@ -62,36 +61,22 @@
 					$('.tooltipevent').remove();
 				},
 				eventClick: function(calEvent, jsEvent, view) {
-					//Visualizar Popup con los detalles de la reserva
-					var start = moment(calEvent.start).format('YYYY-MM-DD HH:mm');
-					var end = moment(calEvent.end).format('YYYY-MM-DD HH:mm');
+					console.log(calEvent.proceso);
+					console.log(calEvent.auditorLider);
+					//Visualizar ventana modal con los detalles de la reserva
+					var date = moment(calEvent.start).format('YYYY-MM-DD');
+					var start = moment(calEvent.start).format('HH:mm');
+					var end   = moment(calEvent.end).format('HH:mm');
 					var modal = $('#modalReserva');
-					var info = $('#divmodal');
-					info.empty();
-					info.append('<span class="LAVA_ID hide">'+calEvent.LAVA_ID+'</span>');
-					info.append('<p><b>Lavadora: </b> '+calEvent.LAVA_DESCRIPCION+' <b>Estado:</b> ' +calEvent.ESRE_NOMBRE+ '</p>');
-					info.append('<p><b>Inicio: </b> ' + start + '<b> Fin: </b> ' + end +'</p>');
-					info.append('<p><b>Creado por:</b> <span class="RESE_CREADOPOR">' +calEvent.RESE_CREADOPOR+ '</span></p>');
 
-
-					var RESE_CREADOPOR = modal.find('.RESE_CREADOPOR').text();
-					var userCurrent = '{{ Auth::user()->username }}';
-					var rolCurrent = 'admin';
-					{{-- \Entrust:: --}}
-
-					var frmDelete = modal.find('#frmDelete');
-					if(userCurrent == RESE_CREADOPOR || rolCurrent == 'admin'){
-						frmDelete
-							.attr('action', 'seguimientos/'+calEvent.RESE_ID)
-							.removeClass('hide');
-					}else{
-						frmDelete
-							.attr('action', 'seguimientos/'+calEvent.RESE_ID)
-							.removeClass('hide');
-					}
+					modal.find('#strAud').text(calEvent.auditorLider.nombre);
+					modal.find('#strName').text(calEvent.proceso.nombre);
+					modal.find('#strResp').text(calEvent.proceso.responsable);
+					modal.find('#strDate').text(date);
+					modal.find('#strStart').text(start);
+					modal.find('#strEnd').text(end);
 
 					modal.modal('show');
-
 					$(this).css('border-color', 'red');
 				}
 			});

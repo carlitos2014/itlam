@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Procesos;
+use App\Models\Proceso;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
@@ -10,9 +10,9 @@ use InfyOm\Generator\Common\BaseRepository;
  * @package App\Repositories
  * @version February 17, 2019, 4:51 pm UTC
  *
- * @method Procesos findWithoutFail($id, $columns = ['*'])
- * @method Procesos find($id, $columns = ['*'])
- * @method Procesos first($columns = ['*'])
+ * @method Proceso findWithoutFail($id, $columns = ['*'])
+ * @method Proceso find($id, $columns = ['*'])
+ * @method Proceso first($columns = ['*'])
 */
 class ProcesosRepository extends BaseRepository
 {
@@ -29,6 +29,6 @@ class ProcesosRepository extends BaseRepository
      **/
     public function model()
     {
-        return Procesos::class;
+        return Proceso::class;
     }
 }

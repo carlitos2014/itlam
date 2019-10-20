@@ -4,7 +4,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Database\Seeder;
 
 use App\Models\Auditor;
-use App\Models\Procesos;
+use App\Models\Proceso;
 use App\Models\Auditoria;
 use App\Models\AuditoriaProceso;
 
@@ -22,7 +22,7 @@ class AuditoriasTableSeeder extends Seeder {
 
 			//5 Auditores faker
 			$this->auditores = factory(Auditor::class)->times(5)->create();
-			//$this->procesos = factory(Procesos::class)->times(25)->create();
+			//$this->procesos = factory(Proceso::class)->times(25)->create();
 
 			$procesos = [
 				['nombre'=>'Dirección Pedagógica', 'responsable'=>'Pepe1', 'email'=>'correo1@test.com'],
@@ -33,7 +33,7 @@ class AuditoriasTableSeeder extends Seeder {
 
 			$this->procesos = collect();
     		foreach ($procesos as $proc) {
-				$this->procesos->push(Procesos::create($proc));
+				$this->procesos->push(Proceso::create($proc));
     		}
 
 			//5 Auditorias faker

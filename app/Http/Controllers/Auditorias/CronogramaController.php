@@ -34,21 +34,25 @@ class CronogramaController extends AppBaseController
 	 */
 	public function show(Request $request)
 	{
-		$data = $request->only(['start','end']);
-		$audProcesos = AuditoriaProceso::with(['proceso','auditoria'])
-						->whereBetween('fecha',[$data])
-						->get();
-
 		$data = []; //declaramos un array principal que va contener los datos
-        $hidden = ['created_at', 'updated_at', 'deleted_at'];
+		$datesFilter = $request->only(['start','end']);
+        $fieldsProc = 'proceso:id,nombre,responsable,email';
+        //$fieldsAudi = 'auditoria:id,fecha,lugar,auditor_lider_id,fecha_apertura,lugar_apertura,fecha_cierre,lugar_cierre';
+        $fieldsAudiLider = 'auditoria.auditorLider:id,nombre,email';
+        $fieldsAuditor = 'auditor:id,nombre,email';
+
+		$audProcesos = AuditoriaProceso::with([$fieldsProc,$fieldsAudiLider,$fieldsAuditor])
+						->whereBetween('fecha',[$datesFilter])
+						->get();
 		//Con los datos obtenidos, se construye el JSON que será recibido por la vista en el Calendar.
 		foreach ($audProcesos as $audpro) {
 			$data[] = [
 				'title'		=> '('.$audpro->proceso_id.'-'.$audpro->auditoria_id .') '.$audpro->proceso->nombre, 
 				'start'		=> $audpro->fecha->setTimeFromTimeString($audpro->hora_inicio)->toDateTimeString(),
 				'end'		=> $audpro->fecha->setTimeFromTimeString($audpro->hora_fin)->toDateTimeString(),
-				'proceso'	=> $audpro->proceso->makeHidden($hidden)->toJson(), 
-				'auditoria'	=> $audpro->auditoria->makeHidden($hidden)->toJson(), 
+				'proceso'	=> $audpro->proceso, 
+				'auditorLider'	=> $audpro->auditoria->auditorLider, 
+				'auditor'	=> $audpro->auditor, 
 				'estado'	=> $audpro->estado, 
 			];
 		}
@@ -56,6 +60,4 @@ class CronogramaController extends AppBaseController
 		return json_encode($data);
 	}
 
-
-	
 }

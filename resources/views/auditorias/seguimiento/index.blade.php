@@ -56,59 +56,64 @@
         </div>
     </div>
 
-{{-- @rinclude('index-modalCrearReservas') --}}
+	<div id="errorAjax"></div>
+	@rinclude('index-scripts')
+@endsection
 
-<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalReserva" role="dialog">
-  <div class="modal-dialog">
-	<div class="modal-content">
-	  <div class="modal-header modal-header-reserva" style="padding:40px 50px;">		
-		<h2><span class="glyphicon glyphicon-modal-window"></span> Detalle Reserva</h2>
-	  </div>
-	  <div class="modal-body" id="divmodal" style="padding:40px 50px;">
-	  		AQUÍ VA LA INFO
-	  </div>
-	  <div class="modal-footer">
+@push('modals')
+<div class="modal fade" id="modalReserva" role="dialog" tabindex="-1" >
+	<div class="modal-dialog">
+		<div class="modal-content panel-danger">
+			<div class="modal-header panel-heading" style="border-top-left-radius: inherit; border-top-right-radius: inherit;">
+				<h4 class="modal-title">Detalle Proceso Auditoría<span class="id"></span></h4>
+			</div>
+
+			<div class="modal-body" id="divmodal" style="padding:40px 50px;">
+
+				<div class="row"> 
+					<div class="col-xs-2"><b>Área:</b></div>
+					<div class="col-xs-10" id="strName">String</div>
+				</div>
+
+				<div class="row"> 
+					<div class="col-xs-2"><b>Auditor:</b></div>
+					<div class="col-xs-10" id="strAud">String</div>
+				</div>
+
+				<div class="row"> 
+					<div class="col-xs-2"><b>Fecha:</b></div>
+					<div class="col-xs-4" id="strDate">YYYY-MM-DD</div>
+					<div class="col-xs-1"><b>Inicio:</b></div>
+					<div class="col-xs-2" id="strStart">HH:mm</div>
+					<div class="col-xs-1"><b>Fin:</b></div>
+					<div class="col-xs-2" id="strEnd">HH:mm</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="modal-footer">
 				<form id="frmDelete" method="POST" action="" accept-charset="UTF-8" class="frmModal pull-right">
 					<button type="button" class="btn btn-xs btn-default" data-dismiss="modal">
-						<i class="fas fa-times" aria-hidden="true"></i> Cerrar
+						<i class="fa fa-times" aria-hidden="true"></i> NO
 					</button>
 
 					{{ Form::token() }}
 					{{ Form::hidden('_method', 'DELETE') }}
-					{{ Form::button('<i class="fas fa-trash" aria-hidden="true"></i> Anular ',[
+					{{ Form::button('<i class="fa fa-trash" aria-hidden="true"></i> SI ',[
 						'class'=>'btn btn-xs btn-danger',
 						'type'=>'submit',
 						'data-toggle'=>'modal',
 						'data-backdrop'=>'static',
 						'data-keyboard'=>'false',
-						//'data-target'=>'#msgModalDeleting',
+						'data-target'=>'#msgModalDeleting',
 					]) }}
 				</form>
-          </div>
+			</div>
+		</div>
 	</div>
   </div>
 </div>
 
-
-
-<!-- Mensaje Modal al borrar registro. Bloquea la pantalla mientras se procesa la solicitud -->
-<div class="modal fade" data-backdrop="static" data-keyboard="false" id="msgModalProcessing" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-body">
-				<h4>
-					<i class="fa fa-cog fa-spin fa-3x fa-fw" style="vertical-align: middle;"></i> Cargando...
-				</h4>
-			</div>
-		</div>
-
-	</div>
-</div><!-- Fin de Mensaje Modal al borrar registro.-->
-
-
-<div id="errorAjax"></div>
-
-@rinclude('index-scripts')
-@endsection
-
+@endpush

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Procesos;
+use App\Models\Proceso;
 
 class UpdateProcesosRequest extends FormRequest
 {
@@ -25,6 +25,6 @@ class UpdateProcesosRequest extends FormRequest
      */
     public function rules()
     {
-        return Procesos::$rules;
+        return Proceso::$rules;
     }
 }

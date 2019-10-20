@@ -6,14 +6,14 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Procesos
+ * Class Proceso
  * @package App\Models
  * @version February 17, 2019, 4:51 pm UTC
  *
  * @property string nombre
  * @property string responsable
  */
-class Procesos extends Model
+class Proceso extends Model
 {
     use SoftDeletes;
 

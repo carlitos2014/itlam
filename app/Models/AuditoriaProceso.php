@@ -72,7 +72,7 @@ class AuditoriaProceso extends Model
 
     public function proceso()
     {
-        return $this->belongsTo(Procesos::class);
+        return $this->belongsTo(Proceso::class);
     }
 
 

@@ -74,7 +74,7 @@
                 <td>{{$aud_proceso->auditor->nombre }}</td>
                 <td class="text-center">
                     <div class='btn-group'>
-                        <a href="{!! route('auditorias.auditoriaProcesos.edit', [$aud_proceso->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! route('auditorias.auditoriaProcesos.edit', [$aud_proceso->id, 'auditoria'=>$auditoria->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
 
                         {{ Form::button('<i class="glyphicon glyphicon-trash"></i>',[
                             'class'=>'btn btn-xs btn-danger btn-delete',

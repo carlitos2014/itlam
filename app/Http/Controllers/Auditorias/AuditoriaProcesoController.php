@@ -31,10 +31,8 @@ class AuditoriaProcesoController extends AppBaseController
      */
     public function create()
     {
-        $auditoria = request()->get('auditoria');
-        $arrAuditores = model_to_array(Auditoria::findOrFail($auditoria)->auditoresInternos, 'nombre');
-        $arrProceso = model_to_array(Procesos::class, 'nombre');
-        return view('auditorias.auditoria_procesos.create', compact('auditoria','arrAuditores','arrProceso'));
+        $parameters = $this->getParametersView();
+        return view('auditorias.auditoria_procesos.create', $parameters);
     }
 
     /**
@@ -51,8 +49,7 @@ class AuditoriaProcesoController extends AppBaseController
         $auditoriaProcesos = $this->auditoriaProcesosRepository->create($input);
 
         Flash::success('Auditoria Procesos saved successfully.');
-
-        return redirect(route('auditorias.edit',[$request->get('auditoria_id')]));
+        return redirect(route('auditorias.edit', [$input['auditoria_id']]));
     }
 
 
@@ -65,6 +62,7 @@ class AuditoriaProcesoController extends AppBaseController
      */
     public function edit($id)
     {
+        $parameters = $this->getParametersView();
         $auditoriaProcesos = $this->auditoriaProcesosRepository->findWithoutFail($id);
 
         if (empty($auditoriaProcesos)) {
@@ -72,7 +70,7 @@ class AuditoriaProcesoController extends AppBaseController
             return redirect()->back()->send();
         }
 
-        return view('auditorias.auditoria_procesos.edit')->with('auditoriaProcesos', $auditoriaProcesos);
+        return view('auditorias.auditoria_procesos.edit', compact('auditoriaProcesos')+$parameters);
     }
 
     /**
@@ -85,16 +83,24 @@ class AuditoriaProcesoController extends AppBaseController
      */
     public function update($id, UpdateAuditoriaProcesoRequest $request)
     {
+        $input = $request->all();
         $auditoriaProcesos = $this->auditoriaProcesosRepository->findWithoutFail($id);
 
         if (empty($auditoriaProcesos)) {
             Flash::error('Auditoria Procesos not found');
-        } else {
-            $auditoriaProcesos = $this->auditoriaProcesosRepository->update($request->all(), $id);
-            Flash::success('Auditoria Procesos updated successfully.');
+            return redirect()->back()->send();
         }
+        
+        $auditoriaProcesos = $this->auditoriaProcesosRepository->update($input, $id);
+        Flash::success('Auditoria Procesos updated successfully.');
+        return redirect(route('auditorias.edit', [$input['auditoria_id']]));
+    }
 
-        return redirect()->back()->send();
+    private function getParametersView(){
+        $auditoria = request()->get('auditoria');
+        $arrAuditores = model_to_array(Auditoria::findOrFail($auditoria)->auditoresInternos, 'nombre');
+        $arrProcesos = model_to_array(Proceso::class, 'nombre');
+        return compact('auditoria','arrAuditores','arrProcesos');
     }
 
     /**
